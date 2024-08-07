@@ -52,7 +52,7 @@ fun AppMenuTopAppBar(
         IconButton(onClick = { showMenu.value = !showMenu.value }) {
             Icon(
                 imageVector = Icons.Filled.MoreVert,
-                contentDescription = stringResource(R.string.content_description_menu_more),
+                contentDescription = stringResource(R.string.content_description_shared_menu_more),
             )
         }
         DropdownMenu(

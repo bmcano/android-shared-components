@@ -11,7 +11,7 @@ android {
     defaultConfig {
         minSdk = 24
 
-        version = "1.0.0" // updated version for each release so I can update the mobile app dependencies
+        version = "1.0.1" // updated version for each release so I can update the mobile app dependencies
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

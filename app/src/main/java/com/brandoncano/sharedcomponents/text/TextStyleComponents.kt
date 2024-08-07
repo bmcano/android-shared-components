@@ -19,7 +19,7 @@ import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 
 @Composable
 private fun textStyleBase() = TextStyle(
-    fontFamily = FontFamily.SansSerif, // TODO - find for a better font
+    fontFamily = FontFamily.SansSerif,
     fontWeight = FontWeight.Normal,
 )
 
