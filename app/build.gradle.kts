@@ -5,6 +5,18 @@ plugins {
     id("maven-publish")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.bmcano"
+            artifactId = "shared-android-components"
+            version = "1.0.3"
+
+            // components.getByName("debug")
+        }
+    }
+}
+
 android {
     namespace = "com.brandoncano.sharedcomponents"
     compileSdk = 34
@@ -12,7 +24,7 @@ android {
     defaultConfig {
         minSdk = 24
 
-        version = "1.0.1" // updated version for each release so I can update the mobile app dependencies
+        version = "1.0.3" // updated version for each release so I can update the mobile app dependencies
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
