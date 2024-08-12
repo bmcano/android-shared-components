@@ -5,17 +5,8 @@ plugins {
     id("maven-publish")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.bmcano"
-            artifactId = "shared-android-components"
-            version = "1.0.3"
-
-            // components.getByName("debug")
-        }
-    }
-}
+group = "com.github.bmcano"
+version = "1.0.4"
 
 android {
     namespace = "com.brandoncano.sharedcomponents"
@@ -23,19 +14,13 @@ android {
 
     defaultConfig {
         minSdk = 24
-
-        version = "1.0.3" // updated version for each release so I can update the mobile app dependencies
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        version = "1.0.4"
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -67,4 +52,17 @@ dependencies {
     // unit testing
     testImplementation(libs.mockk)
     testImplementation(libs.junit)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = "com.github.bmcano"
+                artifactId = "shared-android-components"
+                version = "1.0.4"
+                from(components.findByName("release"))
+            }
+        }
+    }
 }
