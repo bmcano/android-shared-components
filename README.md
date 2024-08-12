@@ -1,32 +1,6 @@
-# AndroidAppSharedComponents
+# Shared Components for my Android Apps
 
-This is a private shared library that I created for my set of Android apps that use the same components and utiltiies. 
-This library will help maintain all of these shared items to be consistent with for each app that uses this module. 
+This is a shared library that I created for my set of electronic calculator Android apps that use many of the same components and utiltiies. 
+This library will help me maintain all of these shared items to be consistent with for each app that uses this module. 
 
-## Composables
-
-wip
-
-## Data
-
-wip
-
-### ArrowCardButtonContents
-
-```
-Data Class: holds the contents for each item needed for a single row in the ArrowCardButton
-```
-
-### NavigationBarOptions
-
-```
-Data Class: holds the contents for each navigation bar option (label and icon)
-```
-
-## Text
-
-wip
-
-## Utils
-
-wip
+This module is not intended for public use, since most things are specific to me and my apps, but the repository is being made public so I can easily import the dependency into my Androids applications.
