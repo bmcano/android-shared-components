@@ -1,3 +1,10 @@
 <resources>
     <string name="content_description_shared_menu_more">More</string>
+    <!-- view our apps screen -->
+    <string name="view_our_apps_title">Our Apps</string>
+    <string name="view_our_apps_header">Check out our other apps on Google Play</string>
+    <string name="view_our_apps_resistor">Resistor Color Code Calculator</string>
+    <string name="view_our_apps_capacitor">Capacitor Code Calculator</string>
+    <string name="view_our_apps_inductor">Inductor Color Code Calculator</string>
+    <string name="view_our_apps_led_resistor">LED Resistor Calculator</string>
 </resources>
