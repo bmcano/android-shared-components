@@ -3,6 +3,7 @@ package com.brandoncano.sharedcomponents.text
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -68,6 +69,11 @@ fun textStyleSubhead() = textStyleBase().merge(
 fun textStyleCaption() = textStyleBase().merge(
     fontSize = TextFontSize.caption,
     lineHeight = TextLineHeight.caption,
+)
+
+@Composable
+fun TextStyle.iconGray() = this.merge(
+    color = MaterialTheme.colorScheme.onSurfaceVariant
 )
 
 @AppComponentPreviews

@@ -1,5 +1,4 @@
 <resources>
-    <string name="content_description_shared_menu_more">More</string>
     <!-- view our apps screen -->
     <string name="view_our_apps_title">Our Apps</string>
     <string name="view_our_apps_header">Check out our other apps on Google Play</string>
@@ -7,4 +6,15 @@
     <string name="view_our_apps_capacitor">Capacitor Code Calculator</string>
     <string name="view_our_apps_inductor">Inductor Color Code Calculator</string>
     <string name="view_our_apps_led_resistor">LED Resistor Calculator</string>
+    <!-- Content descriptions -->
+    <string name="content_description_shared_menu_more">More</string>
+    <!-- Menu item text -->
+    <string name="menu_clear_selections">Clear selections</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_share_image">Share as image</string>
+    <string name="menu_share_text">Share as text</string>
+    <string name="about_created_by">Created by</string>
+    <string name="about_author">Brandon Cano</string>
+    <string name="about_app_version">App version</string>
+    <string name="about_last_updated_on">Last updated on</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,7 +32,8 @@ import com.brandoncano.sharedcomponents.text.textStyleSubhead
 fun AppTextField(
     label: String,
     modifier: Modifier = Modifier,
-    text: String = "",
+    value: MutableState<String>,
+    enabled: Boolean = true,
     reset: Boolean = false,
     isError: Boolean = false,
     errorMessage: String = "",
@@ -40,13 +42,17 @@ fun AppTextField(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     var expanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf(text) }
+    var selectedText by remember { mutableStateOf(value.value) }
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
 
     LaunchedEffect(reset) {
         if (reset) {
             selectedText = ""
         }
+    }
+
+    LaunchedEffect(value.value) {
+        selectedText = value.value
     }
 
     Column(modifier = modifier) {
@@ -60,6 +66,7 @@ fun AppTextField(
                 .fillMaxWidth()
                 .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() }
                 .clickable(interactionSource, null, enabled = true) { expanded = !expanded },
+            enabled = enabled,
             label = { Text(label) },
             trailingIcon = {
                 if (isError) {
@@ -86,10 +93,12 @@ fun AppTextField(
 @AppComponentPreviews
 @Composable
 private fun AppTextFieldPreview() {
+    val empty = remember { mutableStateOf("") }
+    val value = remember { mutableStateOf("Example") }
     Column {
-        AppTextField(label = "Text field", modifier = Modifier.padding(start = 32.dp, end = 32.dp)) { }
-        AppTextField(label = "Text field with text", text = "Example") { }
-        AppTextField(label = "Text field with error", isError = true) { }
-        AppTextField(label = "Text field with error", isError = true, errorMessage = "error") { }
+        AppTextField(label = "Text field", value = empty, modifier = Modifier.padding(start = 32.dp, end = 32.dp)) { }
+        AppTextField(label = "Text field with text", value = value) { }
+        AppTextField(label = "Text field with error", value = empty, isError = true) { }
+        AppTextField(label = "Text field with error", value = empty, isError = true, errorMessage = "error message") { }
     }
 }
