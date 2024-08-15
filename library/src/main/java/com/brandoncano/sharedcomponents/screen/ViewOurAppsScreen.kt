@@ -59,7 +59,7 @@ fun ViewOurAppsScreen(
                         subtext = stringResource(id = R.string.view_our_apps_resistor_released),
                         appImage = R.drawable.resistor_playstore,
                         context = context,
-                        app = app,
+                        app = Apps.Resistor,
                     )
                 }
                 if (app !is Apps.Capacitor) {
@@ -68,7 +68,7 @@ fun ViewOurAppsScreen(
                         subtext = stringResource(id = R.string.view_our_apps_capacitor_released),
                         appImage = R.drawable.capacitor_playstore,
                         context = context,
-                        app = app,
+                        app = Apps.Capacitor,
                     )
                 }
                 if (app !is Apps.Inductor) {
@@ -77,7 +77,7 @@ fun ViewOurAppsScreen(
                         subtext = stringResource(id = R.string.view_our_apps_inductor_released),
                         appImage = R.drawable.inductor_playstore,
                         context = context,
-                        app = app,
+                        app = Apps.Inductor,
                     )
                 }
                 // Note: will add back in once app is published
