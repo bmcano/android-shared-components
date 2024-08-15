@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
+import com.brandoncano.sharedcomponents.composables.AppDivider
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.composables.AppTopAppBar
 import com.brandoncano.sharedcomponents.data.Apps
@@ -26,7 +27,7 @@ import com.brandoncano.sharedcomponents.text.textStyleHeadline
 @Composable
 fun ViewOurAppsScreen(
     context: Context = LocalContext.current,
-    app: Apps = Apps.LedResistor,
+    app: Apps = Apps.Resistor,
 ) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -36,6 +37,16 @@ fun ViewOurAppsScreen(
             horizontalAlignment = Alignment.Start,
         ) {
             AppTopAppBar(titleText = stringResource(id = R.string.view_our_apps_title))
+            when (app) {
+                Apps.Capacitor -> MobileAppFeatureCard(R.drawable.capacitor_feature_graphic, context, app)
+                Apps.Inductor -> MobileAppFeatureCard(R.drawable.inductor_feature_graphic, context, app)
+                // Apps.LedResistor -> MobileAppFeatureCard(R.drawable.resistor_feature_graphic, context, app)
+                Apps.Resistor -> MobileAppFeatureCard(R.drawable.resistor_feature_graphic, context, app)
+            }
+            AppDivider(
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                onCard = false,
+            )
             Text(
                 text = stringResource(id = R.string.view_our_apps_header),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp),
@@ -45,7 +56,8 @@ fun ViewOurAppsScreen(
                 if (app !is Apps.Resistor) {
                     MobileAppCard(
                         appName = stringResource(id = R.string.view_our_apps_resistor),
-                        appImage = R.drawable.resistor_feature_graphic,
+                        subtext = stringResource(id = R.string.view_our_apps_resistor_released),
+                        appImage = R.drawable.resistor_playstore,
                         context = context,
                         app = app,
                     )
@@ -53,7 +65,8 @@ fun ViewOurAppsScreen(
                 if (app !is Apps.Capacitor) {
                     MobileAppCard(
                         appName = stringResource(id = R.string.view_our_apps_capacitor),
-                        appImage = R.drawable.capacitor_feature_graphic,
+                        subtext = stringResource(id = R.string.view_our_apps_capacitor_released),
+                        appImage = R.drawable.capacitor_playstore,
                         context = context,
                         app = app,
                     )
@@ -61,19 +74,22 @@ fun ViewOurAppsScreen(
                 if (app !is Apps.Inductor) {
                     MobileAppCard(
                         appName = stringResource(id = R.string.view_our_apps_inductor),
-                        appImage = R.drawable.inductor_feature_graphic,
+                        subtext = stringResource(id = R.string.view_our_apps_inductor_released),
+                        appImage = R.drawable.inductor_playstore,
                         context = context,
                         app = app,
                     )
                 }
-                if (app !is Apps.LedResistor) {
-                    MobileAppCard(
-                        appName = stringResource(id = R.string.view_our_apps_led_resistor),
-                        appImage = R.drawable.resistor_feature_graphic,
-                        context = context,
-                        app = app,
-                    )
-                }
+                // Note: will add back in once app is published
+                // if (app !is Apps.LedResistor) {
+                //     MobileAppCard(
+                //         appName = stringResource(id = R.string.view_our_apps_led_resistor),
+                //         subtext = stringResource(id = R.string.view_our_apps_resistor_released),
+                //         appImage = R.drawable.resistor_feature_graphic,
+                //         context = context,
+                //         app = app,
+                //     )
+                // }
             }
             Spacer(modifier = Modifier.height(24.dp))
         }

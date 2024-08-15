@@ -1,10 +1,14 @@
 <resources>
     <!-- view our apps screen -->
     <string name="view_our_apps_title">Our Apps</string>
+    <string name="view_our_apps_rate_this_app">Rate this app on Google Play</string>
     <string name="view_our_apps_header">Check out our other apps on Google Play</string>
     <string name="view_our_apps_resistor">Resistor Color Code Calculator</string>
+    <string name="view_our_apps_resistor_released">Released on June 19, 2022</string>
     <string name="view_our_apps_capacitor">Capacitor Code Calculator</string>
+    <string name="view_our_apps_capacitor_released">Released on July 28, 2023</string>
     <string name="view_our_apps_inductor">Inductor Color Code Calculator</string>
+    <string name="view_our_apps_inductor_released">Released on August 3, 2024</string>
     <string name="view_our_apps_led_resistor">LED Resistor Calculator</string>
     <!-- Content descriptions -->
     <string name="content_description_shared_menu_more">More</string>
