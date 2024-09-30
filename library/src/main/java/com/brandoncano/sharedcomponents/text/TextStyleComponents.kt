@@ -72,7 +72,7 @@ fun textStyleCaption() = textStyleBase().merge(
 )
 
 @Composable
-fun TextStyle.iconGray() = this.merge(
+fun TextStyle.onSurfaceVariant() = this.merge(
     color = MaterialTheme.colorScheme.onSurfaceVariant
 )
 

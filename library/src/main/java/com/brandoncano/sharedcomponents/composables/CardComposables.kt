@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
+import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleCallout
 
 @Composable
@@ -109,7 +110,7 @@ private fun AppCardRowView(
                 .padding(16.dp)
                 .weight(1f)
                 .align(Alignment.CenterVertically),
-            style = textStyleCallout(),
+            style = textStyleCallout().onSurfaceVariant(),
             overflow = TextOverflow.Ellipsis,
             maxLines = 1,
         )

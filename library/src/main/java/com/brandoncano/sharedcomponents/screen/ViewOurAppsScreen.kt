@@ -48,12 +48,12 @@ fun ViewOurAppsScreen(
                 app = app,
             )
             AppDivider(
-                modifier = Modifier.padding(top = 16.dp),
+                modifier = Modifier.padding(top = 24.dp),
                 onCard = false,
             )
             Text(
                 text = stringResource(id = R.string.view_our_apps_header),
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp),
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
                 style = textStyleHeadline(),
             )
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {

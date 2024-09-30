@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.composables.AppCard
 import com.brandoncano.sharedcomponents.data.Apps
+import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
 import com.brandoncano.sharedcomponents.text.textStyleSubhead
 import com.brandoncano.sharedcomponents.utils.OpenLink
@@ -53,7 +54,7 @@ fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(max = 172.dp)
-                .clip(RoundedCornerShape(12.dp)),
+                .clip(RoundedCornerShape(16.dp)),
             contentScale = ContentScale.Crop
         )
         Row(
@@ -66,7 +67,7 @@ fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
             Text(
                 text = stringResource(id = R.string.view_our_apps_rate_this_app),
                 modifier = Modifier.padding(start = 16.dp),
-                style = textStyleHeadline(),
+                style = textStyleHeadline().onSurfaceVariant(),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -97,7 +98,7 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Cont
                 contentDescription = null,
                 modifier = Modifier
                     .size(64.dp)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(16.dp)),
             )
             Column(
                 modifier = Modifier
@@ -107,14 +108,14 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Cont
                 Text(
                     text = appName,
                     modifier = Modifier.padding(top = 12.dp),
-                    style = textStyleHeadline(),
+                    style = textStyleHeadline().onSurfaceVariant(),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = subtext,
                     modifier = Modifier.padding(top = 4.dp),
-                    style = textStyleSubhead(),
+                    style = textStyleSubhead().onSurfaceVariant(),
                     overflow = TextOverflow.Ellipsis,
                     lineHeight = TextUnit(16.0f, TextUnitType.Sp),
                     maxLines = 2,

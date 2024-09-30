@@ -16,9 +16,11 @@ import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 import com.brandoncano.sharedcomponents.composables.AppDivider
 import com.brandoncano.sharedcomponents.composables.AppStandardCard
+import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
 
+@AppComponentPreviews
 @Composable
 fun AuthorCard() {
     AppStandardCard {
@@ -53,22 +55,14 @@ private fun HeadlineBodyStack(@StringRes label: Int, @StringRes body: Int) {
         Text(
             text = stringResource(id = label),
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 12.dp),
-            style = textStyleHeadline(),
+            style = textStyleHeadline().onSurfaceVariant(),
         )
         Text(
             text = stringResource(id = body),
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 4.dp),
-            style = textStyleBody(),
+            style = textStyleBody().onSurfaceVariant(),
         )
         Spacer(modifier = Modifier.height(12.dp))
-    }
-}
-
-@AppComponentPreviews
-@Composable
-private fun AuthorCardPreview() {
-    Column {
-        AuthorCard()
     }
 }
 

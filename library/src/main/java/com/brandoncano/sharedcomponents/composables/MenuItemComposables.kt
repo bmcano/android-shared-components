@@ -22,7 +22,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.brandoncano.sharedcomponents.R
-import com.brandoncano.sharedcomponents.text.iconGray
+import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.utils.ComposableToBitmap
 import com.brandoncano.sharedcomponents.utils.SaveBitmap
@@ -90,7 +90,7 @@ fun ShareTextMenuItem(context: Context, text: String, showMenu: MutableState<Boo
 fun MenuText(@StringRes stringRes: Int) {
     Text(
         text = stringResource(id = stringRes),
-        style = textStyleBody().iconGray(),
+        style = textStyleBody().onSurfaceVariant(),
     )
 }
 
