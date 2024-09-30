@@ -36,12 +36,12 @@ fun AppDivider(
     onCard: Boolean = true
 ) {
     HorizontalDivider(
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = 16.dp),
         thickness = 1.dp,
         color = if (onCard && isSystemInDarkTheme()) {
             MaterialTheme.colorScheme.outline
         } else {
-            MaterialTheme.colorScheme.outlineVariant
+            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
         }
     )
 }
@@ -50,8 +50,9 @@ fun AppDivider(
 fun AppStandardCard(content: @Composable (ColumnScope.() -> Unit)) {
     Card(
         modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+            .padding(horizontal = 16.dp)
             .fillMaxWidth(),
+        shape = MaterialTheme.shapes.large,
         content = content,
     )
 }
@@ -63,6 +64,7 @@ fun AppCard(
 ) {
     Card(
         modifier = modifier,
+        shape = MaterialTheme.shapes.large,
         content = content,
     )
 }
@@ -71,13 +73,13 @@ fun AppCard(
 fun AppArrowCardButton(vararg arrowCardButtonContents: ArrowCardButtonContents) {
     Card(
         modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+            .padding(horizontal = 16.dp)
             .fillMaxWidth()
     ) {
         arrowCardButtonContents.forEachIndexed { index, it ->
             AppCardRowView(it.imageVector, it.text, it.onClick)
             if (arrowCardButtonContents.size - 1 != index) {
-                AppDivider(modifier = Modifier.padding(start = 16.dp, end = 16.dp))
+                AppDivider()
             }
         }
     }
@@ -90,7 +92,9 @@ private fun AppCardRowView(
     onClick: (() -> Unit),
 ) {
     Row(
-        modifier = Modifier.clickable(role = Role.Button, onClick = onClick),
+        modifier = Modifier
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Image(
@@ -125,7 +129,7 @@ private fun AppStandardCardPreview() {
         Text(text = "Text1", modifier = Modifier.padding(16.dp))
         AppDivider(onCard = true)
         Text(text = "Text2", modifier = Modifier.padding(16.dp))
-        AppDivider(modifier = Modifier.padding(start = 16.dp, end = 16.dp))
+        AppDivider()
         Text(text = "Text3", modifier = Modifier.padding(16.dp))
     }
 }

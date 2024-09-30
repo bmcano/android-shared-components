@@ -3,7 +3,7 @@ package com.brandoncano.sharedcomponents.screen
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -26,7 +26,6 @@ fun AuthorCard() {
             label = R.string.about_created_by,
             body = R.string.about_author,
         )
-        Spacer(modifier = Modifier.height(12.dp))
     }
 }
 
@@ -37,19 +36,18 @@ fun AppInfoCard(@StringRes version: Int, @StringRes lastUpdated: Int) {
             label = R.string.about_app_version,
             body = version,
         )
-        AppDivider(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp))
+        AppDivider()
         HeadlineBodyStack(
             label = R.string.about_last_updated_on,
             body = lastUpdated,
         )
-        Spacer(modifier = Modifier.height(12.dp))
     }
 }
 
 @Composable
 private fun HeadlineBodyStack(@StringRes label: Int, @StringRes body: Int) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.Start
     ) {
         Text(
@@ -62,6 +60,15 @@ private fun HeadlineBodyStack(@StringRes label: Int, @StringRes body: Int) {
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 4.dp),
             style = textStyleBody(),
         )
+        Spacer(modifier = Modifier.height(12.dp))
+    }
+}
+
+@AppComponentPreviews
+@Composable
+private fun AuthorCardPreview() {
+    Column {
+        AuthorCard()
     }
 }
 
@@ -78,9 +85,8 @@ private fun HeadlineBodyStackPreview() {
 
 @AppComponentPreviews
 @Composable
-private fun AuthorCardPreview() {
-    Column(modifier = Modifier.height(84.dp)) {
-        AuthorCard()
+private fun AppInfoCardPreview() {
+    Column {
+        AppInfoCard(version = R.string.view_our_apps_title, lastUpdated = R.string.view_our_apps_title)
     }
 }
-

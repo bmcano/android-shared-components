@@ -42,7 +42,7 @@ import com.brandoncano.sharedcomponents.utils.OpenLink
 fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
     AppCard(
         modifier = Modifier
-            .padding(top = 12.dp, start = 16.dp, end = 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .clickable {
                 OpenLink.execute(context, app.playstore)
             }
@@ -57,13 +57,15 @@ fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
             contentScale = ContentScale.Crop
         )
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 text = stringResource(id = R.string.view_our_apps_rate_this_app),
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+                modifier = Modifier.padding(start = 16.dp),
                 style = textStyleHeadline(),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -71,7 +73,7 @@ fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
             Image(
                 imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                 contentDescription = null,
-                modifier = Modifier.padding(16.dp),
+                modifier = Modifier.padding(end = 16.dp),
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
             )
         }
@@ -83,9 +85,7 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Cont
     AppCard(
         modifier = Modifier
             .padding(top = 12.dp)
-            .clickable {
-                OpenLink.execute(context, app.playstore)
-            }
+            .clickable { OpenLink.execute(context, app.playstore) }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -127,7 +127,6 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Cont
                 modifier = Modifier
                     .padding(top = 12.dp, end = 16.dp)
                     .size(24.dp),
-
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
             )
         }

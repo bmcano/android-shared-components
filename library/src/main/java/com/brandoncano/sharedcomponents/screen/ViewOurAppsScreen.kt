@@ -37,14 +37,18 @@ fun ViewOurAppsScreen(
             horizontalAlignment = Alignment.Start,
         ) {
             AppTopAppBar(titleText = stringResource(id = R.string.view_our_apps_title))
-            when (app) {
-                Apps.Capacitor -> MobileAppFeatureCard(R.drawable.capacitor_feature_graphic, context, app)
-                Apps.Inductor -> MobileAppFeatureCard(R.drawable.inductor_feature_graphic, context, app)
-                // Apps.LedResistor -> MobileAppFeatureCard(R.drawable.resistor_feature_graphic, context, app)
-                Apps.Resistor -> MobileAppFeatureCard(R.drawable.resistor_feature_graphic, context, app)
-            }
+            Spacer(modifier = Modifier.height(12.dp))
+            MobileAppFeatureCard(
+                appImage = when (app) {
+                    Apps.Capacitor -> R.drawable.capacitor_feature_graphic
+                    Apps.Inductor -> R.drawable.inductor_feature_graphic
+                    else -> R.drawable.resistor_feature_graphic
+                },
+                context = context,
+                app = app,
+            )
             AppDivider(
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                modifier = Modifier.padding(top = 16.dp),
                 onCard = false,
             )
             Text(
@@ -80,16 +84,6 @@ fun ViewOurAppsScreen(
                         app = Apps.Inductor,
                     )
                 }
-                // Note: will add back in once app is published
-                // if (app !is Apps.LedResistor) {
-                //     MobileAppCard(
-                //         appName = stringResource(id = R.string.view_our_apps_led_resistor),
-                //         subtext = stringResource(id = R.string.view_our_apps_resistor_released),
-                //         appImage = R.drawable.resistor_feature_graphic,
-                //         context = context,
-                //         app = app,
-                //     )
-                // }
             }
             Spacer(modifier = Modifier.height(24.dp))
         }
