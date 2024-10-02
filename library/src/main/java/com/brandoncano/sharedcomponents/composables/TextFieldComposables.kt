@@ -1,7 +1,6 @@
 package com.brandoncano.sharedcomponents.composables
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -41,31 +40,24 @@ fun AppTextField(
     onOptionSelected: (String) -> Unit,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    var expanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf(value.value) }
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
 
     LaunchedEffect(reset) {
         if (reset) {
-            selectedText = ""
+            value.value = ""
         }
-    }
-
-    LaunchedEffect(value.value) {
-        selectedText = value.value
     }
 
     Column(modifier = modifier) {
         OutlinedTextField(
-            value = selectedText,
+            value = value.value,
             onValueChange = {
-                selectedText = it
+                value.value = it
                 onOptionSelected(it)
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() }
-                .clickable(interactionSource, null, enabled = true) { expanded = !expanded },
+                .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() },
             enabled = enabled,
             label = { Text(label) },
             trailingIcon = {
