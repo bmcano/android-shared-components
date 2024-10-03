@@ -1,6 +1,5 @@
 package com.brandoncano.sharedcomponents.composables
 
-import android.content.Context
 import android.graphics.Picture
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
@@ -44,7 +43,8 @@ fun ClearSelectionsMenuItem(onClick: (() -> Unit)) {
 }
 
 @Composable
-fun FeedbackMenuItem(context: Context, app: String, showMenu: MutableState<Boolean>) {
+fun FeedbackMenuItem(app: String, showMenu: MutableState<Boolean>) {
+    val context = LocalContext.current
     DropdownMenuItem(
         text = { MenuText(stringRes = R.string.menu_feedback) },
         onClick = {
@@ -56,12 +56,8 @@ fun FeedbackMenuItem(context: Context, app: String, showMenu: MutableState<Boole
 }
 
 @Composable
-fun ShareImageMenuItem(
-    context: Context,
-    applicationId: String,
-    showMenu: MutableState<Boolean>,
-    picture: Picture,
-) {
+fun ShareImageMenuItem(applicationId: String, showMenu: MutableState<Boolean>, picture: Picture) {
+    val context = LocalContext.current
     DropdownMenuItem(
         text = { MenuText(stringRes = R.string.menu_share_image) },
         onClick = {
@@ -75,7 +71,8 @@ fun ShareImageMenuItem(
 }
 
 @Composable
-fun ShareTextMenuItem(context: Context, text: String, showMenu: MutableState<Boolean>) {
+fun ShareTextMenuItem(text: String, showMenu: MutableState<Boolean>) {
+    val context = LocalContext.current
     DropdownMenuItem(
         text = { MenuText(stringRes = R.string.menu_share_text) },
         onClick = {
@@ -109,8 +106,8 @@ private fun MenuItemsPreview() {
     val showMenu = remember { mutableStateOf(false) }
     Column {
         ClearSelectionsMenuItem { }
-        FeedbackMenuItem(LocalContext.current, "app", showMenu)
-        ShareImageMenuItem(LocalContext.current, "applicationId", showMenu, Picture())
-        ShareTextMenuItem(LocalContext.current, "text", showMenu)
+        FeedbackMenuItem("app", showMenu)
+        ShareImageMenuItem("applicationId", showMenu, Picture())
+        ShareTextMenuItem("text", showMenu)
     }
 }

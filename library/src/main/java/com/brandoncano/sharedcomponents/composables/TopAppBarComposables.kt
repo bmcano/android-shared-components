@@ -4,11 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenu
@@ -26,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +42,8 @@ fun AppMenuTopAppBar(
     titleText: String,
     interactionSource: MutableInteractionSource,
     showMenu: MutableState<Boolean>,
+    navigationIcon: ImageVector? = null,
+    onNavigateBack: () -> Unit = {},
     content: @Composable (ColumnScope.() -> Unit),
 ) {
     LaunchedEffect(interactionSource) {
@@ -48,7 +53,11 @@ fun AppMenuTopAppBar(
             }
         }
     }
-    AppTopAppBar(titleText) {
+    AppTopAppBar(
+        titleText = titleText,
+        navigationIcon = navigationIcon,
+        onNavigateBack = onNavigateBack,
+    ) {
         IconButton(onClick = { showMenu.value = !showMenu.value }) {
             Icon(
                 imageVector = Icons.Filled.MoreVert,
@@ -67,6 +76,8 @@ fun AppMenuTopAppBar(
 @Composable
 fun AppTopAppBar(
     titleText: String,
+    navigationIcon: ImageVector? = null,
+    onNavigateBack: () -> Unit = {},
     actions: @Composable (RowScope.() -> Unit) = { },
 ) {
     CenterAlignedTopAppBar(
@@ -77,6 +88,16 @@ fun AppTopAppBar(
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
             )
+        },
+        navigationIcon = {
+            if (navigationIcon != null) {
+                IconButton(onClick = onNavigateBack) {
+                    Icon(
+                        imageVector = navigationIcon,
+                        contentDescription = "Back"
+                    )
+                }
+            }
         },
         actions = actions,
         colors = centerAlignedTopAppBarColors(
@@ -106,7 +127,10 @@ private fun BottomShadow(alpha: Float = 0.1f, height: Dp = 4.dp) {
 @Preview
 @Composable
 private fun TitleTopAppBarPreview() {
-    AppTopAppBar("TopAppBar")
+    Column {
+        AppTopAppBar("TopAppBar")
+        AppTopAppBar("TopAppBar", Icons.Filled.Close)
+    }
 }
 
 @Preview
@@ -114,5 +138,8 @@ private fun TitleTopAppBarPreview() {
 private fun MenuTopAppBarPreview() {
     val interactionSource = remember { MutableInteractionSource() }
     val showMenu = remember { mutableStateOf(false) }
-    AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu) { }
+    Column {
+        AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu) { }
+        AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu, Icons.Filled.Close) { }
+    }
 }
