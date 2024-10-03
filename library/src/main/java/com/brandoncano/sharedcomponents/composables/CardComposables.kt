@@ -34,12 +34,13 @@ import com.brandoncano.sharedcomponents.text.textStyleCallout
 @Composable
 fun AppDivider(
     modifier: Modifier = Modifier,
-    onCard: Boolean = true
+    onCard: Boolean = true,
+    isSystemInDarkTheme: Boolean = isSystemInDarkTheme(),
 ) {
     HorizontalDivider(
         modifier = modifier.padding(horizontal = 16.dp),
         thickness = 1.dp,
-        color = if (onCard && isSystemInDarkTheme()) {
+        color = if (onCard && isSystemInDarkTheme) {
             MaterialTheme.colorScheme.outline
         } else {
             MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)

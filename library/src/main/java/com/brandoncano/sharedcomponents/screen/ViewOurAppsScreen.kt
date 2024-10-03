@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +30,7 @@ import com.brandoncano.sharedcomponents.text.textStyleHeadline
 fun ViewOurAppsScreen(
     context: Context = LocalContext.current,
     app: Apps = Apps.Resistor,
+    onNavigateBack: () -> Unit = {},
 ) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -36,7 +39,11 @@ fun ViewOurAppsScreen(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.Start,
         ) {
-            AppTopAppBar(titleText = stringResource(id = R.string.view_our_apps_title))
+            AppTopAppBar(
+                titleText = stringResource(id = R.string.view_our_apps_title),
+                navigationIcon = Icons.Filled.Close,
+                onNavigateBack = onNavigateBack,
+            )
             Spacer(modifier = Modifier.height(12.dp))
             MobileAppFeatureCard(
                 appImage = when (app) {
@@ -48,12 +55,12 @@ fun ViewOurAppsScreen(
                 app = app,
             )
             AppDivider(
-                modifier = Modifier.padding(top = 24.dp),
+                modifier = Modifier.padding(vertical = 16.dp),
                 onCard = false,
             )
             Text(
                 text = stringResource(id = R.string.view_our_apps_header),
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp),
                 style = textStyleHeadline(),
             )
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {

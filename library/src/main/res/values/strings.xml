@@ -21,4 +21,7 @@
     <string name="about_author">Brandon Cano</string>
     <string name="about_app_version">App version</string>
     <string name="about_last_updated_on">Last updated on</string>
+    <!-- Alert dialog -->
+    <string name="dialog_app_appearance">App appearance</string>
+    <string name="dialog_confirm_button">Done</string>
 </resources>
