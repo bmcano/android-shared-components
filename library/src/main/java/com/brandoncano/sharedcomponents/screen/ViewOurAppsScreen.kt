@@ -54,10 +54,7 @@ fun ViewOurAppsScreen(
                 context = context,
                 app = app,
             )
-            AppDivider(
-                modifier = Modifier.padding(vertical = 16.dp),
-                onCard = false,
-            )
+            AppDivider(modifier = Modifier.padding(vertical = 16.dp))
             Text(
                 text = stringResource(id = R.string.view_our_apps_header),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp),

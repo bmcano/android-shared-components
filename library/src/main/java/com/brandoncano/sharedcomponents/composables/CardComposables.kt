@@ -2,7 +2,6 @@ package com.brandoncano.sharedcomponents.composables
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -34,17 +33,11 @@ import com.brandoncano.sharedcomponents.text.textStyleCallout
 @Composable
 fun AppDivider(
     modifier: Modifier = Modifier,
-    onCard: Boolean = true,
-    isSystemInDarkTheme: Boolean = isSystemInDarkTheme(),
 ) {
     HorizontalDivider(
         modifier = modifier.padding(horizontal = 16.dp),
         thickness = 1.dp,
-        color = if (onCard && isSystemInDarkTheme) {
-            MaterialTheme.colorScheme.outline
-        } else {
-            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
-        }
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
     )
 }
 
@@ -129,7 +122,7 @@ private fun AppCardRowView(
 private fun AppStandardCardPreview() {
     AppStandardCard {
         Text(text = "Text1", modifier = Modifier.padding(16.dp))
-        AppDivider(onCard = true)
+        AppDivider()
         Text(text = "Text2", modifier = Modifier.padding(16.dp))
         AppDivider()
         Text(text = "Text3", modifier = Modifier.padding(16.dp))
