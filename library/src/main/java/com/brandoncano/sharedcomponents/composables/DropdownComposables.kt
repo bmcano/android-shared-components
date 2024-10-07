@@ -29,6 +29,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.brandoncano.sharedcomponents.text.textStyleBody
 
+/**
+ * This composable displays a dropdown menu that allows the user to select an option from a list of items.
+ * The selected option is displayed in an outlined text field, which the user can click to expand or collapse the menu.
+ *
+ * @param label The label to be displayed above the text field.
+ * @param modifier The [Modifier] to be applied to the dropdown menu container. Defaults to [Modifier].
+ * @param selectedOption The initially selected option. Defaults to an empty string (nothing selected).
+ * @param items The list of options to be displayed in the dropdown menu.
+ * @param reset If true, resets the selected option to an empty string.
+ * @param onOptionSelected Callback function that gets triggered when an option is selected.
+ */
 @Composable
 fun AppDropDownMenu(
     label: String,
@@ -117,10 +128,8 @@ private fun TextDropDownItemView(item: String, onClick: () -> Unit) {
 @AppComponentPreviews
 @Composable
 private fun TextDropdownRowPreview() {
-    val item1 = "Dropdown item row"
     Column {
-        TextDropDownItemView(item1) { }
-        TextDropDownItemView(item1) { }
+        TextDropDownItemView("Dropdown item row") {}
     }
 }
 
@@ -129,6 +138,6 @@ private fun TextDropdownRowPreview() {
 private fun TextDropdownPreview() {
     Column {
         AppDropDownMenu("Text dropdown menu", Modifier, "", listOf()) { }
-        AppDropDownMenu("Text dropdown menu", Modifier.padding(horizontal = 32.dp), "Red", listOf()) { }
+        AppDropDownMenu("Text dropdown menu", Modifier, "Red", listOf()) { }
     }
 }

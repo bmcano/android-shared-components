@@ -126,20 +126,13 @@ private fun BottomShadow(alpha: Float = 0.1f, height: Dp = 4.dp) {
 
 @Preview
 @Composable
-private fun TitleTopAppBarPreview() {
-    Column {
-        AppTopAppBar("TopAppBar")
-        AppTopAppBar("TopAppBar", Icons.Filled.Close)
-    }
-}
-
-@Preview
-@Composable
 private fun MenuTopAppBarPreview() {
     val interactionSource = remember { MutableInteractionSource() }
     val showMenu = remember { mutableStateOf(false) }
     Column {
-        AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu) { }
-        AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu, Icons.Filled.Close) { }
+        AppTopAppBar("TopAppBar")
+        AppTopAppBar("TopAppBar", Icons.Filled.Close)
+        AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu) {}
+        AppMenuTopAppBar("MenuTopAppBar", interactionSource, showMenu, Icons.Filled.Close) {}
     }
 }

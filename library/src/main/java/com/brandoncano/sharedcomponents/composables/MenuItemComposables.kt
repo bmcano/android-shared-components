@@ -29,10 +29,6 @@ import com.brandoncano.sharedcomponents.utils.SendFeedback
 import com.brandoncano.sharedcomponents.utils.ShareImage
 import com.brandoncano.sharedcomponents.utils.ShareText
 
-/**
- * Note: Menu items are in alphabetical order
- */
-
 @Composable
 fun ClearSelectionsMenuItem(onClick: (() -> Unit)) {
     DropdownMenuItem(

@@ -27,6 +27,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.brandoncano.sharedcomponents.text.textStyleSubhead
 
+/**
+ * This composable displays an outlined text field.
+ * It is suitable for gathering user input with additional visual feedback for error states.
+ *
+ * @param label The label text to be displayed above the text field.
+ * @param modifier The [Modifier] to be applied to the text field. Defaults to [Modifier].
+ * @param value The [MutableState] representing the current value of the text field.
+ * @param enabled Whether the text field is enabled for input. Defaults to `true`.
+ * @param reset If true, resets the text field value to an empty string. Defaults to `false`.
+ * @param isError Indicates whether the text field should be displayed in an error state. Defaults to `false`.
+ * @param errorMessage The error message to be displayed below the text field when in an error state. Defaults to an empty string.
+ * @param keyboardOptions The keyboard options to be used when the text field is focused, such as keyboard type. Defaults to numeric input.
+ * @param onOptionSelected Callback function that gets triggered when the value of the text field changes. The updated value is passed as a parameter.
+ */
 @Composable
 fun AppTextField(
     label: String,

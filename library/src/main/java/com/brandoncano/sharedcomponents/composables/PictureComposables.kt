@@ -11,6 +11,12 @@ import androidx.compose.ui.graphics.drawscope.draw
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 
+/**
+ * A composable that draws a picture of a composable layout for purposes of saving it as an image.
+ *
+ * @param picture The [Picture] to be drawn in the background.
+ * @param content The composable content to be displayed within the [Column] on top of the picture.
+ */
 @Composable
 fun DrawContent(picture: Picture, content: @Composable (ColumnScope.() -> Unit)) {
     Column(

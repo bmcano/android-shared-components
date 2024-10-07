@@ -20,6 +20,13 @@ import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.data.NavigationBarOptions
 import com.brandoncano.sharedcomponents.text.textStyleCaption
 
+/**
+ * This composable displays a bottom navigation bar with a list of selectable items, each with an icon and label.
+ *
+ * @param selection The initially selected item index. Defaults to 0.
+ * @param onClick Callback function that gets triggered when an item is clicked.
+ * @param options The list of [NavigationBarOptions] representing each item in the navigation bar, including the icon and label.
+ */
 @Composable
 fun AppNavigationBar(
     selection: Int = 0,
