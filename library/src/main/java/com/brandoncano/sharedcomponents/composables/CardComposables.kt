@@ -31,11 +31,16 @@ import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleCallout
 
 @Composable
+fun AppStandardDivider() {
+    AppDivider(modifier = Modifier.padding(horizontal = 16.dp))
+}
+
+@Composable
 fun AppDivider(
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
 ) {
     HorizontalDivider(
-        modifier = modifier.padding(horizontal = 16.dp),
+        modifier = modifier,
         thickness = 1.dp,
         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
     )
@@ -74,7 +79,7 @@ fun AppArrowCardButton(vararg arrowCardButtonContents: ArrowCardButtonContents) 
         arrowCardButtonContents.forEachIndexed { index, it ->
             AppCardRowView(it.imageVector, it.text, it.onClick)
             if (arrowCardButtonContents.size - 1 != index) {
-                AppDivider()
+                AppStandardDivider()
             }
         }
     }
@@ -122,9 +127,9 @@ private fun AppCardRowView(
 private fun AppStandardCardPreview() {
     AppStandardCard {
         Text(text = "Text1", modifier = Modifier.padding(16.dp))
-        AppDivider()
+        AppStandardDivider()
         Text(text = "Text2", modifier = Modifier.padding(16.dp))
-        AppDivider()
+        AppStandardDivider()
         Text(text = "Text3", modifier = Modifier.padding(16.dp))
     }
 }

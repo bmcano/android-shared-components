@@ -54,7 +54,7 @@ fun ViewOurAppsScreen(
                 context = context,
                 app = app,
             )
-            AppDivider(modifier = Modifier.padding(vertical = 16.dp))
+            AppDivider(modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp))
             Text(
                 text = stringResource(id = R.string.view_our_apps_header),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp),
@@ -89,7 +89,7 @@ fun ViewOurAppsScreen(
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(48.dp))
         }
     }
 }
