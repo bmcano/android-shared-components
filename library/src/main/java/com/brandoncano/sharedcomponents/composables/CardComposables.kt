@@ -30,11 +30,24 @@ import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleCallout
 
+/**
+ * A standard divider with horizontal padding.
+ *
+ * This composable displays a divider with a standard horizontal padding of 16dp.
+ */
 @Composable
 fun AppStandardDivider() {
     AppDivider(modifier = Modifier.padding(horizontal = 16.dp))
 }
 
+/**
+ * A customizable divider.
+ *
+ * This composable provides a horizontal divider, allowing you to specify a [modifier]
+ * to customize its behavior and styling.
+ *
+ * @param modifier The [Modifier] to be applied to the divider.
+ */
 @Composable
 fun AppDivider(
     modifier: Modifier,
@@ -46,6 +59,14 @@ fun AppDivider(
     )
 }
 
+/**
+ * A standard card with a specific padding and full-width layout.
+ *
+ * This composable provides a card with standard horizontal padding and takes up the full width
+ * of its container, allowing you to provide composable content within the card.
+ *
+ * @param content The composable content that will be displayed inside the card.
+ */
 @Composable
 fun AppStandardCard(content: @Composable (ColumnScope.() -> Unit)) {
     Card(
@@ -57,6 +78,15 @@ fun AppStandardCard(content: @Composable (ColumnScope.() -> Unit)) {
     )
 }
 
+/**
+ * A customizable card.
+ *
+ * This composable provides a card that allows you to specify a [modifier] to customize its behavior
+ * and styling, as well as provide composable content within the card.
+ *
+ * @param modifier The [Modifier] to be applied to the card.
+ * @param content The composable content that will be displayed inside the card.
+ */
 @Composable
 fun AppCard(
     modifier: Modifier = Modifier,
@@ -69,6 +99,16 @@ fun AppCard(
     )
 }
 
+/**
+ * Card button(s), each represented by an icon, a label, and an arrow.
+ *
+ * This composable displays a card containing multiple rows, each with an arrow icon and label,
+ * as well as an optional click handler for each button. Dividers are placed between the rows
+ * for visual separation.
+ *
+ * @param arrowCardButtonContents Vararg parameter of [ArrowCardButtonContents], each representing
+ * a button with an image vector, text, and an onClick action.
+ */
 @Composable
 fun AppArrowCardButton(vararg arrowCardButtonContents: ArrowCardButtonContents) {
     Card(
@@ -119,26 +159,6 @@ private fun AppCardRowView(
             modifier = Modifier.padding(16.dp),
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
         )
-    }
-}
-
-@Preview
-@Composable
-private fun AppStandardCardPreview() {
-    AppStandardCard {
-        Text(text = "Text1", modifier = Modifier.padding(16.dp))
-        AppStandardDivider()
-        Text(text = "Text2", modifier = Modifier.padding(16.dp))
-        AppStandardDivider()
-        Text(text = "Text3", modifier = Modifier.padding(16.dp))
-    }
-}
-
-@Preview
-@Composable
-private fun AppCardPreview() {
-    AppCard {
-        Text(text = "Text1extended", modifier = Modifier.padding(16.dp))
     }
 }
 

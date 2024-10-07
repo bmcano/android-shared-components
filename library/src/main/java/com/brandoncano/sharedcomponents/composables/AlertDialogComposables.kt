@@ -18,6 +18,17 @@ import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.text.textStyleCallout
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
 
+/**
+ * A dialog to select the app theme mode.
+ *
+ * This composable displays an alert dialog that allows the user to select a theme mode for the app.
+ * It presents a list of available theme modes, each with a radio button, allowing users to choose
+ * between different themes (system default, light, dark).
+ *
+ * @param currentThemeMode The currently selected [ThemeMode].
+ * @param onThemeSelected Callback function that gets triggered when a new theme mode is selected.
+ * @param onDismissRequest Callback function that handles a dismissed dialog.
+ */
 @Composable
 fun AppThemeDialog(
     currentThemeMode: ThemeMode,
