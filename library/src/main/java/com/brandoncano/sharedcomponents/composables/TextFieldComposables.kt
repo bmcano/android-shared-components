@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Error
@@ -23,7 +22,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.brandoncano.sharedcomponents.text.textStyleSubhead
 
@@ -102,7 +100,7 @@ private fun AppTextFieldPreview() {
     val empty = remember { mutableStateOf("") }
     val value = remember { mutableStateOf("Example") }
     Column {
-        AppTextField(label = "Text field", value = empty, modifier = Modifier.padding(start = 32.dp, end = 32.dp)) { }
+        AppTextField(label = "Text field", value = empty) { }
         AppTextField(label = "Text field with text", value = value) { }
         AppTextField(label = "Text field with error", value = empty, isError = true) { }
         AppTextField(label = "Text field with error", value = empty, isError = true, errorMessage = "error message") { }

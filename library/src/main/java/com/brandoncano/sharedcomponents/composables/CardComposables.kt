@@ -49,32 +49,11 @@ fun AppStandardDivider() {
  * @param modifier The [Modifier] to be applied to the divider.
  */
 @Composable
-fun AppDivider(
-    modifier: Modifier,
-) {
+fun AppDivider(modifier: Modifier) {
     HorizontalDivider(
         modifier = modifier,
         thickness = 1.dp,
         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
-    )
-}
-
-/**
- * A standard card with a specific padding and full-width layout.
- *
- * This composable provides a card with standard horizontal padding and takes up the full width
- * of its container, allowing you to provide composable content within the card.
- *
- * @param content The composable content that will be displayed inside the card.
- */
-@Composable
-fun AppStandardCard(content: @Composable (ColumnScope.() -> Unit)) {
-    Card(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth(),
-        shape = MaterialTheme.shapes.large,
-        content = content,
     )
 }
 
@@ -111,11 +90,7 @@ fun AppCard(
  */
 @Composable
 fun AppArrowCardButton(vararg arrowCardButtonContents: ArrowCardButtonContents) {
-    Card(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-    ) {
+    Card(modifier = Modifier.fillMaxWidth()) {
         arrowCardButtonContents.forEachIndexed { index, it ->
             AppCardRowView(it.imageVector, it.text, it.onClick)
             if (arrowCardButtonContents.size - 1 != index) {
@@ -168,10 +143,8 @@ private fun ArrowCardButtonPreview() {
     Column {
         val item1 = ArrowCardButtonContents(Icons.Outlined.Search, "Single Card") {}
         val item2 = ArrowCardButtonContents(Icons.Outlined.Search, "Multiple Items") {}
-        val item3 = ArrowCardButtonContents(Icons.Outlined.Search, "Multiple Items") {}
-        val item4 = ArrowCardButtonContents(Icons.Outlined.Search, "Multiple Items") {}
         AppArrowCardButton(item1)
         Spacer(modifier = Modifier.height(16.dp))
-        AppArrowCardButton(item2, item3, item4)
+        AppArrowCardButton(item2, item2, item2)
     }
 }

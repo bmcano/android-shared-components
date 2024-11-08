@@ -43,7 +43,6 @@ import com.brandoncano.sharedcomponents.utils.OpenLink
 fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
     AppCard(
         modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp)
             .clickable {
                 OpenLink.execute(context, app.playstore)
             }

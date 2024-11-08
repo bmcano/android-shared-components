@@ -6,15 +6,15 @@ plugins {
 }
 
 group = "com.github.bmcano"
-version = "1.2.3"
+version = "1.3.0"
 
 android {
     namespace = "com.brandoncano.sharedcomponents"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 21
-        version = "1.2.3"
+        version = "1.3.0"
     }
 
     buildTypes {
@@ -60,7 +60,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "com.github.bmcano"
                 artifactId = "shared-android-components"
-                version = "1.2.3"
+                version = "1.3.0"
                 from(components.findByName("release"))
             }
         }

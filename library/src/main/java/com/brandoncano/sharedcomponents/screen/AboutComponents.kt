@@ -21,9 +21,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
+import com.brandoncano.sharedcomponents.composables.AppCard
 import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 import com.brandoncano.sharedcomponents.composables.AppStandardDivider
-import com.brandoncano.sharedcomponents.composables.AppStandardCard
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
@@ -31,7 +31,7 @@ import com.brandoncano.sharedcomponents.text.textStyleHeadline
 @AppComponentPreviews
 @Composable
 fun AuthorCard() {
-    AppStandardCard {
+    AppCard {
         Row {
             Image(
                 imageVector = Icons.Outlined.Person,
@@ -49,7 +49,7 @@ fun AuthorCard() {
 
 @Composable
 fun AppInfoCard(@StringRes version: Int, @StringRes lastUpdated: Int) {
-    AppStandardCard {
+    AppCard {
         Row {
             Image(
                 imageVector = Icons.Outlined.Info,

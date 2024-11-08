@@ -61,9 +61,7 @@ fun AppDropDownMenu(
     ExposedDropdownMenuBox(
         expanded = expanded,
         onExpandedChange = { expanded = !expanded },
-        modifier = modifier
-            .padding(start = 16.dp, end = 16.dp)
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         OutlinedTextField(
             value = selectedText,
