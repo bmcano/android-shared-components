@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.github.bmcano"
-version = "1.3.0"
+version = "1.4.0"
 
 android {
     namespace = "com.brandoncano.sharedcomponents"
@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         minSdk = 21
-        version = "1.3.0"
+        version = "1.4.0"
     }
 
     buildTypes {
@@ -38,6 +38,7 @@ android {
 dependencies {
     // androidx
     implementation(libs.androidx.browser)
+    implementation(libs.androidx.navigation.compose)
     // androidx.compose.ui
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
@@ -49,6 +50,8 @@ dependencies {
     // androidx.compose
     implementation(libs.androidx.compose.material.icons)
     implementation(libs.androidx.compose.material3)
+    // com.android
+    implementation(libs.billing.client)
     // unit testing
     testImplementation(libs.mockk)
     testImplementation(libs.junit)
@@ -60,7 +63,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "com.github.bmcano"
                 artifactId = "shared-android-components"
-                version = "1.3.0"
+                version = "1.4.0"
                 from(components.findByName("release"))
             }
         }

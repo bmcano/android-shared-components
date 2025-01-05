@@ -83,12 +83,54 @@ fun AppThemeDialog(
     )
 }
 
+/**
+ * A dialog to show a confirmation thank you message
+ *
+ * @param onDismissRequest Callback function that handles a dismissed dialog.
+ */
+@Composable
+fun PurchaseResultDialog(
+    onDismissRequest: () -> Unit,
+) {
+    AlertDialog(
+        onDismissRequest = onDismissRequest,
+        title = {
+            Text(
+                text = stringResource(R.string.dialog_thank_you_header),
+                style = textStyleHeadline(),
+            )
+        },
+        text = {
+            Text(
+                text = stringResource(R.string.dialog_thank_you_body),
+                style = textStyleBody(),
+            )
+       },
+        confirmButton = {
+            TextButton(onClick = onDismissRequest) {
+                Text(
+                    text = stringResource(R.string.dialog_close_button),
+                    style = textStyleCallout(),
+                )
+            }
+        }
+    )
+}
+
 @Preview
 @Composable
 private fun AppThemeDialogPreview() {
     AppThemeDialog(
         currentThemeMode = ThemeMode.SYSTEM_DEFAULT,
         onThemeSelected = {},
+        onDismissRequest = {},
+    )
+}
+
+@Preview
+@Composable
+private fun AppConfirmationDialogPreview() {
+    PurchaseResultDialog(
         onDismissRequest = {},
     )
 }

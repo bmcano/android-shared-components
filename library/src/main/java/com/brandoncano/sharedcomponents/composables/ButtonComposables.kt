@@ -18,18 +18,20 @@ import com.brandoncano.sharedcomponents.text.textStyleCallout
  *
  * @param label The text to be displayed on the button.
  * @param modifier The [Modifier] to be applied to the button.
+ * @param enabled Determines if the button is enabled or not, true by default.
  * @param onClick Callback function that gets triggered on button click.
  */
 @Composable
 fun AppButton(
     label: String,
     modifier: Modifier,
+    enabled: Boolean = true,
     onClick: () -> Unit,
 ) {
     Button(
         onClick = onClick,
         modifier = modifier.defaultMinSize(minHeight = 56.dp),
-        enabled = true,
+        enabled = enabled,
         shape = MaterialTheme.shapes.medium,
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 2.dp

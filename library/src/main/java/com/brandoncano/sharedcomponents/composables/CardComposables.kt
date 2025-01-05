@@ -115,7 +115,7 @@ private fun AppCardRowView(
         Image(
             imageVector = imageVector,
             contentDescription = null,
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp),
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
         )
         Text(
