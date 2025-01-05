@@ -51,7 +51,7 @@ fun DonateScreen(
     var selectedAmount by remember { mutableStateOf<Int?>(null) }
     var showThankYouDialog by remember { mutableStateOf(purchaseStatus == PurchaseStatus.SUCCESS) }
     if (showThankYouDialog) {
-        PurchaseResultDialog{
+        PurchaseResultDialog {
             showThankYouDialog = false
             selectedAmount = null
         }
@@ -65,26 +65,12 @@ fun DonateScreen(
                 onNavigateBack = onNavigateBack,
             )
         },
-        bottomBar = {
-            val sidePadding = dimensionResource(R.dimen.app_side_padding)
-            AppButton(
-                label = stringResource(R.string.donate_purchase_button),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = sidePadding)
-                    .padding(vertical = 24.dp),
-                enabled = selectedAmount != null,
-            ) {
-                val productId = GetProductIdForAmount.execute(selectedAmount ?: 0)
-                onContinueToPaymentTapped(productId)
-                showThankYouDialog = true
-            }
-        }
     ) { paddingValues ->
         DonateScreenContent(
             paddingValues = paddingValues,
             selectedAmount = selectedAmount,
-            onAmountSelected = { amount -> selectedAmount = amount }
+            onAmountSelected = { amount -> selectedAmount = amount },
+            onContinueToPaymentTapped = onContinueToPaymentTapped
         )
     }
 }
@@ -93,7 +79,8 @@ fun DonateScreen(
 private fun DonateScreenContent(
     paddingValues: PaddingValues,
     selectedAmount: Int?,
-    onAmountSelected: (Int) -> Unit
+    onAmountSelected: (Int) -> Unit,
+    onContinueToPaymentTapped: (String) -> Unit,
 ) {
     val sidePadding = dimensionResource(R.dimen.app_side_padding)
     Column(
@@ -139,6 +126,16 @@ private fun DonateScreenContent(
             selectedAmount = selectedAmount,
             onAmountSelected = onAmountSelected
         )
+        Spacer(modifier = Modifier.height(32.dp))
+        AppButton(
+            label = stringResource(R.string.donate_purchase_button),
+            modifier = Modifier.fillMaxWidth(),
+            enabled = selectedAmount != null,
+        ) {
+            val productId = GetProductIdForAmount.execute(selectedAmount ?: 0)
+            onContinueToPaymentTapped(productId)
+        }
+        Spacer(modifier = Modifier.height(48.dp))
     }
 }
 
