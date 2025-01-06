@@ -18,6 +18,8 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.rounded.VolunteerActivism
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,31 +35,26 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.composables.AppButton
-import com.brandoncano.sharedcomponents.composables.PurchaseResultDialog
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.composables.AppTopAppBar
-import com.brandoncano.sharedcomponents.data.PurchaseStatus
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
+import com.brandoncano.sharedcomponents.text.textStyleSubhead
 import com.brandoncano.sharedcomponents.utils.GetProductIdForAmount
 
 @Composable
 fun DonateScreen(
     onNavigateBack: () -> Unit,
     onContinueToPaymentTapped: (String) -> Unit,
-    purchaseStatus: PurchaseStatus,
+    snackbarHostState: SnackbarHostState,
 ) {
     var selectedAmount by remember { mutableStateOf<Int?>(null) }
-    var showThankYouDialog by remember { mutableStateOf(purchaseStatus == PurchaseStatus.SUCCESS) }
-    if (showThankYouDialog) {
-        PurchaseResultDialog {
-            showThankYouDialog = false
-            selectedAmount = null
-        }
-    }
 
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
         topBar = {
             AppTopAppBar(
                 titleText = stringResource(R.string.donate_title),
@@ -114,11 +111,14 @@ private fun DonateScreenContent(
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             text = stringResource(R.string.donate_body_text),
+            modifier = Modifier.align(Alignment.Start),
             style = textStyleBody().onSurfaceVariant(),
         )
+
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             text = stringResource(R.string.donate_headline_text),
+            modifier = Modifier.align(Alignment.Start),
             style = textStyleHeadline().onSurfaceVariant(),
         )
         Spacer(modifier = Modifier.height(12.dp))
@@ -126,15 +126,23 @@ private fun DonateScreenContent(
             selectedAmount = selectedAmount,
             onAmountSelected = onAmountSelected
         )
-        Spacer(modifier = Modifier.height(32.dp))
+
         AppButton(
             label = stringResource(R.string.donate_purchase_button),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 32.dp),
             enabled = selectedAmount != null,
         ) {
             val productId = GetProductIdForAmount.execute(selectedAmount ?: 0)
             onContinueToPaymentTapped(productId)
         }
+
+        Text(
+            text = stringResource(R.string.donate_footer_text),
+            modifier = Modifier.align(Alignment.Start),
+            style = textStyleSubhead().onSurfaceVariant(),
+        )
         Spacer(modifier = Modifier.height(48.dp))
     }
 }
@@ -145,6 +153,6 @@ private fun DonateScreenPreview() {
     DonateScreen(
         onNavigateBack = {},
         onContinueToPaymentTapped = {},
-        purchaseStatus = PurchaseStatus.PENDING,
+        snackbarHostState = SnackbarHostState(),
     )
 }

@@ -10,10 +10,12 @@
     <string name="view_our_apps_inductor">Inductor Color Code Calculator</string>
     <string name="view_our_apps_inductor_released">Released on August 3, 2024</string>
     <!-- Donate screen/components text -->
-    <string name="donate_title">Support Us</string>
+    <string name="donate_title">Donate</string>
     <string name="donate_purchase_button">Continue to payment</string>
-    <string name="donate_body_text">Your donation helps us improve the app and create new features for everyone to enjoy!</string>
+    <string name="donate_body_text">Your donation helps us improve the app and create new features for everyone to enjoy.</string>
     <string name="donate_headline_text">How much would you like to donate?</string>
+    <string name="donate_footer_text">We appreciate your kindness and support. Thank you for your donation!</string>
+    <string name="donate_error_text">There was an error connecting to Google Play services. Please try again later.</string>
     <!-- Content descriptions -->
     <string name="content_description_shared_menu_more">More</string>
     <!-- Menu item text -->
@@ -28,7 +30,4 @@
     <!-- Alert dialog -->
     <string name="dialog_app_appearance">App appearance</string>
     <string name="dialog_confirm_button">Done</string>
-    <string name="dialog_thank_you_header">Thank you!</string>
-    <string name="dialog_thank_you_body">Your support helps us improve the app.</string>
-    <string name="dialog_close_button">Close</string>
 </resources>

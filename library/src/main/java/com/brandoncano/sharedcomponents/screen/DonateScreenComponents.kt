@@ -2,7 +2,8 @@ package com.brandoncano.sharedcomponents.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AssistChip
@@ -15,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.text.textStyleSubhead
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DonationChipGroup(
     selectedAmount: Int?,
@@ -23,22 +25,14 @@ fun DonationChipGroup(
     val donationAmounts = listOf(10, 5, 3, 2, 1)
     Column(
         modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalAlignment = Alignment.Start,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Row(
+        FlowRow(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            donationAmounts.take(2).forEach { amount ->
-                DonationChip(selectedAmount, onAmountSelected, amount)
-            }
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            donationAmounts.drop(2).forEach { amount ->
+            donationAmounts.forEach { amount ->
                 DonationChip(selectedAmount, onAmountSelected, amount)
             }
         }
@@ -56,10 +50,11 @@ private fun DonationChip(
         label = {
             Text(
                 text = "$amount USD",
+                modifier = Modifier.padding(horizontal = 4.dp),
                 style = textStyleSubhead()
             )
         },
-        modifier = Modifier.padding(horizontal = 8.dp),
+        modifier = Modifier.padding(horizontal = 0.dp),
         shape = MaterialTheme.shapes.extraLarge,
         colors = AssistChipDefaults.assistChipColors(
             containerColor = if (selectedAmount == amount) MaterialTheme.colorScheme.primary

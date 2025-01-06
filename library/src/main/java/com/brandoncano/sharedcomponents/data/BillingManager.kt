@@ -19,7 +19,6 @@ import com.android.billingclient.api.QueryProductDetailsParams
  */
 class BillingManager(
     context: Context,
-    private val onPurchaseStatusChanged: (PurchaseStatus) -> Unit,
 ) {
     private companion object {
         const val TAG = "DonationBillingClient"
@@ -34,16 +33,13 @@ class BillingManager(
             }
             BillingClient.BillingResponseCode.USER_CANCELED -> {
                 Log.e(TAG, "User canceled the purchase")
-                onPurchaseStatusChanged(PurchaseStatus.CANCELED)
             }
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
                 // Note: This should never occur but will be here just in case
                 Log.e(TAG, "ITEM_ALREADY_OWNED")
-                onPurchaseStatusChanged(PurchaseStatus.FAILURE)
             }
             else -> {
                 Log.e(TAG, "Error during purchase: ${billingResult.debugMessage}")
-                onPurchaseStatusChanged(PurchaseStatus.FAILURE)
             }
         }
     }
@@ -58,14 +54,12 @@ class BillingManager(
         .build()
 
     fun startConnection(
-        onConnected: () -> Unit,
         onError: () -> Unit,
     ) {
         billingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(billingResult: BillingResult) {
                 if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
                     Log.i(TAG, "Billing client connected successfully")
-                    onConnected()
                 } else {
                     Log.e(TAG, "Error connecting billing client: ${billingResult.debugMessage}")
                     onError()
@@ -107,7 +101,6 @@ class BillingManager(
                 billingClient.launchBillingFlow(activity, billingFlowParams)
             } else {
                 Log.e(TAG, "Error launching purchase flow: ${billingResult.debugMessage}")
-                onPurchaseStatusChanged(PurchaseStatus.FAILURE)
             }
         }
     }
@@ -124,7 +117,6 @@ class BillingManager(
                     consumePurchase(purchase)
                 } else {
                     Log.e(TAG, "Failed to acknowledge purchase: ${billingResult.debugMessage}")
-                    onPurchaseStatusChanged(PurchaseStatus.FAILURE)
                 }
             }
         }
@@ -138,10 +130,8 @@ class BillingManager(
         billingClient.consumeAsync(consumeParams) { billingResult, _ ->
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
                 Log.i(TAG, "Purchase consumed, donation available again.")
-                onPurchaseStatusChanged(PurchaseStatus.SUCCESS)
             } else {
                 Log.e(TAG, "Failed to consume purchase: ${billingResult.debugMessage}")
-                onPurchaseStatusChanged(PurchaseStatus.FAILURE)
             }
         }
     }
