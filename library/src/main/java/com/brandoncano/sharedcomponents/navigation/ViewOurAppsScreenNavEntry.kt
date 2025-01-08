@@ -12,6 +12,7 @@ import com.brandoncano.sharedcomponents.screen.ViewOurAppsScreen
 @Suppress("unused") // used in apps
 fun NavGraphBuilder.viewOurAppsScreen(
     navHostController: NavHostController,
+    app: Apps,
 ) {
     composable(
         route = SharedScreens.ViewOurApps.route,
@@ -20,7 +21,7 @@ fun NavGraphBuilder.viewOurAppsScreen(
     ) {
         ViewOurAppsScreen(
             context = LocalContext.current,
-            app = Apps.Resistor,
+            app = app,
             onNavigateBack = { navHostController.popBackStack() },
         )
     }
