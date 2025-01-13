@@ -22,6 +22,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.toSize
 import com.brandoncano.sharedcomponents.text.textStyleSubhead
 
@@ -71,7 +72,7 @@ fun AppTextField(
                 .fillMaxWidth()
                 .onGloballyPositioned { coordinates -> textFieldSize = coordinates.size.toSize() },
             enabled = enabled,
-            label = { Text(label) },
+            label = { Text(text = label, maxLines = 1, overflow = TextOverflow.Ellipsis) },
             trailingIcon = {
                 if (isError) {
                     Image(
@@ -98,11 +99,12 @@ fun AppTextField(
 @Composable
 private fun AppTextFieldPreview() {
     val empty = remember { mutableStateOf("") }
-    val value = remember { mutableStateOf("Example") }
+    val value = remember { mutableStateOf("Example" ) }
     Column {
-        AppTextField(label = "Text field", value = empty) { }
-        AppTextField(label = "Text field with text", value = value) { }
-        AppTextField(label = "Text field with error", value = empty, isError = true) { }
-        AppTextField(label = "Text field with error", value = empty, isError = true, errorMessage = "error message") { }
+        AppTextField(label = "Text field", value = empty) {}
+        AppTextField(label = "Text field with text", value = value) {}
+        AppTextField(label = "Text field with error", value = empty, isError = true) {}
+        AppTextField(label = "Text field with error", value = empty, isError = true, errorMessage = "error message") {}
+        AppTextField(label = "Text field label with ellipse overflow overflow", value = empty) {}
     }
 }

@@ -56,7 +56,8 @@ fun ViewOurAppsScreen(
                 appImage = when (app) {
                     Apps.Capacitor -> R.drawable.capacitor_feature_graphic
                     Apps.Inductor -> R.drawable.inductor_feature_graphic
-                    else -> R.drawable.resistor_feature_graphic
+                    Apps.OhmsLaw -> R.drawable.resistor_feature_graphic
+                    Apps.Resistor -> R.drawable.resistor_feature_graphic
                 },
                 context = context,
                 app = app,
@@ -66,16 +67,6 @@ fun ViewOurAppsScreen(
                 text = stringResource(id = R.string.view_our_apps_header),
                 style = textStyleHeadline(),
             )
-
-            if (app !is Apps.Resistor) {
-                MobileAppCard(
-                    appName = stringResource(id = R.string.view_our_apps_resistor),
-                    subtext = stringResource(id = R.string.view_our_apps_resistor_released),
-                    appImage = R.drawable.resistor_playstore,
-                    context = context,
-                    app = Apps.Resistor,
-                )
-            }
             if (app !is Apps.Capacitor) {
                 MobileAppCard(
                     appName = stringResource(id = R.string.view_our_apps_capacitor),
@@ -92,6 +83,24 @@ fun ViewOurAppsScreen(
                     appImage = R.drawable.inductor_playstore,
                     context = context,
                     app = Apps.Inductor,
+                )
+            }
+            if (app !is Apps.OhmsLaw) {
+                MobileAppCard(
+                    appName = stringResource(id = R.string.view_our_apps_ohms_law),
+                    subtext = stringResource(id = R.string.view_our_apps_ohms_law_released),
+                    appImage = R.drawable.ohms_law_playstore,
+                    context = context,
+                    app = Apps.OhmsLaw,
+                )
+            }
+            if (app !is Apps.Resistor) {
+                MobileAppCard(
+                    appName = stringResource(id = R.string.view_our_apps_resistor),
+                    subtext = stringResource(id = R.string.view_our_apps_resistor_released),
+                    appImage = R.drawable.resistor_playstore,
+                    context = context,
+                    app = Apps.Resistor,
                 )
             }
         }

@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Apps
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Grade
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
@@ -21,9 +24,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
+import com.brandoncano.sharedcomponents.composables.AppArrowCardButton
 import com.brandoncano.sharedcomponents.composables.AppCard
 import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 import com.brandoncano.sharedcomponents.composables.AppStandardDivider
+import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
@@ -79,6 +84,39 @@ fun AppInfoCard(@StringRes version: Int, @StringRes lastUpdated: Int) {
 }
 
 @Composable
+fun OurAppsButtons(
+    onRateThisAppTapped: () -> Unit,
+    onViewOurAppsTapped: () -> Unit,
+    onDonateTapped: () -> Unit,
+) {
+    Column {
+        Text(
+            text = stringResource(id = R.string.support_us_header_text),
+            modifier = Modifier.align(Alignment.Start),
+            style = textStyleHeadline(),
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        AppArrowCardButton(
+            ArrowCardButtonContents(
+                imageVector = Icons.Outlined.Grade,
+                text = stringResource(id = R.string.support_us_rate_us),
+                onClick = onRateThisAppTapped,
+            ),
+            ArrowCardButtonContents(
+                imageVector = Icons.Outlined.Apps,
+                text = stringResource(id = R.string.support_us_view_apps),
+                onClick = onViewOurAppsTapped,
+            ),
+            ArrowCardButtonContents(
+                imageVector = Icons.Outlined.FavoriteBorder,
+                text = stringResource(R.string.support_us_donate),
+                onClick = onDonateTapped,
+            ),
+        )
+    }
+}
+
+@Composable
 private fun HeadlineBodyStack(@StringRes label: Int, @StringRes body: Int) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -104,4 +142,14 @@ private fun AppInfoCardPreview() {
     Column {
         AppInfoCard(version = R.string.view_our_apps_title, lastUpdated = R.string.view_our_apps_title)
     }
+}
+
+@AppComponentPreviews
+@Composable
+private fun OurAppsButtonsPreview() {
+    OurAppsButtons(
+        onRateThisAppTapped = {},
+        onViewOurAppsTapped = {},
+        onDonateTapped = {},
+    )
 }

@@ -9,6 +9,8 @@
     <string name="view_our_apps_capacitor_released">Released on July 28, 2023</string>
     <string name="view_our_apps_inductor">Inductor Color Code Calculator</string>
     <string name="view_our_apps_inductor_released">Released on August 3, 2024</string>
+    <string name="view_our_apps_ohms_law">"Ohm's Law Calculator"</string>
+    <string name="view_our_apps_ohms_law_released">Released on January 12, 2025</string>
     <!-- Donate screen/components text -->
     <string name="donate_title">Donate</string>
     <string name="donate_purchase_button">Continue to payment</string>
@@ -19,6 +21,8 @@
     <!-- Content descriptions -->
     <string name="content_description_shared_menu_more">More</string>
     <!-- Menu item text -->
+    <string name="menu_about">About the app</string>
+    <string name="menu_app_theme">App appearance</string>
     <string name="menu_clear_selections">Clear selections</string>
     <string name="menu_feedback">Feedback</string>
     <string name="menu_share_image">Share as image</string>
@@ -27,6 +31,11 @@
     <string name="about_author">Brandon Cano</string>
     <string name="about_app_version">App version</string>
     <string name="about_last_updated_on">Last updated on</string>
+    <!-- Misc text -->
+    <string name="support_us_header_text">Support us</string>
+    <string name="support_us_rate_us">Rate this app on Google Play</string>
+    <string name="support_us_view_apps">Check out our other apps</string>
+    <string name="support_us_donate">Donate</string>
     <!-- Alert dialog -->
     <string name="dialog_app_appearance">App appearance</string>
     <string name="dialog_confirm_button">Done</string>

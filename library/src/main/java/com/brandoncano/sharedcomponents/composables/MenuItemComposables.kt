@@ -8,6 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material.icons.outlined.Feedback
 import androidx.compose.material.icons.outlined.Image
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +30,30 @@ import com.brandoncano.sharedcomponents.utils.SaveBitmap
 import com.brandoncano.sharedcomponents.utils.SendFeedback
 import com.brandoncano.sharedcomponents.utils.ShareImage
 import com.brandoncano.sharedcomponents.utils.ShareText
+
+@Composable
+fun AboutAppMenuItem(onAboutTapped: () -> Unit) {
+    DropdownMenuItem(
+        text = { MenuText(stringRes = R.string.menu_about) },
+        onClick = onAboutTapped,
+        leadingIcon = { MenuIcon(Icons.Outlined.Info) },
+    )
+}
+
+@Composable
+fun AppThemeMenuItem(
+    openMenu: MutableState<Boolean>,
+    onThemeSelected: () -> Unit,
+) {
+    DropdownMenuItem(
+        text = { MenuText(stringRes = R.string.menu_app_theme) },
+        onClick = {
+            openMenu.value = false
+            onThemeSelected()
+        },
+        leadingIcon = { MenuIcon(Icons.Outlined.Palette) },
+    )
+}
 
 @Composable
 fun ClearSelectionsMenuItem(onClick: (() -> Unit)) {
@@ -101,7 +127,9 @@ fun MenuIcon(imageVector: ImageVector) {
 private fun MenuItemsPreview() {
     val showMenu = remember { mutableStateOf(false) }
     Column {
-        ClearSelectionsMenuItem { }
+        AboutAppMenuItem {}
+        AppThemeMenuItem(showMenu) {}
+        ClearSelectionsMenuItem {}
         FeedbackMenuItem("app", showMenu)
         ShareImageMenuItem("applicationId", showMenu, Picture())
         ShareTextMenuItem("text", showMenu)
