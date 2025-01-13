@@ -56,7 +56,7 @@ fun ViewOurAppsScreen(
                 appImage = when (app) {
                     Apps.Capacitor -> R.drawable.capacitor_feature_graphic
                     Apps.Inductor -> R.drawable.inductor_feature_graphic
-                    Apps.OhmsLaw -> R.drawable.resistor_feature_graphic
+                    Apps.OhmsLaw -> R.drawable.ohms_law_feature_graphic
                     Apps.Resistor -> R.drawable.resistor_feature_graphic
                 },
                 context = context,
