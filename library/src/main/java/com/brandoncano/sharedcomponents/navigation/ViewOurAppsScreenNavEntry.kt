@@ -2,7 +2,6 @@ package com.brandoncano.sharedcomponents.navigation
 
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -20,7 +19,6 @@ fun NavGraphBuilder.viewOurAppsScreen(
         exitTransition = { slideOutVertically(targetOffsetY = { it }) },
     ) {
         ViewOurAppsScreen(
-            context = LocalContext.current,
             app = app,
             onNavigateBack = { navHostController.popBackStack() },
         )

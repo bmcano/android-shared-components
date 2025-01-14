@@ -1,6 +1,5 @@
 package com.brandoncano.sharedcomponents.screen
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
+import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,20 +32,21 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
+import com.brandoncano.sharedcomponents.composables.AppArrowCardButton
 import com.brandoncano.sharedcomponents.composables.AppCard
 import com.brandoncano.sharedcomponents.data.Apps
+import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
+import com.brandoncano.sharedcomponents.data.GooglePlayLinks
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
 import com.brandoncano.sharedcomponents.text.textStyleSubhead
 import com.brandoncano.sharedcomponents.utils.OpenLink
 
 @Composable
-fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
+fun MobileAppFeatureCard(appImage: Int, app: Apps) {
+    val context = LocalContext.current
     AppCard(
-        modifier = Modifier
-            .clickable {
-                OpenLink.execute(context, app.playstore)
-            }
+        modifier = Modifier.clickable { OpenLink.execute(context, app.playstore) }
     ) {
         Image(
             painter = painterResource(id = appImage),
@@ -54,7 +55,7 @@ fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
                 .fillMaxWidth()
                 .heightIn(max = 172.dp)
                 .clip(RoundedCornerShape(16.dp)),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
         Row(
             modifier = Modifier
@@ -81,11 +82,12 @@ fun MobileAppFeatureCard(appImage: Int, context: Context, app: Apps) {
 }
 
 @Composable
-fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Context, app: Apps) {
+fun MobileAppCard(appName: String, subtext: String, appImage: Int, app: Apps) {
+    val context = LocalContext.current
     AppCard(
         modifier = Modifier
             .padding(top = 12.dp)
-            .clickable { OpenLink.execute(context, app.playstore) }
+            .clickable { OpenLink.execute(context, app.playstore) },
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -102,7 +104,7 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Cont
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(start = 8.dp)
+                    .padding(start = 8.dp),
             ) {
                 Text(
                     text = appName,
@@ -135,19 +137,30 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, context: Cont
 
 @Preview
 @Composable
+fun ViewDeveloperProfileCard() {
+    val context = LocalContext.current
+    AppArrowCardButton(
+        ArrowCardButtonContents(
+            imageVector = Icons.Outlined.Apps,
+            text = stringResource(R.string.view_our_apps_all_apps),
+            onClick = { OpenLink.execute(context, GooglePlayLinks.DEVELOPER_PROFILE) }
+        )
+    )
+}
+
+@Preview
+@Composable
 fun MobileAppPreview() {
     Column {
         MobileAppFeatureCard(
             R.drawable.resistor_feature_graphic,
-            LocalContext.current,
-            Apps.Resistor
+            Apps.Resistor,
         )
         MobileAppCard(
             "Resistor Color Code Calculator",
-            "Released June 19th, 2022",
+            "Decode resistor values effortlessly.",
             R.drawable.resistor_playstore,
-            LocalContext.current,
-            Apps.Resistor
+            Apps.Resistor,
         )
     }
 }

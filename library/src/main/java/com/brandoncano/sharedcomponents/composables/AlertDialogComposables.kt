@@ -53,16 +53,12 @@ fun AppThemeDialog(
                             .fillMaxWidth()
                             .selectable(
                                 selected = (themeMode == currentThemeMode),
-                                onClick = {
-                                    onThemeSelected(themeMode)
-                                }
+                                onClick = { onThemeSelected(themeMode) }
                             )
                     ) {
                         RadioButton(
                             selected = (themeMode == currentThemeMode),
-                            onClick = {
-                                onThemeSelected(themeMode)
-                            }
+                            onClick = { onThemeSelected(themeMode) }
                         )
                         Text(
                             text = themeMode.displayText,

@@ -47,5 +47,5 @@ fun AppButton(
 @Preview
 @Composable
 private fun AppButtonPreview() {
-    AppButton(label = "Button", modifier = Modifier.fillMaxWidth()) { }
+    AppButton(label = "Button", modifier = Modifier.fillMaxWidth()) {}
 }
