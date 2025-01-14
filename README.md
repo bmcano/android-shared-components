@@ -1,6 +1,8 @@
 # Shared Components for my Android Apps
 
-[![](https://jitpack.io/v/bmcano/android-shared-components.svg)](https://jitpack.io/#bmcano/android-shared-components)
+<a href="https://play.google.com/store/apps/dev?id=6118139973869195471" target="_blank">
+  <img src="https://github.com/bmcano/android-shared-components/blob/main/library/src/main/developer_header_image.webp" title="feature graphic" alt="feature graphic">
+</a>
 
 ## Overview 
 This is a shared library that I created for my suite of electronic calculator Android apps. 
@@ -13,10 +15,13 @@ By maintaining this module for these components, I can easily push updates to al
 - Efficiency: Improves the development process by reusing pre-built, tested components.
 
 This module is not intended for public use, as most of the components and utilities are customized for my apps. 
-However, the repository is public for convenience so I can easily create releases to [JitPack](https://jitpack.io/#bmcano/android-shared-components/) to use as a dependency in my Android applications.
+However, the repository is public for convenience so I can easily create releases to JitPack to use as a dependency in my Android applications.
+
+[![](https://jitpack.io/v/bmcano/android-shared-components.svg)](https://jitpack.io/#bmcano/android-shared-components)
 
 ### Current Ussage
 - [Capacitor Code Calculator](https://github.com/bmcano/capacitor-calculator-app)
 - [Inductor Color Code Calculator](https://github.com/bmcano/inductor-calculator-app)
 - [Ohm's Law Calculator](https://github.com/bmcano/ohms-law-calculator-app)
 - [Resistor Color Code Calculator](https://github.com/bmcano/resistance-calculator-app)
+
