@@ -1,6 +1,7 @@
 package com.brandoncano.sharedcomponents.data
 
 import android.content.Context
+import androidx.core.content.edit
 
 enum class ThemePreferences(private val _name: String, private val _key: String) {
 
@@ -8,9 +9,9 @@ enum class ThemePreferences(private val _name: String, private val _key: String)
 
     fun saveIntData(context: Context, input: Int) {
         val sharedPreferences = context.getSharedPreferences(_name, Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt(_key, input)
-        editor.apply()
+        sharedPreferences.edit {
+            putInt(_key, input)
+        }
     }
 
     fun loadIntData(context: Context): Int {

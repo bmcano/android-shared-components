@@ -61,7 +61,7 @@ private fun ViewOurAppsScreenContent(
             .padding(horizontal = sidePadding),
         horizontalAlignment = Alignment.Start,
     ) {
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
         MobileAppFeatureCard(
             appImage = when (app) {
                 Apps.Capacitor -> R.drawable.capacitor_feature_graphic

@@ -6,7 +6,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import com.brandoncano.sharedcomponents.R
 
-@Suppress("unused")
 val rubikFontFamily = FontFamily(
     Font(R.font.rubik_light, FontWeight.Light),
     Font(R.font.rubik_regular, FontWeight.Normal),

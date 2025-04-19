@@ -1,13 +1,11 @@
 package com.brandoncano.sharedcomponents.composables
 
-import android.graphics.Picture
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material.icons.outlined.Feedback
-import androidx.compose.material.icons.outlined.Image
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.Share
@@ -25,10 +23,7 @@ import androidx.compose.ui.res.stringResource
 import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
-import com.brandoncano.sharedcomponents.utils.ComposableToBitmap
-import com.brandoncano.sharedcomponents.utils.SaveBitmap
 import com.brandoncano.sharedcomponents.utils.SendFeedback
-import com.brandoncano.sharedcomponents.utils.ShareImage
 import com.brandoncano.sharedcomponents.utils.ShareText
 
 @Composable
@@ -78,21 +73,6 @@ fun FeedbackMenuItem(app: String, showMenu: MutableState<Boolean>) {
 }
 
 @Composable
-fun ShareImageMenuItem(applicationId: String, showMenu: MutableState<Boolean>, picture: Picture) {
-    val context = LocalContext.current
-    DropdownMenuItem(
-        text = { MenuText(stringRes = R.string.menu_share_image) },
-        onClick = {
-            showMenu.value = false
-            val bitmap = ComposableToBitmap.execute(picture)
-            val uri = SaveBitmap.execute(bitmap, context, "$applicationId.provider") ?: return@DropdownMenuItem
-            ShareImage.execute(uri, context)
-        },
-        leadingIcon = { MenuIcon(Icons.Outlined.Image) },
-    )
-}
-
-@Composable
 fun ShareTextMenuItem(text: String, showMenu: MutableState<Boolean>) {
     val context = LocalContext.current
     DropdownMenuItem(
@@ -131,7 +111,6 @@ private fun MenuItemsPreview() {
         AppThemeMenuItem(showMenu) {}
         ClearSelectionsMenuItem {}
         FeedbackMenuItem("app", showMenu)
-        ShareImageMenuItem("applicationId", showMenu, Picture())
         ShareTextMenuItem("text", showMenu)
     }
 }

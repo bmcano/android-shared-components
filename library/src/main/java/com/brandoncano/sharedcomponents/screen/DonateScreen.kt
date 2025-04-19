@@ -88,7 +88,7 @@ private fun DonateScreenContent(
             .padding(horizontal = sidePadding),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(32.dp))
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -97,7 +97,7 @@ private fun DonateScreenContent(
                     brush = Brush.radialGradient(
                         colors = listOf(Color(0xFFFFC1C1), Color(0xFFFFCDD2), Color(0xFFE57373))
                     ),
-                    shape = CircleShape
+                    shape = CircleShape,
                 ),
         ) {
             Icon(

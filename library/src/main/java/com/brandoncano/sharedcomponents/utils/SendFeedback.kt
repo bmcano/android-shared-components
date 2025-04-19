@@ -2,7 +2,7 @@ package com.brandoncano.sharedcomponents.utils
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import androidx.core.net.toUri
 
 /**
  * Job: Takes the user to compose an email with a predefined subject and empty body.
@@ -10,8 +10,8 @@ import android.net.Uri
 object SendFeedback {
 
     fun execute(context: Context, app: String) {
-        val uri = Uri.parse("mailto:brandoncano.development@gmail.com?subject=[Feedback] - $app")
-        val intent = Intent(Intent.ACTION_SENDTO, uri)
+        val emailLink = "mailto:brandoncano.development@gmail.com?subject=[Feedback] - $app"
+        val intent = Intent(Intent.ACTION_SENDTO, emailLink.toUri())
         try {
             val title = "Send email"
             context.startActivity(Intent.createChooser(intent, title))

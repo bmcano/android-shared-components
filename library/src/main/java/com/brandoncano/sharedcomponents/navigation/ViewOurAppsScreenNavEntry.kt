@@ -1,5 +1,7 @@
 package com.brandoncano.sharedcomponents.navigation
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.navigation.NavGraphBuilder
@@ -16,7 +18,9 @@ fun NavGraphBuilder.viewOurAppsScreen(
     composable(
         route = SharedScreens.ViewOurApps.route,
         enterTransition = { slideInVertically(initialOffsetY = { it }) },
-        exitTransition = { slideOutVertically(targetOffsetY = { it }) },
+        exitTransition = { ExitTransition.None },
+        popEnterTransition = { EnterTransition.None },
+        popExitTransition = { slideOutVertically(targetOffsetY= { it }) },
     ) {
         ViewOurAppsScreen(
             app = app,

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.outlined.Search
@@ -17,18 +19,25 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
+import com.brandoncano.sharedcomponents.data.CardAction
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleCallout
+import com.brandoncano.sharedcomponents.text.textStyleHeadline
+import com.brandoncano.sharedcomponents.text.textStyleSubhead
 
 /**
  * A standard divider with horizontal padding.
@@ -76,6 +85,93 @@ fun AppCard(
         shape = MaterialTheme.shapes.large,
         content = content,
     )
+}
+
+
+/**
+ * A reusable card component that displays an icon, title, body text, and up to two action buttons.
+ *
+ * This card is laid out with:
+ * 1. A leading [icon] tinted with [iconTint].
+ * 2. A headline ([cardTitle]) and subhead ([cardBody]) stacked vertically.
+ * 3. An optional row of one or two buttons, supplied via [leftActionButton] and [rightActionButton].
+ *
+ * If [leftActionButton] is null, no buttons are shown. If [rightActionButton] is null, the left button
+ * stretches to the full card width.
+ *
+ * @param icon The vector icon to display at the start of the card.
+ * @param iconTint The tint color to apply to [icon].
+ * @param cardTitle The headline text shown next to the icon. Marked as a semantic heading.
+ * @param cardBody The body or subhead text shown below the title.
+ * @param leftActionButton Optional primary action; supplies its label and click handler. If null, no buttons appear.
+ * @param rightActionButton Optional secondary action; only shown when [leftActionButton] is non-null.
+ */
+@Composable
+fun AppActionCard(
+    icon: ImageVector,
+    iconTint: Color,
+    cardTitle: String,
+    cardBody: String,
+    leftActionButton: CardAction? = null,
+    rightActionButton: CardAction? = null,
+) {
+    AppCard {
+        Column(
+            modifier = Modifier.padding(start = 24.dp, top = 24.dp, end = 24.dp, bottom = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Image(
+                    modifier = Modifier.size(48.dp),
+                    contentDescription = null,
+                    imageVector = icon,
+                    colorFilter = ColorFilter.tint(iconTint),
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = cardTitle,
+                        modifier = Modifier.semantics { heading() },
+                        style = textStyleHeadline(),
+                    )
+                    Text(
+                        text = cardBody,
+                        modifier = Modifier.padding(top = 8.dp),
+                        style = textStyleSubhead().onSurfaceVariant(),
+                    )
+                }
+            }
+            if (leftActionButton == null) return@AppCard
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                TextButton(
+                    onClick = leftActionButton.onClick,
+                    modifier = if (rightActionButton == null) Modifier.fillMaxWidth() else Modifier,
+                ) {
+                    Text(
+                        text = leftActionButton.buttonLabel,
+                        style = textStyleCallout(),
+                    )
+                }
+                if (rightActionButton == null) return@Row
+                TextButton(
+                    onClick = rightActionButton.onClick,
+                    modifier = Modifier.padding(start = 24.dp),
+                ) {
+                    Text(
+                        text = rightActionButton.buttonLabel,
+                        style = textStyleCallout(),
+                    )
+                }
+            }
+        }
+    }
 }
 
 /**
@@ -133,6 +229,43 @@ private fun AppCardRowView(
             contentDescription = null,
             modifier = Modifier.padding(16.dp),
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun AppActionCardPreview() {
+    Column {
+        AppActionCard(
+            icon = Icons.Outlined.Search,
+            iconTint = MaterialTheme.colorScheme.primary,
+            cardTitle = "Card Title",
+            cardBody = "Action card with no action buttons",
+        )
+        AppActionCard(
+            icon = Icons.Outlined.Search,
+            iconTint = MaterialTheme.colorScheme.primary,
+            cardTitle = "Card Title",
+            cardBody = "Action card with one action button",
+            leftActionButton = CardAction(
+                buttonLabel = "Text Button",
+                onClick = {},
+            )
+        )
+        AppActionCard(
+            icon = Icons.Outlined.Search,
+            iconTint = MaterialTheme.colorScheme.primary,
+            cardTitle = "Card Title",
+            cardBody = "Action card with both action buttons",
+            leftActionButton = CardAction(
+                buttonLabel = "Left Button",
+                onClick = {},
+            ),
+            rightActionButton = CardAction(
+                buttonLabel = "Right Button",
+                onClick = {},
+            )
         )
     }
 }

@@ -1,6 +1,8 @@
 package com.brandoncano.sharedcomponents.navigation
 
 import android.app.Activity
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.material3.SnackbarHostState
@@ -22,7 +24,9 @@ fun NavGraphBuilder.donateScreen(
     composable(
         route = SharedScreens.Donate.route,
         enterTransition = { slideInVertically(initialOffsetY = { it }) },
-        exitTransition = { slideOutVertically(targetOffsetY = { it }) },
+        exitTransition = { ExitTransition.None },
+        popEnterTransition = { EnterTransition.None },
+        popExitTransition = { slideOutVertically(targetOffsetY= { it }) },
     ) {
         val context = LocalContext.current
         val activity = context as? Activity ?: return@composable
