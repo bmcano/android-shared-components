@@ -186,10 +186,12 @@ fun AppActionCard(
  */
 @Composable
 fun AppArrowCardButton(vararg arrowCardButtonContents: ArrowCardButtonContents) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    AppCard(
+        modifier = Modifier.fillMaxWidth(),
+    ) {
         arrowCardButtonContents.forEachIndexed { index, it ->
             AppCardRowView(it.imageVector, it.text, it.onClick)
-            if (arrowCardButtonContents.size - 1 != index) {
+            if (arrowCardButtonContents.lastIndex != index) {
                 AppStandardDivider()
             }
         }
@@ -243,6 +245,7 @@ private fun AppActionCardPreview() {
             cardTitle = "Card Title",
             cardBody = "Action card with no action buttons",
         )
+        Spacer(modifier = Modifier.height(16.dp))
         AppActionCard(
             icon = Icons.Outlined.Search,
             iconTint = MaterialTheme.colorScheme.primary,
@@ -253,6 +256,7 @@ private fun AppActionCardPreview() {
                 onClick = {},
             )
         )
+        Spacer(modifier = Modifier.height(16.dp))
         AppActionCard(
             icon = Icons.Outlined.Search,
             iconTint = MaterialTheme.colorScheme.primary,

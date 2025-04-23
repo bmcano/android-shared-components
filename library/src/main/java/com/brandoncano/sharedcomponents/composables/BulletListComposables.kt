@@ -16,6 +16,16 @@ import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.text.textStyleBody
 
+/**
+ * A reusable bullet list component that displays a vertical list of bullet points with uniform spacing
+ * and consistent text styling. Each item is rendered as a row with a bullet character and the provided text.
+ *
+ * @param bulletStrings A list of strings to display as bullet points.
+ * @param textStyle The [TextStyle] used for both the bullet character and the text content.
+ * @param bulletVerticalSpace The vertical spacing between bullet items. Default is `8.dp`.
+ * @param bulletEndPadding The horizontal padding between the bullet character and the text. Default is `16.dp`.
+ * @param bulletStartPadding The start padding for the whole list from the left screen edge. Default is `16.dp`.
+ */
 @Composable
 fun AppBulletList(
     bulletStrings: List<String>,
