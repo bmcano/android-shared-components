@@ -11,7 +11,13 @@ annotation class AppComponentPreviews
 @AppComponentPreviews
 @Preview("3_Standard_Landscape", showBackground = true, widthDp = 720, heightDp = 360)
 @Preview("4_Large_Font", showBackground = true, fontScale = 2.0f)
-@Preview("5_Tablet", showBackground = true, device = Devices.PIXEL_TABLET)
-@Preview("6_Foldable", showBackground = true, device = Devices.PIXEL_FOLD)
-@Preview("7_Desktop", showBackground = true, device = "spec:width=1920dp,height=1080dp,dpi=160")
+@Preview("5_Tablet", showBackground = true, device = Devices.PIXEL_TABLET, group = "Tablet")
+@Preview("6_Tablet_Portrait", showBackground = true, device = "spec:width=800dp,height=1200dp,dpi=240", group = "Tablet")
+@Preview("7_Foldable", showBackground = true, device = Devices.PIXEL_FOLD)
 annotation class AppScreenPreviews
+
+@Preview("8_Tall_Phone", showBackground = true, heightDp = 2000)
+annotation class AppLongScreenPreview
+
+@Preview("9_Desktop", showBackground = true, device = "spec:width=1920dp,height=1080dp,dpi=160")
+annotation class AppDesktopScreenPreview
