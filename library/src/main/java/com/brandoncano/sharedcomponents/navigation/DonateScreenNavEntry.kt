@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.data.BillingManager
 import com.brandoncano.sharedcomponents.screen.DonateScreen
+import com.brandoncano.sharedcomponents.utils.GetProductIdForAmount
 import kotlinx.coroutines.launch
 
 @Suppress("unused") // used in apps
@@ -47,7 +48,8 @@ fun NavGraphBuilder.donateScreen(
 
         DonateScreen(
             onNavigateBack = { navHostController.popBackStack() },
-            onContinueToPaymentTapped = { productId ->
+            onContinueToPaymentTapped = { it ->
+                val productId = GetProductIdForAmount.execute(it)
                 billingManager.launchPurchaseFlow(activity, productId)
             },
             snackbarHostState = snackbarHostState,

@@ -23,33 +23,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.composables.AppArrowCardButton
 import com.brandoncano.sharedcomponents.composables.AppCard
 import com.brandoncano.sharedcomponents.data.Apps
 import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
-import com.brandoncano.sharedcomponents.data.GooglePlayLinks
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
-import com.brandoncano.sharedcomponents.text.textStyleSubhead
-import com.brandoncano.sharedcomponents.utils.OpenLink
 
 @Composable
-fun MobileAppFeatureCard(appImage: Int, app: Apps) {
-    val context = LocalContext.current
+fun MobileAppFeatureCard(
+    appImageRes: Int,
+    onClick: () -> Unit,
+) {
     AppCard(
-        modifier = Modifier.clickable { OpenLink.execute(context, app.playstore) }
+        modifier = Modifier.clickable { onClick.invoke() }
     ) {
         Image(
-            painter = painterResource(id = appImage),
+            painter = painterResource(id = appImageRes),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -82,52 +78,42 @@ fun MobileAppFeatureCard(appImage: Int, app: Apps) {
 }
 
 @Composable
-fun MobileAppCard(appName: String, subtext: String, appImage: Int, app: Apps) {
-    val context = LocalContext.current
+fun MobileAppCard(
+    appName: String,
+    appImageRes: Int,
+    app: Apps,
+    onClick: (String) -> Unit,
+) {
     AppCard(
         modifier = Modifier
             .padding(top = 12.dp)
-            .clickable { OpenLink.execute(context, app.playstore) },
+            .clickable { onClick.invoke(app.playstore) },
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Top,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
-                painter = painterResource(id = appImage),
+                painter = painterResource(id = appImageRes),
                 contentDescription = null,
                 modifier = Modifier
                     .size(64.dp)
                     .clip(RoundedCornerShape(16.dp)),
             )
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(start = 8.dp),
-            ) {
-                Text(
-                    text = appName,
-                    modifier = Modifier.padding(top = 12.dp),
-                    style = textStyleHeadline().onSurfaceVariant(),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                Text(
-                    text = subtext,
-                    modifier = Modifier.padding(top = 4.dp),
-                    style = textStyleSubhead().onSurfaceVariant(),
-                    overflow = TextOverflow.Ellipsis,
-                    lineHeight = TextUnit(16.0f, TextUnitType.Sp),
-                    maxLines = 2,
-                )
-            }
+            Text(
+                text = appName,
+                modifier = Modifier.padding(start = 8.dp).weight(1f),
+                style = textStyleHeadline().onSurfaceVariant(),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
             Spacer(modifier = Modifier.width(8.dp))
             Image(
                 imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(top = 12.dp, end = 16.dp)
+                    .padding(end = 16.dp)
                     .size(24.dp),
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
             )
@@ -135,15 +121,15 @@ fun MobileAppCard(appName: String, subtext: String, appImage: Int, app: Apps) {
     }
 }
 
-@Preview
 @Composable
-fun ViewDeveloperProfileCard() {
-    val context = LocalContext.current
+fun ViewDeveloperProfileCard(
+    onClick: () -> Unit,
+) {
     AppArrowCardButton(
         ArrowCardButtonContents(
             imageVector = Icons.Outlined.Apps,
             text = stringResource(R.string.view_our_apps_all_apps),
-            onClick = { OpenLink.execute(context, GooglePlayLinks.DEVELOPER_PROFILE) }
+            onClick = onClick,
         )
     )
 }
@@ -153,14 +139,15 @@ fun ViewDeveloperProfileCard() {
 fun MobileAppPreview() {
     Column {
         MobileAppFeatureCard(
-            R.drawable.resistor_feature_graphic,
-            Apps.Resistor,
+            appImageRes = R.drawable.resistor_feature_graphic,
+            onClick = {},
         )
         MobileAppCard(
-            "Resistor Color Code Calculator",
-            "Decode resistor values effortlessly.",
-            R.drawable.resistor_playstore,
-            Apps.Resistor,
+            appName = "Resistor Color Code Calculator",
+            appImageRes = R.drawable.resistor_playstore,
+            app = Apps.Resistor,
+            onClick = {},
         )
+        ViewDeveloperProfileCard {}
     }
 }

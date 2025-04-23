@@ -3,7 +3,7 @@ package com.brandoncano.sharedcomponents.utils
 /**
  * Job: Get the productID for the play console in-app purchase
  *
- * Note: The specifics of the in-app donation items can be found at: in_app_products.csv
+ * Note: The specifics of the in-app donation items can be found at: docs/in_app_products.csv
  */
 object GetProductIdForAmount {
 

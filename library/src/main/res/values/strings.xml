@@ -4,13 +4,9 @@
     <string name="view_our_apps_rate_this_app">Rate this app on Google Play</string>
     <string name="view_our_apps_header">More great apps to explore</string>
     <string name="view_our_apps_resistor">Resistor Color Code Calculator</string>
-    <string name="view_our_apps_resistor_subtext">Decode resistor values effortlessly.</string>
     <string name="view_our_apps_capacitor">Capacitor Code Calculator</string>
-    <string name="view_our_apps_capacitor_subtext">Find capacitor values with ease.</string>
     <string name="view_our_apps_inductor">Inductor Color Code Calculator</string>
-    <string name="view_our_apps_inductor_subtext">Decode inductor values effortlessly.</string>
     <string name="view_our_apps_ohms_law">"Ohm's Law Calculator"</string>
-    <string name="view_our_apps_ohms_law_subtext">"Solve Ohm's law equations instantly."</string>
     <string name="view_our_apps_all_apps">See all apps on Google Play</string>
     <!-- Donate screen/components text -->
     <string name="donate_title">Donate</string>
@@ -39,4 +35,6 @@
     <!-- Alert dialog -->
     <string name="dialog_app_appearance">App appearance</string>
     <string name="dialog_confirm_button">Done</string>
+
+    <string name="bullet_point">•</string>
 </resources>
