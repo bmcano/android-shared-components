@@ -32,7 +32,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
 import com.brandoncano.sharedcomponents.data.CardAction
@@ -261,13 +260,13 @@ private fun AppCardRowView(
     }
 }
 
-@Preview
+@AppComponentPreviews
 @Composable
 private fun CalloutCardPreview() {
     CalloutCard(text = "Callout")
 }
 
-@Preview
+@AppComponentPreviews
 @Composable
 private fun AppActionCardPreview() {
     Column {
@@ -306,7 +305,7 @@ private fun AppActionCardPreview() {
     }
 }
 
-@Preview
+@AppComponentPreviews
 @Composable
 private fun ArrowCardButtonPreview() {
     Column {

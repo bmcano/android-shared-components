@@ -62,7 +62,7 @@ fun AppNavigationBar(
     }
 }
 
-@Preview
+@AppComponentPreviews
 @Composable
 private fun NavigationBarPreview() {
     AppNavigationBar(
