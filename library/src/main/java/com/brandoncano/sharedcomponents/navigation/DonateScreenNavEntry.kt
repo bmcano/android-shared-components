@@ -48,7 +48,7 @@ fun NavGraphBuilder.donateScreen(
 
         DonateScreen(
             onNavigateBack = { navHostController.popBackStack() },
-            onContinueToPaymentTapped = { it ->
+            onContinueToPaymentTapped = {
                 val productId = GetProductIdForAmount.execute(it)
                 billingManager.launchPurchaseFlow(activity, productId)
             },
