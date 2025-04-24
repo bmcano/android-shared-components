@@ -1,14 +1,13 @@
 # UI Spacing & Padding Guide
 
 **Applies to:** Calculator Screens and Information Screens in all mobile apps\
-**Matieral Design:** Jetpack Compose with Material 3 components
-
+**Material Design:** Jetpack Compose with Material 3 components
 
 ## Global Layout Padding
 
 - **Horizontal padding:** 
   - `16.dp` - `values/dimnes.xml` - Phones
-  - `184.dp` - `values-sw720dp/dimens.xml` - Tablets and Desktops
+  - `168.dp` - `values-sw720dp/dimens.xml` - Tablets and Desktops
 - **Top padding:** 
   - `32.dp` if first element is an image
   - `24.dp` otherwise

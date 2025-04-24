@@ -29,6 +29,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -87,6 +89,30 @@ fun AppCard(
     )
 }
 
+/**
+ * A reusable card-style container for displaying centered callout text.
+ *
+ * @param text The text content to display inside the callout card.
+ * @param style The [TextStyle] to apply to the text. Defaults to [textStyleCallout()].
+ */
+@Composable
+fun CalloutCard(
+    text: String,
+    style: TextStyle = textStyleCallout(),
+) {
+    AppCard(
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Text(
+            text = text,
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            style = style,
+            textAlign = TextAlign.Center,
+        )
+    }
+}
 
 /**
  * A reusable card component that displays an icon, title, body text, and up to two action buttons.
@@ -233,6 +259,12 @@ private fun AppCardRowView(
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
         )
     }
+}
+
+@Preview
+@Composable
+private fun CalloutCardPreview() {
+    CalloutCard(text = "Callout")
 }
 
 @Preview
