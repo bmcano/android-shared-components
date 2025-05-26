@@ -1,7 +1,7 @@
 # Shared Components for my Android Apps
 
 <a href="https://play.google.com/store/apps/dev?id=6118139973869195471" target="_blank">
-  <img src="https://github.com/bmcano/android-shared-components/blob/main/library/src/main/developer_header_image.webp" title="feature graphic" alt="feature graphic">
+  <img src="https://github.com/bmcano/android-shared-components/blob/main/docs/developer_header_image.webp" title="feature graphic" alt="feature graphic">
 </a>
 
 ## Overview 
