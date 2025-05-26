@@ -26,6 +26,7 @@ import com.brandoncano.sharedcomponents.composables.AppDivider
 import com.brandoncano.sharedcomponents.composables.AppLongScreenPreview
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.composables.AppTopAppBar
+import com.brandoncano.sharedcomponents.composables.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.data.Apps
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
 
@@ -121,7 +122,7 @@ private fun ViewOurAppsScreenContent(
         }
         AppDivider(modifier = Modifier.padding(vertical = 16.dp))
         ViewDeveloperProfileCard(onClick = onViewMoreAppsTapped)
-        Spacer(modifier = Modifier.height(48.dp))
+        BottomScreenSpacer()
     }
 }
 

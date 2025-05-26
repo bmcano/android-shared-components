@@ -36,35 +36,35 @@ import com.brandoncano.sharedcomponents.text.textStyleHeadline
 @AppComponentPreviews
 @Composable
 fun AuthorCard() {
-    AppCard {
-        Row {
-            Image(
-                imageVector = Icons.Outlined.Person,
-                contentDescription = null,
-                modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp),
-                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
-            )
-            HeadlineBodyStack(
-                label = R.string.about_created_by,
-                body = R.string.about_author,
-            )
-        }
+    Row {
+        Image(
+            imageVector = Icons.Outlined.Person,
+            contentDescription = null,
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp),
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
+        )
+        HeadlineBodyStack(
+            headerText = stringResource(R.string.about_created_by),
+            bodyText = stringResource(R.string.about_author),
+        )
     }
 }
 
 @Composable
 fun AppInfoCard(@StringRes version: Int, @StringRes lastUpdated: Int) {
     AppCard {
+        AuthorCard()
+        AppStandardDivider()
         Row {
             Image(
                 imageVector = Icons.Outlined.Info,
                 contentDescription = null,
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp),
-                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
             )
             HeadlineBodyStack(
-                label = R.string.about_app_version,
-                body = version,
+                headerText = stringResource(R.string.about_app_version),
+                bodyText = stringResource(id = version),
             )
         }
         AppStandardDivider()
@@ -73,11 +73,11 @@ fun AppInfoCard(@StringRes version: Int, @StringRes lastUpdated: Int) {
                 imageVector = Icons.Outlined.History,
                 contentDescription = null,
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp),
-                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant)
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurfaceVariant),
             )
             HeadlineBodyStack(
-                label = R.string.about_last_updated_on,
-                body = lastUpdated,
+                headerText = stringResource(R.string.about_last_updated_on),
+                bodyText = stringResource(id = lastUpdated),
             )
         }
     }
@@ -117,18 +117,18 @@ fun OurAppsButtons(
 }
 
 @Composable
-private fun HeadlineBodyStack(@StringRes label: Int, @StringRes body: Int) {
+private fun HeadlineBodyStack(headerText: String, bodyText: String) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.Start,
     ) {
         Text(
-            text = stringResource(id = label),
+            text = headerText,
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
             style = textStyleHeadline().onSurfaceVariant(),
         )
         Text(
-            text = stringResource(id = body),
+            text = bodyText,
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 4.dp),
             style = textStyleBody().onSurfaceVariant(),
         )

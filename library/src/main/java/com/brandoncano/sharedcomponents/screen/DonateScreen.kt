@@ -31,6 +31,7 @@ import com.brandoncano.sharedcomponents.R
 import com.brandoncano.sharedcomponents.composables.AppButton
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.composables.AppTopAppBar
+import com.brandoncano.sharedcomponents.composables.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 import com.brandoncano.sharedcomponents.text.textStyleBody
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
@@ -99,7 +100,7 @@ private fun DonateScreenContent(
         Spacer(modifier = Modifier.height(12.dp))
         DonationChipGroup(
             selectedAmount = selectedAmount,
-            onAmountSelected = onAmountSelected
+            onAmountSelected = onAmountSelected,
         )
         AppButton(
             label = stringResource(R.string.donate_purchase_button),
@@ -114,7 +115,7 @@ private fun DonateScreenContent(
             modifier = Modifier.align(Alignment.Start),
             style = textStyleSubhead().onSurfaceVariant(),
         )
-        Spacer(modifier = Modifier.height(48.dp))
+        BottomScreenSpacer()
     }
 }
 
