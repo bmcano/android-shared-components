@@ -24,5 +24,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SharedComponents"
+rootProject.name = "SharedComponents" // TODO - Update this to M3Components, M3Catalog, etc.
+include(":app")
 include(":library")

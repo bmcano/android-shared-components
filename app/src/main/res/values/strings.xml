@@ -1,0 +1,67 @@
+<resources>
+    <!-- TODO - Come up with a proper app name -->
+    <string name="app_name">M3 with Compose</string>
+
+    <!-- Components -->
+    <string name="component_badge_title">Badge</string>
+    <string name="component_bottom_app_bar_title">Bottom App Bar</string>
+    <string name="component_bottom_sheet_title">Bottom Sheet</string>
+    <string name="component_buttons_title">Buttons</string>
+    <string name="component_cards_title">Cards</string>
+    <string name="component_checkbox_title">Checkbox</string>
+    <string name="component_chips_title">Chips</string>
+    <string name="component_date_picker_title">Date Picker</string>
+    <string name="component_dialogs_title">Dialogs</string>
+    <string name="component_dividers_title">Dividers</string>
+    <string name="component_extended_fab_title">Extended FAB</string>
+    <string name="component_fab_title">FAB</string>
+    <string name="component_icon_buttons_title">Icon Buttons</string>
+    <string name="component_lists_title">Lists</string>
+    <string name="component_menus_title">Menus</string>
+    <string name="component_navigation_bar_title">Navigation Bar</string>
+    <string name="component_navigation_drawer_title">Navigation Drawer</string>
+    <string name="component_navigation_rail_title">Navigation Rail</string>
+    <string name="component_progress_indicators_title">Progress Indicators</string>
+    <string name="component_radio_button_title">Radio Button</string>
+    <string name="component_search_bar_title">Search Bar</string>
+    <string name="component_segmented_button_title">Segmented Button</string>
+    <string name="component_sliders_title">Sliders</string>
+    <string name="component_snackbars_title">Snackbars</string>
+    <string name="component_switch_title">Switch</string>
+    <string name="component_tabs_title">Tabs</string>
+    <string name="component_text_fields_title">Text Fields</string>
+    <string name="component_time_picker_title">Time Picker</string>
+    <string name="component_top_app_bar_title">Top App Bar</string>
+
+    <!-- Descriptions -->
+    <string name="component_badge_desc">A small status indicator that displays a number or status atop other components.</string>
+    <string name="component_bottom_app_bar_desc">A bar anchored at the bottom of the screen with navigation and action items.</string>
+    <string name="component_bottom_sheet_desc">A surface that slides up from the bottom to reveal additional content.</string>
+    <string name="component_buttons_desc">Tap targets that trigger actions when pressed by the user.</string>
+    <string name="component_cards_desc">Surfaces that group related content and actions into distinct containers.</string>
+    <string name="component_checkbox_desc">A control that toggles between checked and unchecked states for binary choices.</string>
+    <string name="component_chips_desc">Compact elements that represent an input, attribute, or action.</string>
+    <string name="component_date_picker_desc">A dialog or inline component for selecting a date from a calendar.</string>
+    <string name="component_dialogs_desc">Modal windows that inform users and require a response.</string>
+    <string name="component_dividers_desc">Thin lines used to separate content or groups within layouts.</string>
+    <string name="component_extended_fab_desc">A floating action button that includes both an icon and a text label.</string>
+    <string name="component_fab_desc">A circular floating action button that triggers a primary action.</string>
+    <string name="component_icon_buttons_desc">Buttons that contain only an icon and no text label.</string>
+    <string name="component_lists_desc">Vertical collections of items, often scrollable and comprised of multiple elements.</string>
+    <string name="component_menus_desc">Temporary surfaces that display a list of choices or actions.</string>
+    <string name="component_navigation_bar_desc">A bar at the bottom of the screen providing top-level navigation between views.</string>
+    <string name="component_navigation_drawer_desc">A sliding panel that presents app-level navigation options.</string>
+    <string name="component_navigation_rail_desc">A vertical component offering top-level navigation, ideal for larger screens.</string>
+    <string name="component_progress_indicators_desc">Visual indicators that show the progress of ongoing tasks.</string>
+    <string name="component_radio_button_desc">A control that allows a single selection from a group of options.</string>
+    <string name="component_search_bar_desc">An input field where users can enter text to search content.</string>
+    <string name="component_segmented_button_desc">A group of horizontally aligned buttons where only one can be selected.</string>
+    <string name="component_sliders_desc">Controls that let users select a value by dragging a thumb along a track.</string>
+    <string name="component_snackbars_desc">Brief messages that appear at the bottom of the screen, informing users of an action.</string>
+    <string name="component_switch_desc">A control for toggling between two states, such as on and off.</string>
+    <string name="component_tabs_desc">Horizontal rows of tabs that allow users to navigate between different views or content sections.</string>
+    <string name="component_text_fields_desc">Input fields where users can enter and edit text.</string>
+    <string name="component_time_picker_desc">A dialog or inline component for selecting a time of day.</string>
+    <string name="component_top_app_bar_desc">A bar at the top of the screen containing navigation and action items.</string>
+
+</resources>
