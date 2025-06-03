@@ -36,25 +36,34 @@ android {
 }
 
 dependencies {
-    // androidx
+    // AndroidX
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.browser)
-    implementation(libs.androidx.navigation.compose)
-    // androidx.compose.ui
+    implementation(libs.androidx.core.ktx)
+
+    // AndroidX.Compose
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    // androidx.compose
-    implementation(libs.androidx.compose.material.icons)
+
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
-    // com.android
-    implementation(libs.billing.client)
-    // unit testing
+    implementation(libs.androidx.compose.material3.adaptive)
+    implementation(libs.androidx.compose.material3.adaptive.navigation)
+    implementation(libs.androidx.compose.material.icons)
+    implementation(libs.androidx.compose.runtime.livedata)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    // AndroidX.Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // Test
     testImplementation(libs.mockk)
     testImplementation(libs.junit)
+
+    // Google
+    implementation(libs.billing.client)
+    implementation(libs.gson)
 }
 
 afterEvaluate {

@@ -10,11 +10,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.PushPin
+import androidx.compose.material.icons.outlined.Palette
+import androidx.compose.material.icons.outlined.PushPin
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.brandoncano.m3components.R
 import com.brandoncano.m3components.navigation.Component
 import com.brandoncano.m3components.to.ComponentCardPO
 import com.brandoncano.m3components.ui.theme.M3ComponentsTheme
@@ -23,15 +36,48 @@ import com.brandoncano.sharedcomponents.composables.AppLongScreenPreview
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.m3.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.m3.M3OutlinedCard
+import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 
+// M3 Guidelines allow for a max of 3 items for compact actions, and 5 max for large screens
+// To make it adaptive we may need to make a custom AppBarRow element which accounts for this.
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     componentCardPOs: List<ComponentCardPO>,
     onComponentTapped: (Component) -> Unit,
 ) {
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            // TODO - TopAppBar Composables
+            M3TopAppBar(
+                titleText = stringResource(R.string.home_title),
+                actions = {
+
+                    // Temporary until I decide what I want to show
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Outlined.PushPin,
+                            contentDescription = "Back",
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Outlined.Palette,
+                            contentDescription = "Back",
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Default.MoreVert,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
+                scrollBehavior = scrollBehavior,
+            )
         },
         contentWindowInsets = WindowInsets.safeDrawing,
     ) { paddingValues ->

@@ -8,5 +8,5 @@ data class ComponentCardPO(
     val component: Component,
     val icon: ImageVector,
     @StringRes val titleRes: Int,
-    @StringRes val descRes: Int
+    @StringRes val descRes: Int,
 )

@@ -2,6 +2,8 @@
     <!-- TODO - Come up with a proper app name -->
     <string name="app_name">M3 with Compose</string>
 
+    <string name="home_title">M3 Components</string>
+
     <!-- Components -->
     <string name="component_badge_title">Badge</string>
     <string name="component_bottom_app_bar_title">Bottom App Bar</string>
