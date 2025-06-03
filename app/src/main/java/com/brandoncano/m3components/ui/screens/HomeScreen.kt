@@ -11,11 +11,9 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.PushPin
+import androidx.compose.material.icons.outlined.Feedback
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Palette
-import androidx.compose.material.icons.outlined.PushPin
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,10 +36,6 @@ import com.brandoncano.sharedcomponents.m3.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.m3.M3OutlinedCard
 import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 
-// M3 Guidelines allow for a max of 3 items for compact actions, and 5 max for large screens
-// To make it adaptive we may need to make a custom AppBarRow element which accounts for this.
-
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -54,25 +48,24 @@ fun HomeScreen(
         topBar = {
             M3TopAppBar(
                 titleText = stringResource(R.string.home_title),
+                subTitleText = stringResource(R.string.home_subtitle),
                 actions = {
-
-                    // Temporary until I decide what I want to show
-                    IconButton(onClick = {}) {
-                        Icon(
-                            imageVector = Icons.Outlined.PushPin,
-                            contentDescription = "Back",
-                        )
-                    }
                     IconButton(onClick = {}) {
                         Icon(
                             imageVector = Icons.Outlined.Palette,
-                            contentDescription = "Back",
+                            contentDescription = "App theme",
                         )
                     }
                     IconButton(onClick = {}) {
                         Icon(
-                            imageVector = Icons.Default.MoreVert,
-                            contentDescription = "Back",
+                            imageVector = Icons.Outlined.Feedback,
+                            contentDescription = "Feedback",
+                        )
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = "About",
                         )
                     }
                 },

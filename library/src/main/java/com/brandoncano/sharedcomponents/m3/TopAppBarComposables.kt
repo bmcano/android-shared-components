@@ -7,17 +7,25 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.PushPin
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 
@@ -39,6 +47,23 @@ import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 // subtitle text (optional)
 // trailing elements (up to 2?)
 
+// scroll behavior
+
+// TopAppBarDefaults.pinnedScrollBehavior() // TopAppBar or CenterAligned
+// TopAppBarDefaults.enterAlwaysScrollBehavior() // MediumTopAppBar or LargeTopAppBar
+// TopAppBarDefaults.exitUntilCollapsedScrollBehavior() // MediumTopAppBar or LargeTopAppBar
+
+// M3 Guidelines allow for a max of 3 items for compact actions, and 5 max for large screens
+// To make it adaptive we may need to make a custom AppBarRow element which accounts for this.
+
+@Composable
+private fun getSubtitleLineHeight(textStyle: TextStyle): Dp {
+    val subtitleLineHeightDp = with(LocalDensity.current) {
+        textStyle.lineHeight.toDp()
+    }
+    return subtitleLineHeightDp
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun M3TopAppBar(
@@ -49,15 +74,63 @@ fun M3TopAppBar(
     actions: @Composable RowScope.() -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null,
 ) {
-    val subtitleLineHeightDp = with(LocalDensity.current) {
-        MaterialTheme.typography.labelLarge.lineHeight.toDp()
-    }
+    val subtitleLineHeightDp = getSubtitleLineHeight(MaterialTheme.typography.labelMedium)
     val expandedHeight = if (subTitleText != null) {
         TopAppBarDefaults.TopAppBarExpandedHeight + subtitleLineHeightDp
     } else {
         TopAppBarDefaults.TopAppBarExpandedHeight
     }
     TopAppBar(
+        title = {
+            Column {
+                Text(
+                    text = titleText,
+                    style = MaterialTheme.typography.titleLarge,
+                )
+                subTitleText?.let {
+                    Text(
+                        text = subTitleText,
+                        style = MaterialTheme.typography.labelMedium.onSurfaceVariant(),
+                    )
+                }
+            }
+        },
+        modifier = Modifier,
+        navigationIcon = {
+            if (navigationIcon != null) {
+                IconButton(onClick = onNavigateBack) {
+                    Icon(
+                        imageVector = navigationIcon,
+                        contentDescription = "Back",
+                    )
+                }
+            }
+        },
+        actions = actions,
+        expandedHeight = expandedHeight,
+        windowInsets = TopAppBarDefaults.windowInsets,
+        colors = TopAppBarDefaults.topAppBarColors(),
+        scrollBehavior = scrollBehavior,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun M3CenterAlignedTopAppBar(
+    titleText: String,
+    subTitleText: String? = null,
+    navigationIcon: ImageVector? = null,
+    onNavigateBack: () -> Unit = {},
+    actions: @Composable RowScope.() -> Unit = {},
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+) {
+    val subtitleLineHeightDp = getSubtitleLineHeight(MaterialTheme.typography.labelMedium)
+    val expandedHeight = if (subTitleText != null) {
+        TopAppBarDefaults.TopAppBarExpandedHeight + subtitleLineHeightDp
+    } else {
+        TopAppBarDefaults.TopAppBarExpandedHeight
+    }
+    CenterAlignedTopAppBar(
         title = {
             Column {
                 Text(
@@ -89,6 +162,107 @@ fun M3TopAppBar(
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun M3MediumTopAppBar(
+    titleText: String,
+    subTitleText: String? = null,
+    navigationIcon: ImageVector? = null,
+    onNavigateBack: () -> Unit = {},
+    actions: @Composable RowScope.() -> Unit = {},
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+) {
+    val subtitleLineHeightDp = getSubtitleLineHeight(MaterialTheme.typography.labelLarge)
+    // 4dp gap between title and subtitle
+    val gapDp = 4.dp
+
+    // Total extra vertical required when a subtitle is present:
+    val extraForSubtitle = if (subTitleText != null) subtitleLineHeightDp + gapDp else 0.dp
+    // 2) Base collapsed/expanded heights from M3 defaults:
+    val baseCollapsed = TopAppBarDefaults.MediumAppBarCollapsedHeight
+    val baseExpanded  = TopAppBarDefaults.MediumAppBarExpandedHeight
+
+    // 3) Add extra only if subTitleText != null:
+    val collapsedHeight = baseCollapsed + extraForSubtitle
+    val expandedHeight  = baseExpanded + extraForSubtitle + gapDp
+    MediumTopAppBar(
+        title = {
+            Column {
+                Text(
+                    text = titleText,
+                    style = MaterialTheme.typography.headlineMedium,
+                )
+                subTitleText?.let {
+                    Text(
+                        text = subTitleText,
+                        style = MaterialTheme.typography.labelLarge.onSurfaceVariant(),
+                    )
+                }
+            }
+        },
+        navigationIcon = {
+            if (navigationIcon != null) {
+                IconButton(onClick = onNavigateBack) {
+                    Icon(
+                        imageVector = navigationIcon,
+                        contentDescription = "Back",
+                    )
+                }
+            }
+        },
+        actions = actions,
+        scrollBehavior = scrollBehavior,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun M3LargeTopAppBar(
+    titleText: String,
+    subTitleText: String? = null,
+    navigationIcon: ImageVector? = null,
+    onNavigateBack: () -> Unit = {},
+    actions: @Composable RowScope.() -> Unit = {},
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+) {
+    val subtitleLineHeightDp = getSubtitleLineHeight(MaterialTheme.typography.titleMedium)
+    val expandedHeight = if (subTitleText != null) {
+        TopAppBarDefaults.LargeAppBarExpandedHeight + subtitleLineHeightDp
+    } else {
+        TopAppBarDefaults.LargeAppBarExpandedHeight
+    }
+    LargeTopAppBar(
+        title = {
+            Column {
+                Text(
+                    text = titleText,
+                    style = MaterialTheme.typography.displaySmall,
+                )
+                subTitleText?.let {
+                    Text(
+                        text = subTitleText,
+                        style = MaterialTheme.typography.titleMedium.onSurfaceVariant(),
+                    )
+                }
+            }
+        },
+        navigationIcon = {
+            if (navigationIcon != null) {
+                IconButton(onClick = onNavigateBack) {
+                    Icon(
+                        imageVector = navigationIcon,
+                        contentDescription = "Back",
+                    )
+                }
+            }
+        },
+        actions = actions,
+        collapsedHeight = TopAppBarDefaults.LargeAppBarCollapsedHeight,
+        expandedHeight = expandedHeight,
+        scrollBehavior = scrollBehavior,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
 @AppComponentPreviews
 @Composable
 private fun TopAppBarPreviews() {
@@ -112,10 +286,19 @@ private fun TopAppBarPreviews() {
                 }
                 IconButton(onClick = {}) {
                     Icon(
-                        imageVector = Icons.Default.Palette,
+                        imageVector = Icons.Default.MoreVert,
                         contentDescription = "Back",
                     )
                 }
+            }
+        )
+        FullWidthDivider()
+        M3CenterAlignedTopAppBar(
+            titleText = "Title",
+            subTitleText = "Subtitle",
+            navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
+            onNavigateBack = {},
+            actions = {
                 IconButton(onClick = {}) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
@@ -125,7 +308,22 @@ private fun TopAppBarPreviews() {
             }
         )
         FullWidthDivider()
-        M3TopAppBar(
+        M3MediumTopAppBar(
+            titleText = "Title",
+            subTitleText = "Subtitle",
+            navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
+            onNavigateBack = {},
+            actions = {
+                IconButton(onClick = {}) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "Back",
+                    )
+                }
+            }
+        )
+        FullWidthDivider()
+        M3LargeTopAppBar(
             titleText = "Title",
             subTitleText = "Subtitle",
             navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
@@ -141,97 +339,3 @@ private fun TopAppBarPreviews() {
         )
     }
 }
-
-
-///**
-// * A Material 3 “Center-Aligned Top App Bar” with optional nav icon, actions, and scroll behavior.
-// *
-// * @param titleText            The centered title.
-// * @param modifier             Optional [Modifier].
-// * @param navigationIcon       Optional slot for a navigation icon composable.
-// * @param actions              Optional slot for action icons.
-// * @param colors               Customizable colors; defaults to [TopAppBarDefaults.centerAlignedTopAppBarColors].
-// * @param scrollBehavior       Optional [TopAppBarScrollBehavior] for scroll effects.
-// */
-//@Composable
-//fun AppCenterAlignedTopAppBar(
-//    titleText: String,
-//    modifier: Modifier = Modifier,
-//    navigationIcon: @Composable (() -> Unit)? = null,
-//    actions: @Composable RowScope.() -> Unit = {},
-//    colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
-//    scrollBehavior: TopAppBarScrollBehavior? = null
-//) {
-//    CenterAlignedTopAppBar(
-//        title = { Text(text = titleText) },
-//        modifier = modifier,
-//        navigationIcon = navigationIcon?.let {
-//            { IconButton(onClick = {}) { it() } }
-//        } ?: {},
-//        actions = actions,
-//        colors = colors,
-//        scrollBehavior = scrollBehavior
-//    )
-//}
-
-///**
-// * A Material 3 “Medium Top App Bar” with optional nav icon, actions, and scroll behavior.
-// *
-// * @param titleText            The title displayed in the app bar.
-// * @param modifier             Optional [Modifier].
-// * @param navigationIcon       Optional slot for a navigation icon composable.
-// * @param actions              Optional slot for action icons.
-// * @param colors               Customizable colors; defaults to [TopAppBarDefaults.mediumTopAppBarColors].
-// * @param scrollBehavior       Optional [TopAppBarScrollBehavior] (e.g., exitUntilCollapsed).
-// */
-//@Composable
-//fun AppMediumTopAppBar(
-//    titleText: String,
-//    modifier: Modifier = Modifier,
-//    navigationIcon: @Composable (() -> Unit)? = null,
-//    actions: @Composable RowScope.() -> Unit = {},
-//    colors: TopAppBarColors = TopAppBarDefaults.mediumTopAppBarColors(),
-//    scrollBehavior: TopAppBarScrollBehavior? = null
-//) {
-//    MediumTopAppBar(
-//        title = { Text(text = titleText) },
-//        modifier = modifier,
-//        navigationIcon = navigationIcon?.let {
-//            { IconButton(onClick = {}) { it() } }
-//        } ?: {},
-//        actions = actions,
-//        colors = colors,
-//        scrollBehavior = scrollBehavior
-//    )
-//}
-//
-///**
-// * A Material 3 “Large Top App Bar” with optional nav icon, actions, and scroll behavior.
-// *
-// * @param titleText            The title shown in the larger app bar.
-// * @param modifier             Optional [Modifier].
-// * @param navigationIcon       Optional slot for a navigation icon composable.
-// * @param actions              Optional slot for action icons.
-// * @param colors               Customizable colors; defaults to [TopAppBarDefaults.largeTopAppBarColors].
-// * @param scrollBehavior       Optional [TopAppBarScrollBehavior] for collapse/expand effects.
-// */
-//@Composable
-//fun AppLargeTopAppBar(
-//    titleText: String,
-//    modifier: Modifier = Modifier,
-//    navigationIcon: @Composable (() -> Unit)? = null,
-//    actions: @Composable RowScope.() -> Unit = {},
-//    colors: TopAppBarColors = TopAppBarDefaults.largeTopAppBarColors(),
-//    scrollBehavior: TopAppBarScrollBehavior? = null
-//) {
-//    LargeTopAppBar(
-//        title = { Text(text = titleText) },
-//        modifier = modifier,
-//        navigationIcon = navigationIcon?.let {
-//            { IconButton(onClick = {}) { it() } }
-//        } ?: {},
-//        actions = actions,
-//        colors = colors,
-//        scrollBehavior = scrollBehavior
-//    )
-//}
