@@ -1,4 +1,4 @@
-package com.brandoncano.m3components.ui.screens
+package com.brandoncano.m3components.ui.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

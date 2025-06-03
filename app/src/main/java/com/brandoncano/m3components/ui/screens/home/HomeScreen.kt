@@ -1,4 +1,4 @@
-package com.brandoncano.m3components.ui.screens
+package com.brandoncano.m3components.ui.screens.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues

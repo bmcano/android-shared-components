@@ -34,6 +34,7 @@ android-application = { id = "com.android.application", version.ref = "agp-versi
 android-library = { id = "com.android.library", version.ref = "agp-version" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-version" }
 jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin-version" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-version" }
 gradle-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-version" }
 
 [libraries]

@@ -1,8 +1,11 @@
 package com.brandoncano.m3components.navigation
 
+import java.io.Serializable
+
 /**
  * Job: Holds each category of the Material3 components
  */
+@androidx.annotation.Keep // Helps with minified since it's used for type-safe navigation
 enum class Component {
     BADGE,
     BOTTOM_APP_BAR,

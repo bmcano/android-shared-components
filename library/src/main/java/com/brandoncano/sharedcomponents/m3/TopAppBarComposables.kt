@@ -19,36 +19,24 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 
-// TopAppBar	M3 small top app bar
-//CenterAlignedTopAppBar	M3 center-aligned top app bar
-//MediumTopAppBar	M3 medium top app bar
-//LargeTopAppBar	M3 large top app bar
+// https://m3.material.io/components/app-bars/overview
 
+// https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TopAppBar(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function1,androidx.compose.foundation.layout.WindowInsets,androidx.compose.material3.TopAppBarColors,androidx.compose.material3.TopAppBarScrollBehavior)
+// https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#CenterAlignedTopAppBar(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function1,androidx.compose.foundation.layout.WindowInsets,androidx.compose.material3.TopAppBarColors,androidx.compose.material3.TopAppBarScrollBehavior)
+// https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#MediumTopAppBar(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function1,androidx.compose.foundation.layout.WindowInsets,androidx.compose.material3.TopAppBarColors,androidx.compose.material3.TopAppBarScrollBehavior)
+// https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#LargeTopAppBar(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function1,androidx.compose.foundation.layout.WindowInsets,androidx.compose.material3.TopAppBarColors,androidx.compose.material3.TopAppBarScrollBehavior)
 
-// All of these can be aligned to the leading edge or centered
 // search app bar - ignore for now
-// small
-// medium flexible
-// large flexible
-
-
-// Leading icon (navigation back or open nav drawer)
-// title text (headline)
-// subtitle text (optional)
-// trailing elements (up to 2?)
 
 // scroll behavior
-
 // TopAppBarDefaults.pinnedScrollBehavior() // TopAppBar or CenterAligned
 // TopAppBarDefaults.enterAlwaysScrollBehavior() // MediumTopAppBar or LargeTopAppBar
 // TopAppBarDefaults.exitUntilCollapsedScrollBehavior() // MediumTopAppBar or LargeTopAppBar
@@ -56,12 +44,34 @@ import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 // M3 Guidelines allow for a max of 3 items for compact actions, and 5 max for large screens
 // To make it adaptive we may need to make a custom AppBarRow element which accounts for this.
 
+
 @Composable
 private fun getSubtitleLineHeight(textStyle: TextStyle): Dp {
     val subtitleLineHeightDp = with(LocalDensity.current) {
         textStyle.lineHeight.toDp()
     }
     return subtitleLineHeightDp
+}
+
+@Composable
+private fun TitleContent(
+    titleText: String,
+    subTitleText: String?,
+    titleTextStyle: TextStyle,
+    subTitleTextStyle: TextStyle,
+) {
+    Column {
+        Text(
+            text = titleText,
+            style = titleTextStyle,
+        )
+        subTitleText?.let {
+            Text(
+                text = subTitleText,
+                style = subTitleTextStyle.onSurfaceVariant(),
+            )
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,18 +92,12 @@ fun M3TopAppBar(
     }
     TopAppBar(
         title = {
-            Column {
-                Text(
-                    text = titleText,
-                    style = MaterialTheme.typography.titleLarge,
-                )
-                subTitleText?.let {
-                    Text(
-                        text = subTitleText,
-                        style = MaterialTheme.typography.labelMedium.onSurfaceVariant(),
-                    )
-                }
-            }
+            TitleContent(
+                titleText = titleText,
+                subTitleText = subTitleText,
+                titleTextStyle = MaterialTheme.typography.titleLarge,
+                subTitleTextStyle = MaterialTheme.typography.labelMedium,
+            )
         },
         modifier = Modifier,
         navigationIcon = {
@@ -132,19 +136,14 @@ fun M3CenterAlignedTopAppBar(
     }
     CenterAlignedTopAppBar(
         title = {
-            Column {
-                Text(
-                    text = titleText,
-                    style = MaterialTheme.typography.titleLarge,
-                )
-                subTitleText?.let {
-                    Text(
-                        text = subTitleText,
-                        style = MaterialTheme.typography.labelMedium.onSurfaceVariant(),
-                    )
-                }
-            }
+            TitleContent(
+                titleText = titleText,
+                subTitleText = subTitleText,
+                titleTextStyle = MaterialTheme.typography.titleLarge,
+                subTitleTextStyle = MaterialTheme.typography.labelMedium,
+            )
         },
+        modifier = Modifier,
         navigationIcon = {
             if (navigationIcon != null) {
                 IconButton(onClick = onNavigateBack) {
@@ -157,10 +156,13 @@ fun M3CenterAlignedTopAppBar(
         },
         actions = actions,
         expandedHeight = expandedHeight,
+        windowInsets = TopAppBarDefaults.windowInsets,
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
         scrollBehavior = scrollBehavior,
     )
 }
 
+// TODO - WIP
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun M3MediumTopAppBar(
@@ -171,19 +173,19 @@ fun M3MediumTopAppBar(
     actions: @Composable RowScope.() -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null,
 ) {
-    val subtitleLineHeightDp = getSubtitleLineHeight(MaterialTheme.typography.labelLarge)
-    // 4dp gap between title and subtitle
-    val gapDp = 4.dp
+//    val subtitleLineHeightDp = getSubtitleLineHeight(MaterialTheme.typography.labelLarge)
+//    // 4dp gap between title and subtitle
+//    val gapDp = 4.dp
 
-    // Total extra vertical required when a subtitle is present:
-    val extraForSubtitle = if (subTitleText != null) subtitleLineHeightDp + gapDp else 0.dp
-    // 2) Base collapsed/expanded heights from M3 defaults:
-    val baseCollapsed = TopAppBarDefaults.MediumAppBarCollapsedHeight
-    val baseExpanded  = TopAppBarDefaults.MediumAppBarExpandedHeight
+//    // Total extra vertical required when a subtitle is present:
+//    val extraForSubtitle = if (subTitleText != null) subtitleLineHeightDp + gapDp else 0.dp
+//    // 2) Base collapsed/expanded heights from M3 defaults:
+//    val baseCollapsed = TopAppBarDefaults.MediumAppBarCollapsedHeight
+//    val baseExpanded  = TopAppBarDefaults.MediumAppBarExpandedHeight
 
-    // 3) Add extra only if subTitleText != null:
-    val collapsedHeight = baseCollapsed + extraForSubtitle
-    val expandedHeight  = baseExpanded + extraForSubtitle + gapDp
+//    // 3) Add extra only if subTitleText != null:
+//    val collapsedHeight = baseCollapsed + extraForSubtitle
+//    val expandedHeight  = baseExpanded + extraForSubtitle + gapDp
     MediumTopAppBar(
         title = {
             Column {
@@ -214,6 +216,7 @@ fun M3MediumTopAppBar(
     )
 }
 
+// TODO - WIP
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun M3LargeTopAppBar(

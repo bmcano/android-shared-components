@@ -12,10 +12,13 @@ fun Navigation() {
         navController = navController,
         startDestination = Screen.Home.route,
     ) {
+        componentScreen(navController)
         homeScreen(navController)
     }
 }
 
 fun navigateToComponent(navHostController: NavHostController, component: Component) {
-
+    navHostController.navigate(Screen.M3Component(component)) {
+        popUpTo(Screen.Home.route)
+    }
 }
