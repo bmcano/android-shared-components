@@ -1,4 +1,4 @@
-package com.brandoncano.sharedcomponents.m3
+package com.brandoncano.sharedcomponents.custom
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

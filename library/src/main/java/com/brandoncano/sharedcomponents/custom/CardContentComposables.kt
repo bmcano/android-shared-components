@@ -1,4 +1,4 @@
-package com.brandoncano.sharedcomponents.m3
+package com.brandoncano.sharedcomponents.custom
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,6 +31,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.brandoncano.sharedcomponents.m3.M3Card
+import com.brandoncano.sharedcomponents.m3.M3FilledButton
+import com.brandoncano.sharedcomponents.m3.M3OutlinedButton
 
 // Card contents will be where we define a bunch of predefined structures.
 // Either from our common examples or from the guidelines.
