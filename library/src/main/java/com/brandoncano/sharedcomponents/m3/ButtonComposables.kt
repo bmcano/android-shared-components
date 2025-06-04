@@ -24,17 +24,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 
 // https://m3.material.io/components/buttons/guidelines
-
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Button(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#ElevatedButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#FilledTonalButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#OutlinedButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TextButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
+
+// TODO - Toggle Buttons
+// TODO - Proper KDocs, likely following finalized strings on screen.
 
 /**
  * Private helper composable that arranges an optional leading icon and single-line text.
@@ -64,7 +66,10 @@ private fun ButtonContent(
 }
 
 /**
- * An elevated button that appears raised above the surface, providing high emphasis.
+ * Elevated buttons provide separation from a visually prominent background.
+ * Buttons at higher elevations typically have more emphasis in a design, and should be used sparingly.
+ *
+ * https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Button(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
  */
 @Composable
 fun M3ElevatedButton(
@@ -83,13 +88,23 @@ fun M3ElevatedButton(
         modifier = modifier.defaultMinSize(minHeight = minHeight),
         enabled = enabled,
         shape = shape,
+        colors = ButtonDefaults.elevatedButtonColors(),
+        elevation = ButtonDefaults.elevatedButtonElevation(),
+        border = null,
+        contentPadding = ButtonDefaults.ContentPadding,
+        interactionSource = null,
     ) {
         ButtonContent(icon, iconContentDescription, buttonLabel)
     }
 }
 
 /**
- * A filled (contained) button that appears on a solid background, offering high emphasis.
+ * The filled button style has the most visual impact after the FAB, and should be used for important,
+ * final actions that complete a flow, like Save, Join now, or Confirm.
+ * Filled buttons have high visual impact when used for important actions.
+ * Since they have such strong emphasis, the filled style should be used sparingly, ideally for only one action on a page.
+ *
+ * https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#ElevatedButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
  */
 @Composable
 fun M3FilledButton(
@@ -108,13 +123,22 @@ fun M3FilledButton(
         modifier = modifier.defaultMinSize(minHeight = minHeight),
         enabled = enabled,
         shape = shape,
+        colors = ButtonDefaults.buttonColors(),
+        elevation = ButtonDefaults.buttonElevation(),
+        border = null,
+        contentPadding = ButtonDefaults.ContentPadding,
+        interactionSource = null,
     ) {
         ButtonContent(icon, iconContentDescription, buttonLabel)
     }
 }
 
 /**
- * A filled tonal button that appears on a muted container, providing medium emphasis.
+ * The tonal button style is useful in contexts where a lower-priority button requires slightly more
+ * emphasis than an outline would give, such as Next in an onboarding flow.
+ * The tonal style has less emphasis than filled or elevated.
+ *
+ * https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#FilledTonalButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
  */
 @Composable
 fun M3FilledTonalButton(
@@ -133,13 +157,23 @@ fun M3FilledTonalButton(
         modifier = modifier.defaultMinSize(minHeight = minHeight),
         enabled = enabled,
         shape = shape,
+        colors = ButtonDefaults.filledTonalButtonColors(),
+        elevation = ButtonDefaults.filledTonalButtonElevation(),
+        border = null,
+        contentPadding = ButtonDefaults.ContentPadding,
+        interactionSource = null,
     ) {
         ButtonContent(icon, iconContentDescription, buttonLabel)
     }
 }
 
 /**
- * An outlined button that appears on a transparent background with a border, offering medium emphasis.
+ * The outlined style is ideal for medium-emphasis buttons which contain actions that are important,
+ * but aren't the primary action in a product.
+ * Outlined buttons pair well with filled buttons to indicate alternative, secondary actions.
+ * They should be placed on simple backgrounds, not visually prominent backgrounds such as images or videos.
+ *
+ * https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#OutlinedButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
  */
 @Composable
 fun M3OutlinedButton(
@@ -158,13 +192,22 @@ fun M3OutlinedButton(
         modifier = modifier.defaultMinSize(minHeight = minHeight),
         enabled = enabled,
         shape = shape,
+        colors = ButtonDefaults.outlinedButtonColors(),
+        elevation = null,
+        border = ButtonDefaults.outlinedButtonBorder(enabled),
+        contentPadding = ButtonDefaults.ContentPadding,
+        interactionSource = null,
     ) {
         ButtonContent(icon, iconContentDescription, buttonLabel)
     }
 }
 
 /**
- * A text button that appears as flat text on a transparent background, offering low emphasis.
+ * The text button style should be used for the lowest priority actions, especially when presenting multiple options.
+ * They should be placed on simple backgrounds, not visually prominent backgrounds such as images or videos.
+ * Text buttons are often placed within components such as cards, dialogs, and snackbars.
+ *
+ * https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TextButton(kotlin.Function0,androidx.compose.material3.ButtonShapes,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
  */
 @Composable
 fun M3TextButton(
@@ -180,12 +223,18 @@ fun M3TextButton(
         onClick = onClick,
         modifier = modifier.defaultMinSize(minHeight = minHeight),
         enabled = enabled,
+        shape = ButtonDefaults.textShape,
+        colors = ButtonDefaults.textButtonColors(),
+        elevation = null,
+        border = null,
+        contentPadding = ButtonDefaults.TextButtonContentPadding,
+        interactionSource = null,
     ) {
         ButtonContent(icon, iconContentDescription, buttonLabel)
     }
 }
 
-@Preview(showBackground = true, widthDp = 360, heightDp = 1200)
+@AppComponentPreviews
 @Composable
 private fun ButtonsPreview() {
     MaterialTheme {
@@ -208,7 +257,6 @@ private fun ButtonsPreview() {
                 icon = Icons.Default.Favorite,
                 iconContentDescription = "Favorite"
             )
-
             M3FilledButton(
                 buttonLabel = "Filled",
                 onClick = { /*noop*/ },
@@ -222,7 +270,6 @@ private fun ButtonsPreview() {
                 icon = Icons.Default.Favorite,
                 iconContentDescription = "Favorite"
             )
-
             M3FilledTonalButton(
                 buttonLabel = "Tonal",
                 onClick = { /*noop*/ },
@@ -236,7 +283,6 @@ private fun ButtonsPreview() {
                 icon = Icons.Default.Favorite,
                 iconContentDescription = "Favorite"
             )
-
             M3OutlinedButton(
                 buttonLabel = "Outlined",
                 onClick = { /*noop*/ },
@@ -250,38 +296,11 @@ private fun ButtonsPreview() {
                 icon = Icons.Default.Favorite,
                 iconContentDescription = "Favorite"
             )
-
             M3TextButton(
                 buttonLabel = "Text Button",
                 onClick = { /*noop*/ },
                 icon = Icons.Default.Favorite,
                 iconContentDescription = "Favorite"
-            )
-
-            M3ElevatedButton(
-                buttonLabel = "Elevated Disabled",
-                onClick = { /*noop*/ },
-                enabled = false,
-            )
-            M3FilledButton(
-                buttonLabel = "Filled Disabled",
-                onClick = { /*noop*/ },
-                enabled = false,
-            )
-            M3FilledTonalButton(
-                buttonLabel = "Tonal Disabled",
-                onClick = { /*noop*/ },
-                enabled = false,
-            )
-            M3OutlinedButton(
-                buttonLabel = "Outlined Disabled",
-                onClick = { /*noop*/ },
-                enabled = false,
-            )
-            M3TextButton(
-                buttonLabel = "Text Disabled",
-                onClick = { /*noop*/ },
-                enabled = false,
             )
         }
     }

@@ -1,5 +1,6 @@
 package com.brandoncano.m3components.navigation
 
+import android.content.Context
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.slideInHorizontally
@@ -8,26 +9,30 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import androidx.navigation.toRoute
-import com.brandoncano.m3components.ui.screens.component.ComponentScreen
-import com.brandoncano.m3components.util.MakeToast
+import com.brandoncano.m3components.ui.screens.about.AboutScreen
+import com.brandoncano.sharedcomponents.utils.OpenLink
 
-fun NavGraphBuilder.componentScreen(
+fun NavGraphBuilder.aboutScreen(
     navHostController: NavHostController,
 ) {
-    composable<Screen.M3Component> (
+    composable(
+        route = Screen.About.route,
         enterTransition = { slideInHorizontally(initialOffsetX = { it }) },
         exitTransition = { ExitTransition.None },
         popEnterTransition = { EnterTransition.None },
         popExitTransition = { slideOutHorizontally(targetOffsetX = { it }) },
-    ) { navBackStackEntry ->
+    ) {
         val context = LocalContext.current
-        // Retrieve the argument from the route
-        val args = navBackStackEntry.toRoute<Screen.M3Component>()
-        ComponentScreen(
-            component = args.type,
+        AboutScreen(
             onNavigateBack = { navHostController.popBackStack() },
-            onExampleTapped = { MakeToast.execute(context) },
+            onViewPrivacyPolicyTapped = { navigateToPrivacyPolicy(context) },
+            onRateThisAppTapped = {  },
+            onViewOurAppsTapped = {  },
+            onDonateTapped = {  },
         )
     }
+}
+
+private fun navigateToPrivacyPolicy(context: Context) {
+    OpenLink.execute(context, "TODO: Add link")
 }

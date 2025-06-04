@@ -21,7 +21,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.brandoncano.m3components.R
 import com.brandoncano.m3components.navigation.Component
 import com.brandoncano.sharedcomponents.m3.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.m3.M3TopAppBar
@@ -31,13 +33,14 @@ import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 fun ComponentScreen(
     component: Component,
     onNavigateBack: () -> Unit,
+    onExampleTapped: () -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             M3TopAppBar(
-                titleText = "Component Name",
+                titleText = stringResource(R.string.component_screen_title),
                 navigationIcon = Icons.Default.Close,
                 onNavigateBack = onNavigateBack,
                 actions = {
@@ -65,13 +68,13 @@ fun ComponentScreen(
                 Component.BADGE -> { }
                 Component.BOTTOM_APP_BAR -> { }
                 Component.BOTTOM_SHEET -> { }
-                Component.BUTTONS -> { }
+                Component.BUTTONS -> ButtonContent(onExampleTapped)
                 Component.CARDS -> { }
                 Component.CHECKBOX -> { }
                 Component.CHIPS -> { }
                 Component.DATE_PICKER -> { }
                 Component.DIALOGS -> { }
-                Component.DIVIDERS -> { }
+                Component.DIVIDERS -> DividerContent()
                 Component.EXTENDED_FAB -> { }
                 Component.FAB -> { }
                 Component.ICON_BUTTONS -> { }

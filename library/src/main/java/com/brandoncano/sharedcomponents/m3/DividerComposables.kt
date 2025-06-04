@@ -51,7 +51,7 @@ fun InsetDivider(
  * @param modifier Optional [Modifier] for styling.
  */
 @Composable
-fun FullWidthVerticalDivider(
+fun FullHeightVerticalDivider(
     modifier: Modifier = Modifier,
 ) {
     VerticalDivider(modifier = modifier)
@@ -86,7 +86,7 @@ private fun DividerPreview() {
                 .height(48.dp),
             horizontalArrangement = Arrangement.Center,
         ) {
-            FullWidthVerticalDivider(modifier = Modifier.padding(horizontal = 8.dp))
+            FullHeightVerticalDivider(modifier = Modifier.padding(horizontal = 8.dp))
             InsetVerticalDivider(
                 insetPadding = 12.dp,
                 modifier = Modifier.padding(horizontal = 8.dp),

@@ -2,6 +2,11 @@
     <!-- TODO - Come up with a proper app name -->
     <string name="app_name">M3 with Compose</string>
 
+    <!-- About -->
+    <string name="about_title">About The App</string>
+    <string name="about_view_privacy_policy">View privacy policy</string>
+    <string name="about_overview_title">Overview &amp; standards</string>
+
     <string name="home_title">Material 3</string>
     <string name="home_subtitle">Jetpack Compose</string>
 
@@ -66,5 +71,47 @@
     <string name="component_text_fields_desc">Input fields where users can enter and edit text.</string>
     <string name="component_time_picker_desc">A dialog or inline component for selecting a time of day.</string>
     <string name="component_top_app_bar_desc">A bar at the top of the screen containing navigation and action items.</string>
+
+    <string name="component_screen_title">Material 3</string>
+    <string name="component_screen_related_header">Similar elements</string>
+    <string name="component_screen_related_subtitle">Explore other UI elements you might find useful.</string>
+
+    <!-- Buttons -->
+    <string name="buttons_overview_title">Buttons overview</string>
+    <string name="buttons_overview_description">Material 3 offer five button variants: Elevated, Filled, Tonal, Outlined, and Text. Each variant may include an optional icon. Button labels should use sentence case and be no longer than three words. Additionally, buttons can appear with square corners instead of rounded ones, and can be shown in a disabled state.</string>
+    <string name="button_elevated_default">Elevated</string>
+    <string name="button_elevated_with_icon">Elevated with icon</string>
+    <string name="button_elevated_disabled">Elevated disabled</string>
+    <string name="button_elevated_square">Elevated square</string>
+    <string name="button_elevated_guidelines">Elevated buttons provide separation from a visually prominent background. Buttons at higher elevations typically have more emphasis in a design, and should be used sparingly.</string>
+    <string name="button_filled_default">Filled</string>
+    <string name="button_filled_with_icon">Filled with icon</string>
+    <string name="button_filled_disabled">Filled disabled</string>
+    <string name="button_filled_square">Filled square</string>
+    <string name="button_filled_guidelines">Filled buttons have high visual impact when used for important actions. It should be used for important, final actions that complete a flow, like Save or Confirm. Since they have such strong emphasis, the filled style should be used sparingly, ideally for only one action on a page.</string>
+    <string name="button_tonal_default">Tonal</string>
+    <string name="button_tonal_with_icon">Tonal with icon</string>
+    <string name="button_tonal_disabled">Tonal disabled</string>
+    <string name="button_tonal_square">Tonal square</string>
+    <string name="button_tonal_guidelines">The tonal style has less emphasis than filled or elevated. The tonal button style is useful in contexts where a lower-priority button requires slightly more emphasis than an outline would give, such as Next in an onboarding flow.</string>
+    <string name="button_outlined_default">Outlined</string>
+    <string name="button_outlined_with_icon">Outlined with icon</string>
+    <string name="button_outlined_disabled">Outlined disabled</string>
+    <string name="button_outlined_square">Outlined square</string>
+    <string name="button_outlined_guidelines">"The outlined style is ideal for medium-emphasis buttons which contain actions that are important, but aren't the primary action in a product. Outlined buttons pair well with filled buttons to indicate alternative, secondary actions."</string>
+    <string name="button_text_default">Text</string>
+    <string name="button_text_with_icon">Text with icon</string>
+    <string name="button_text_disabled">Text disabled</string>
+    <string name="button_text_guidelines">The text button style should be used for the lowest priority actions, especially when presenting multiple options. They should be placed on simple backgrounds and are often placed within components such as cards, dialogs, and snackbars.</string>
+
+    <!-- Divider -->
+    <string name="dividers_overview_title">Dividers overview</string>
+    <string name="dividers_overview_body1">Dividers are thin, 1dp lines that separate or group content. There are two orientations (horizontal and vertical), each available as full-width/height (edge-to-edge) or inset (aligned with indented content). Use them sparingly to create clear visual breaks without overcrowding.</string>
+    <string name="dividers_overview_body2">Use full width dividers to separate larger sections of unrelated content. They can be used directly on a surface or inside other components like cards or lists. Full width dividers can also separate interactive areas from non-interactive areas.</string>
+    <string name="dividers_overview_body3">Use inset dividers to separate related content within a section. Inset dividers are equally indented from both sides of the screen by default.</string>
+    <string name="dividers_full_width">Full width divider</string>
+    <string name="dividers_inset">Inset divider</string>
+    <string name="dividers_full_height_vertical">Full height vertical divider</string>
+    <string name="dividers_inset_vertical">Inset vertical divider</string>
 
 </resources>

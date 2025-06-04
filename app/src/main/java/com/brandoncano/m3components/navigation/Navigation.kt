@@ -12,9 +12,14 @@ fun Navigation() {
         navController = navController,
         startDestination = Screen.Home.route,
     ) {
+        aboutScreen(navController)
         componentScreen(navController)
         homeScreen(navController)
     }
+}
+
+fun navigateToAbout(navHostController: NavHostController) {
+    navHostController.navigate(Screen.About.route)
 }
 
 fun navigateToComponent(navHostController: NavHostController, component: Component) {
