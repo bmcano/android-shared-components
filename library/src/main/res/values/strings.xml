@@ -37,4 +37,7 @@
     <string name="dialog_confirm_button">Done</string>
 
     <string name="bullet_point">•</string>
+
+    <!-- M3 Content Descriptions -->
+    <string name="badge_cd">New notification</string>
 </resources>

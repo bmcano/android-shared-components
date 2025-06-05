@@ -65,7 +65,7 @@ fun ComponentScreen(
         ) {
             Spacer(modifier = Modifier.height(24.dp))
             when (component) {
-                Component.BADGE -> { }
+                Component.BADGE -> BadgeContent()
                 Component.BOTTOM_APP_BAR -> { }
                 Component.BOTTOM_SHEET -> { }
                 Component.BUTTONS -> ButtonContent(onExampleTapped)

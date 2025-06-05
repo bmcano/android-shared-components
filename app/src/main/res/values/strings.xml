@@ -76,6 +76,13 @@
     <string name="component_screen_related_header">Similar elements</string>
     <string name="component_screen_related_subtitle">Explore other UI elements you might find useful.</string>
 
+    <!-- Badges -->
+    <string name="badges_overview_title">Badge overview</string>
+    <string name="badges_description1">Badges are typically placed on the ending edge of icons and used to indicate a notification or item count. They are most commonly used within other components, such as navigation bar, navigation rail, app bars, and tabs.</string>
+    <string name="badges_description2">Use small (dot) badges for simple attention indicators and larger badges to display numeric counts.</string>
+    <string name="badges_footnote">Note: the text on a large badge should be no longer than four characters.</string>
+    <string name="badges_small">Small badge</string>
+    <string name="badges_large">Large badge</string>
     <!-- Buttons -->
     <string name="buttons_overview_title">Buttons overview</string>
     <string name="buttons_overview_description">Material 3 offer five button variants: Elevated, Filled, Tonal, Outlined, and Text. Each variant may include an optional icon. Button labels should use sentence case and be no longer than three words. Additionally, buttons can appear with square corners instead of rounded ones, and can be shown in a disabled state.</string>
