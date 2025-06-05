@@ -1,16 +1,20 @@
 package com.brandoncano.m3components.ui.screens.about
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Grade
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,10 +25,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
-import com.brandoncano.sharedcomponents.composables.AppArrowCardButton
-import com.brandoncano.sharedcomponents.data.ArrowCardButtonContents
 import com.brandoncano.sharedcomponents.m3.M3Divider
 import com.brandoncano.sharedcomponents.m3.M3OutlinedCard
+import com.brandoncano.sharedcomponents.m3.M3SingleLineListItem
 import com.brandoncano.sharedcomponents.text.textStyleHeadline
 
 @Composable
@@ -103,26 +106,51 @@ fun OurAppsButtons(
         Text(
             text = stringResource(id = R.string.about_support_us_header),
             modifier = Modifier.align(Alignment.Start),
-            style = textStyleHeadline(),
+            style = MaterialTheme.typography.titleMedium,
         )
         Spacer(modifier = Modifier.height(12.dp))
-        // TODO - rewrite in M3 styles
-        AppArrowCardButton(
-            ArrowCardButtonContents(
-                imageVector = Icons.Outlined.Grade,
-                text = stringResource(id = R.string.about_rate_us),
-                onClick = onRateThisAppTapped,
-            ),
-            ArrowCardButtonContents(
-                imageVector = Icons.Outlined.Apps,
-                text = stringResource(id = R.string.about_view_apps),
-                onClick = onViewOurAppsTapped,
-            ),
-            ArrowCardButtonContents(
-                imageVector = Icons.Outlined.FavoriteBorder,
-                text = stringResource(R.string.about_donate),
-                onClick = onDonateTapped,
-            ),
-        )
+        M3OutlinedCard {
+            M3SingleLineListItem(
+                headlineText = stringResource(id = R.string.about_rate_us),
+                modifier = Modifier
+                    .clickable { onRateThisAppTapped.invoke() }
+                    .padding(vertical = 4.dp),
+                leadingContent = {
+                    Icon(
+                        imageVector = Icons.Outlined.Grade,
+                        contentDescription = null,
+                    )
+                },
+                trailingImage = Icons.AutoMirrored.Filled.ArrowForwardIos
+            )
+            M3Divider(insetPadding = 16.dp)
+            M3SingleLineListItem(
+                headlineText = stringResource(id = R.string.about_view_apps),
+                modifier = Modifier
+                    .clickable { onViewOurAppsTapped.invoke() }
+                    .padding(vertical = 4.dp),
+                leadingContent = {
+                    Icon(
+                        imageVector = Icons.Outlined.Apps,
+                        contentDescription = null,
+                    )
+                },
+                trailingImage = Icons.AutoMirrored.Filled.ArrowForwardIos
+            )
+            M3Divider(insetPadding = 16.dp)
+            M3SingleLineListItem(
+                headlineText = stringResource(id = R.string.about_donate),
+                modifier = Modifier
+                    .clickable { onDonateTapped.invoke() }
+                    .padding(vertical = 4.dp),
+                leadingContent = {
+                    Icon(
+                        imageVector = Icons.Outlined.FavoriteBorder,
+                        contentDescription = null,
+                    )
+                },
+                trailingImage = Icons.AutoMirrored.Filled.ArrowForwardIos
+            )
+        }
     }
 }

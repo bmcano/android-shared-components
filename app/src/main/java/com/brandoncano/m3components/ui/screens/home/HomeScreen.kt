@@ -46,6 +46,7 @@ import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 @Composable
 fun HomeScreen(
     componentCardPOs: List<ComponentCardPO>,
+    onAboutTapped: () -> Unit,
     onComponentTapped: (Component) -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -68,7 +69,7 @@ fun HomeScreen(
                             contentDescription = "Feedback",
                         )
                     }
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = onAboutTapped) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
                             contentDescription = "About",
@@ -133,6 +134,7 @@ private fun HomeScreenPreview() {
     M3ComponentsTheme {
         HomeScreen(
             componentCardPOs = ComponentCardPOsDeriver.execute(),
+            onAboutTapped = {},
             onComponentTapped = {},
         )
     }

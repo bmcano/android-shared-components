@@ -19,6 +19,7 @@ fun NavGraphBuilder.homeScreen(
         val componentCardPOs = ComponentCardPOsDeriver.execute()
         HomeScreen(
             componentCardPOs = componentCardPOs,
+            onAboutTapped = { navigateToAbout(navHostController) },
             onComponentTapped = { navigateToComponent(navHostController, it) },
         )
     }
