@@ -4,8 +4,16 @@
 
     <!-- About -->
     <string name="about_title">About The App</string>
+    <string name="about_created_by">Created by</string>
+    <string name="about_author">Brandon Cano</string>
+    <string name="about_app_version">App version</string>
+    <string name="about_last_updated_on">Last updated on</string>
     <string name="about_view_privacy_policy">View privacy policy</string>
     <string name="about_overview_title">Overview &amp; standards</string>
+    <string name="about_support_us_header">Support us</string>
+    <string name="about_rate_us">Rate this app on Google Play</string>
+    <string name="about_view_apps">Check out our other apps</string>
+    <string name="about_donate">Donate</string>
 
     <string name="home_title">Material 3</string>
     <string name="home_subtitle">Jetpack Compose</string>

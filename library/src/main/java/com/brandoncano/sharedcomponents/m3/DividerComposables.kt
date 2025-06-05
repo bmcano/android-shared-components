@@ -32,15 +32,15 @@ fun FullWidthDivider(
 
 
 /**
- * A horizontal divider with inset padding on both sides.
+ * A horizontal divider with optional inset padding on both sides.
  *
  * @param insetPadding Horizontal [Dp] inset to apply on the start and end.
  * @param modifier Optional [Modifier] for styling.
  */
 @Composable
-fun InsetDivider(
-    insetPadding: Dp,
-    modifier: Modifier = Modifier
+fun M3Divider(
+    modifier: Modifier = Modifier,
+    insetPadding: Dp = 0.dp,
 ) {
     HorizontalDivider(modifier = modifier.padding(horizontal = insetPadding))
 }
@@ -58,15 +58,15 @@ fun FullHeightVerticalDivider(
 }
 
 /**
- * A vertical divider with horizontal inset padding.
+ * A vertical divider with optional vertical inset padding.
  *
  * @param insetPadding Horizontal [Dp] inset to apply on the start and end.
  * @param modifier Optional [Modifier] for styling.
  */
 @Composable
-fun InsetVerticalDivider(
-    insetPadding: Dp,
-    modifier: Modifier = Modifier
+fun M3VerticalDivider(
+    modifier: Modifier = Modifier,
+    insetPadding: Dp = 0.dp,
 ) {
     VerticalDivider(modifier = modifier.padding(vertical = insetPadding))
 }
@@ -76,7 +76,7 @@ fun InsetVerticalDivider(
 private fun DividerPreview() {
     Column {
         FullWidthDivider(modifier = Modifier.padding(vertical = 8.dp))
-        InsetDivider(
+        M3Divider(
             insetPadding = 16.dp,
             modifier = Modifier.padding(vertical = 8.dp),
         )
@@ -87,7 +87,7 @@ private fun DividerPreview() {
             horizontalArrangement = Arrangement.Center,
         ) {
             FullHeightVerticalDivider(modifier = Modifier.padding(horizontal = 8.dp))
-            InsetVerticalDivider(
+            M3VerticalDivider(
                 insetPadding = 12.dp,
                 modifier = Modifier.padding(horizontal = 8.dp),
             )

@@ -25,8 +25,8 @@ import com.brandoncano.sharedcomponents.composables.AppLongScreenPreview
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.m3.FullHeightVerticalDivider
 import com.brandoncano.sharedcomponents.m3.FullWidthDivider
-import com.brandoncano.sharedcomponents.m3.InsetDivider
-import com.brandoncano.sharedcomponents.m3.InsetVerticalDivider
+import com.brandoncano.sharedcomponents.m3.M3Divider
+import com.brandoncano.sharedcomponents.m3.M3VerticalDivider
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 
 @Composable
@@ -64,7 +64,7 @@ fun DividerContent() {
             text = stringResource(R.string.dividers_inset),
             style = MaterialTheme.typography.titleMedium,
         )
-        InsetDivider(insetPadding = 32.dp)
+        M3Divider(insetPadding = 32.dp)
         Spacer(modifier = Modifier.height(32.dp))
 
         Row(
@@ -99,7 +99,7 @@ fun DividerContent() {
                 text = stringResource(R.string.dividers_inset_vertical),
                 style = MaterialTheme.typography.titleMedium
             )
-            InsetVerticalDivider(insetPadding = 16.dp)
+            M3VerticalDivider(insetPadding = 16.dp)
             Box(
                 modifier = Modifier
                     .weight(1f)
