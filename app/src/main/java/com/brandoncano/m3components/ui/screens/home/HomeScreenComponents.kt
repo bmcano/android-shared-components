@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
 import com.brandoncano.m3components.navigation.Component
@@ -68,6 +69,8 @@ fun ComponentOverviewCardContent(
             Text(
                 text = stringResource(id = componentCardPO.descRes),
                 style = MaterialTheme.typography.bodySmall.onSurfaceVariant(),
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 3,
             )
             Spacer(modifier = Modifier.height(8.dp))
         }

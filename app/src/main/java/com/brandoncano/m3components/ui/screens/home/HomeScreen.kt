@@ -1,13 +1,19 @@
 package com.brandoncano.m3components.ui.screens.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -96,18 +102,27 @@ private fun HomeScreenContent(
         horizontalAlignment = Alignment.Start,
     ) {
         Spacer(modifier = Modifier.height(24.dp))
-        componentCardPOs.forEach {
-            M3OutlinedCard(
-                modifier = Modifier.padding(horizontal = 16.dp),
-            ) {
-                ComponentOverviewCardContent(
-                    componentCardPO = it,
-                    onComponentTapped = onComponentTapped,
-                )
+        FlowRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            itemVerticalAlignment = Alignment.Top,
+            maxItemsInEachRow = 4,
+        ) {
+            componentCardPOs.forEach { componentCardPO ->
+                M3OutlinedCard(
+                    modifier = Modifier.widthIn(max = 192.dp)
+                ) {
+                    ComponentOverviewCardContent(
+                        componentCardPO = componentCardPO,
+                        onComponentTapped = onComponentTapped,
+                    )
+                }
             }
-            Spacer(modifier = Modifier.height(12.dp))
         }
-        BottomScreenSpacer(height = 12.dp)
+        BottomScreenSpacer()
     }
 }
 
