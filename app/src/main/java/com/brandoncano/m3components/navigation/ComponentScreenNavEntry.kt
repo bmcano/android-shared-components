@@ -29,7 +29,7 @@ fun NavGraphBuilder.componentScreen(
         ComponentScreen(
             component = component,
             onNavigateBack = { navHostController.popBackStack() },
-            onExampleTapped = { MakeToast.execute(context) },
+            onExampleTapped = { MakeToast.execute(context, it) },
         )
     }
 }

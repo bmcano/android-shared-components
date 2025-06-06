@@ -19,7 +19,9 @@ import com.brandoncano.sharedcomponents.m3.M3RadioButtonGroup
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 
 @Composable
-fun RadioButtonContent() {
+fun RadioButtonContent(
+    onExampleTapped: (String) -> Unit
+) {
     Column(
         modifier = Modifier.padding(horizontal = 16.dp),
     ) {
@@ -40,6 +42,8 @@ fun RadioButtonContent() {
         M3Divider(modifier = Modifier.padding(vertical = 16.dp))
         M3RadioButtonGroup(
             options = listOf("Option 1", "Option 2", "Option 3"),
+            optionSelected = "Option 1",
+            onOptionSelected = { onExampleTapped(it) },
             verticalPadding = 12.dp,
         )
     }

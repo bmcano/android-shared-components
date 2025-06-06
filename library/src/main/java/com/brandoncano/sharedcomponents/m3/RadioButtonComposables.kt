@@ -22,6 +22,8 @@ import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 // https://m3.material.io/components/radio-button/overview
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#RadioButton(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.RadioButtonColors,androidx.compose.foundation.interaction.MutableInteractionSource)
 
+// TODO - add onOption selected input
+
 /**
  * Renders a vertical group of radio buttons for selecting one option.
  *
@@ -32,11 +34,13 @@ import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 @Composable
 fun M3RadioButtonGroup(
     options: List<String>,
+    optionSelected: String,
+    onOptionSelected: (String) -> Unit,
     horizontalInsetPadding: Dp = 16.dp,
     verticalPadding: Dp = 8.dp,
 ) {
     if (options.size < 2) return
-    val (selectedOption, onOptionSelected) = remember { mutableStateOf(options[0]) }
+    val (selectedOption, onSelectedOption) = remember { mutableStateOf(optionSelected) }
     Column(
         modifier = Modifier.selectableGroup(),
     ) {
@@ -47,7 +51,10 @@ fun M3RadioButtonGroup(
                    .fillMaxWidth()
                    .selectable(
                        selected = selected,
-                       onClick = { onOptionSelected(option) },
+                       onClick = {
+                           onSelectedOption(option)
+                           onOptionSelected(option)
+                       },
                        role = Role.RadioButton,
                    )
                    .padding(
@@ -58,7 +65,7 @@ fun M3RadioButtonGroup(
             ) {
                 RadioButton(
                     selected = (option == selectedOption),
-                    onClick = null,
+                    onClick = null, // null recommended for screen readers
                 )
                 Text(
                     text = option,
@@ -74,6 +81,8 @@ fun M3RadioButtonGroup(
 @Composable
 private fun RadioButtonPreview() {
     M3RadioButtonGroup(
-        options = listOf("Light", "Dark", "System default")
+        options = listOf("Light", "Dark", "System default"),
+        optionSelected = "Dark",
+        onOptionSelected = {},
     )
 }

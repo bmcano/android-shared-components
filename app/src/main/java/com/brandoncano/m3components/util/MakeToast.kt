@@ -8,9 +8,9 @@ import android.widget.Toast
  */
 object MakeToast {
 
-    fun execute(context: Context) {
+    fun execute(context: Context, text: String) {
         Toast
-            .makeText(context, "Material3", Toast.LENGTH_SHORT)
+            .makeText(context, text, Toast.LENGTH_SHORT)
             .show()
     }
 }

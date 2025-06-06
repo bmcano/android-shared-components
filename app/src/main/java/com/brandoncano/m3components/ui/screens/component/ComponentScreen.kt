@@ -38,7 +38,7 @@ import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 fun ComponentScreen(
     component: Component,
     onNavigateBack: () -> Unit,
-    onExampleTapped: () -> Unit,
+    onExampleTapped: (String) -> Unit,
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
@@ -96,7 +96,7 @@ fun ComponentScreen(
                 Component.NAVIGATION_DRAWER -> { }
                 Component.NAVIGATION_RAIL -> { }
                 Component.PROGRESS_INDICATORS -> { }
-                Component.RADIO_BUTTON -> RadioButtonContent() // Complete
+                Component.RADIO_BUTTON -> RadioButtonContent(onExampleTapped) // Complete
                 Component.SEARCH_BAR -> { }
                 Component.SEGMENTED_BUTTON -> { }
                 Component.SLIDERS -> { }
