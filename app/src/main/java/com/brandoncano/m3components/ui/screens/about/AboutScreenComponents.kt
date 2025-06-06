@@ -110,6 +110,7 @@ fun OurAppsButtons(
         )
         Spacer(modifier = Modifier.height(12.dp))
         M3OutlinedCard {
+            // TODO - We can make this into a custom card content component
             M3SingleLineListItem(
                 headlineText = stringResource(id = R.string.about_rate_us),
                 modifier = Modifier

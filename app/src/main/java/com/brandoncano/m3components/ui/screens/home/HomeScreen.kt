@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
@@ -93,19 +94,19 @@ private fun HomeScreenContent(
     componentCardPOs: List<ComponentCardPO>,
     onComponentTapped: (Component) -> Unit,
 ) {
+    val sidePadding = dimensionResource(R.dimen.screen_side_padding)
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(paddingValues),
+            .padding(paddingValues)
+            .padding(horizontal = sidePadding),
         horizontalAlignment = Alignment.Start,
     ) {
         Spacer(modifier = Modifier.height(24.dp))
         // TODO - I may need to consider the LazyVerticalGrid layout
         FlowRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             itemVerticalAlignment = Alignment.Top,

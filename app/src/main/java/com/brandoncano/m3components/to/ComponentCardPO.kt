@@ -9,4 +9,5 @@ data class ComponentCardPO(
     val icon: ImageVector,
     @StringRes val titleRes: Int,
     @StringRes val descRes: Int,
+    val relatedItems: List<Component> = emptyList<Component>(),
 )

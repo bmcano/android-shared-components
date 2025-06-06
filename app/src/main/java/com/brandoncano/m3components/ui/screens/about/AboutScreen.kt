@@ -17,6 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
@@ -62,7 +63,7 @@ private fun AboutScreenContent(
     onViewOurAppsTapped: () -> Unit,
     onDonateTapped: () -> Unit,
 ) {
-    val sidePadding = 16.dp // TODO
+    val sidePadding = dimensionResource(R.dimen.screen_side_padding)
     Column(
         modifier = Modifier
             .fillMaxSize()

@@ -1,6 +1,5 @@
 package com.brandoncano.sharedcomponents.m3
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,19 +26,19 @@ import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
  * Renders a vertical group of radio buttons for selecting one option.
  *
  * @param options A list of labels for each radio button; at least two items required.
- * @param verticalSpaceBetweenItems Space between rows (default 8.dp).
+ * @param horizontalInsetPadding Space from the start of the screen to the content (default 16.dp).
+ * @param verticalPadding Space between rows (default 8.dp).
  */
 @Composable
 fun M3RadioButtonGroup(
     options: List<String>,
     horizontalInsetPadding: Dp = 16.dp,
-    verticalSpaceBetweenItems: Dp = 8.dp,
+    verticalPadding: Dp = 8.dp,
 ) {
     if (options.size < 2) return
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(options[0]) }
     Column(
         modifier = Modifier.selectableGroup(),
-        verticalArrangement = Arrangement.spacedBy(verticalSpaceBetweenItems),
     ) {
         options.forEach { option ->
             val selected = (option == selectedOption)
@@ -53,7 +52,7 @@ fun M3RadioButtonGroup(
                    )
                    .padding(
                        horizontal = horizontalInsetPadding,
-                       vertical = 4.dp,
+                       vertical = verticalPadding,
                    ),
                 verticalAlignment = Alignment.CenterVertically,
             ) {

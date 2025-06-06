@@ -39,7 +39,8 @@ fun RadioButtonContent() {
         )
         M3Divider(modifier = Modifier.padding(vertical = 16.dp))
         M3RadioButtonGroup(
-            options = listOf("Option 1", "Option 2", "Option 3")
+            options = listOf("Option 1", "Option 2", "Option 3"),
+            verticalPadding = 12.dp,
         )
     }
 }

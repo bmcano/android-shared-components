@@ -194,16 +194,6 @@ fun ButtonContent(
                 enabled = false,
             )
         }
-        FullWidthDivider(modifier = Modifier.padding(vertical = 16.dp))
-        // Related content
-        Text(
-            text = stringResource(R.string.component_screen_related_header),
-            style = MaterialTheme.typography.titleMedium,
-        )
-        Text(
-            text = stringResource(R.string.component_screen_related_subtitle),
-            style = MaterialTheme.typography.bodyMedium.onSurfaceVariant(),
-        )
     }
 }
 

@@ -24,8 +24,10 @@ fun NavGraphBuilder.componentScreen(
         val context = LocalContext.current
         // Retrieve the argument from the route
         val args = navBackStackEntry.toRoute<Screen.M3Component>()
+        val component = args.type
+        // TODO - create util to get list of ComponentCardPOs of only the similar elements for the specified component
         ComponentScreen(
-            component = args.type,
+            component = component,
             onNavigateBack = { navHostController.popBackStack() },
             onExampleTapped = { MakeToast.execute(context) },
         )
