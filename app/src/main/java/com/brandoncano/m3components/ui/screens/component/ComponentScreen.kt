@@ -80,13 +80,13 @@ fun ComponentScreen(
                 Component.BADGE -> BadgeContent() // Complete
                 Component.BOTTOM_APP_BAR -> { }
                 Component.BOTTOM_SHEET -> { }
-                Component.BUTTONS -> ButtonContent(onExampleTapped)
+                Component.BUTTONS -> ButtonContent(onExampleTapped) // Complete - Toggle buttons can come later.
                 Component.CARDS -> { }
                 Component.CHECKBOX -> { }
                 Component.CHIPS -> { }
                 Component.DATE_PICKER -> { }
                 Component.DIALOGS -> { }
-                Component.DIVIDERS -> DividerContent()
+                Component.DIVIDERS -> DividerContent() // Complete
                 Component.EXTENDED_FAB -> { }
                 Component.FAB -> { }
                 Component.ICON_BUTTONS -> { }
@@ -96,7 +96,7 @@ fun ComponentScreen(
                 Component.NAVIGATION_DRAWER -> { }
                 Component.NAVIGATION_RAIL -> { }
                 Component.PROGRESS_INDICATORS -> { }
-                Component.RADIO_BUTTON -> RadioButtonContent()
+                Component.RADIO_BUTTON -> RadioButtonContent() // Complete
                 Component.SEARCH_BAR -> { }
                 Component.SEGMENTED_BUTTON -> { }
                 Component.SLIDERS -> { }

@@ -1,13 +1,9 @@
 package com.brandoncano.m3components.ui.screens.component
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -23,8 +19,6 @@ import com.brandoncano.m3components.navigation.Component
 import com.brandoncano.m3components.ui.theme.M3ComponentsTheme
 import com.brandoncano.sharedcomponents.composables.AppLongScreenPreview
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
-import com.brandoncano.sharedcomponents.m3.FullHeightVerticalDivider
-import com.brandoncano.sharedcomponents.m3.FullWidthDivider
 import com.brandoncano.sharedcomponents.m3.M3Divider
 import com.brandoncano.sharedcomponents.m3.M3VerticalDivider
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
@@ -56,17 +50,18 @@ fun DividerContent() {
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             text = stringResource(R.string.dividers_full_width),
-            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(bottom = 4.dp),
+            style = MaterialTheme.typography.titleMedium.onSurfaceVariant(),
         )
-        FullWidthDivider()
+        M3Divider()
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             text = stringResource(R.string.dividers_inset),
-            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(start = 32.dp, bottom = 4.dp),
+            style = MaterialTheme.typography.titleMedium.onSurfaceVariant(),
         )
         M3Divider(insetPadding = 32.dp)
         Spacer(modifier = Modifier.height(32.dp))
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -75,39 +70,17 @@ fun DividerContent() {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = stringResource(R.string.dividers_full_height_vertical),
-                style = MaterialTheme.typography.titleMedium
+                text = stringResource(R.string.dividers_vertical),
+                style = MaterialTheme.typography.titleMedium.onSurfaceVariant()
             )
-            FullHeightVerticalDivider()
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight()
-                    .border(border = BorderStroke(width = 4.dp, color = MaterialTheme.colorScheme.surfaceVariant)),
-                contentAlignment = Alignment.Center
-            ) {}
-        }
-        Spacer(modifier = Modifier.height(32.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(80.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
+            M3VerticalDivider()
             Text(
                 text = stringResource(R.string.dividers_inset_vertical),
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium.onSurfaceVariant()
             )
             M3VerticalDivider(insetPadding = 16.dp)
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight()
-                    .border(border = BorderStroke(width = 4.dp, color = MaterialTheme.colorScheme.surfaceVariant)),
-                contentAlignment = Alignment.Center
-            ) {}
         }
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }
 

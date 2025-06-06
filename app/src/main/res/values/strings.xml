@@ -121,13 +121,13 @@
 
     <!-- Divider -->
     <string name="dividers_overview_title">Dividers overview</string>
-    <string name="dividers_overview_body1">Dividers are thin, 1dp lines that separate or group content. There are two orientations (horizontal and vertical), each available as full-width/height (edge-to-edge) or inset (aligned with indented content). Use them sparingly to create clear visual breaks without overcrowding.</string>
-    <string name="dividers_overview_body2">Use full width dividers to separate larger sections of unrelated content. They can be used directly on a surface or inside other components like cards or lists. Full width dividers can also separate interactive areas from non-interactive areas.</string>
-    <string name="dividers_overview_body3">Use inset dividers to separate related content within a section. Inset dividers are equally indented from both sides of the screen by default.</string>
+    <string name="dividers_overview_body1">Dividers are thin lines that separate or group content. There are two orientations (horizontal and vertical). Use them sparingly to create clear visual breaks without overcrowding.</string>
+    <string name="dividers_overview_body2">Full width dividers are used to separate larger sections of unrelated content. They can be used directly on a surface or inside other components like cards or lists. Full width dividers can also separate interactive areas from non-interactive areas.</string>
+    <string name="dividers_overview_body3">Inset dividers can separate related content within a section. They are equally indented from both sides of the screen by default.</string>
     <string name="dividers_full_width">Full width divider</string>
     <string name="dividers_inset">Inset divider</string>
-    <string name="dividers_full_height_vertical">Full height vertical divider</string>
-    <string name="dividers_inset_vertical">Inset vertical divider</string>
+    <string name="dividers_vertical">Vertical divider</string>
+    <string name="dividers_inset_vertical">With insets</string>
 
     <!-- Radio Button -->
     <string name="radio_overview_title">Radio button overview</string>
