@@ -84,7 +84,7 @@ fun ComponentScreen(
                 Component.NAVIGATION_DRAWER -> { }
                 Component.NAVIGATION_RAIL -> { }
                 Component.PROGRESS_INDICATORS -> { }
-                Component.RADIO_BUTTON -> { }
+                Component.RADIO_BUTTON -> RadioButtonContent()
                 Component.SEARCH_BAR -> { }
                 Component.SEGMENTED_BUTTON -> { }
                 Component.SLIDERS -> { }

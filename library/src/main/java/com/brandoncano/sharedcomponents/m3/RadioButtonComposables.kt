@@ -32,6 +32,7 @@ import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 @Composable
 fun M3RadioButtonGroup(
     options: List<String>,
+    horizontalInsetPadding: Dp = 16.dp,
     verticalSpaceBetweenItems: Dp = 8.dp,
 ) {
     if (options.size < 2) return
@@ -50,7 +51,7 @@ fun M3RadioButtonGroup(
                        onClick = { onOptionSelected(option) },
                        role = Role.RadioButton,
                    )
-                   .padding(horizontal = 16.dp),
+                   .padding(horizontal = horizontalInsetPadding),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 RadioButton(

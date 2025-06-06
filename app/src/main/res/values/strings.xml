@@ -69,7 +69,7 @@
     <string name="component_navigation_drawer_desc">A sliding panel that presents app-level navigation options.</string>
     <string name="component_navigation_rail_desc">A vertical component offering top-level navigation, ideal for larger screens.</string>
     <string name="component_progress_indicators_desc">Visual indicators that show the progress of ongoing tasks.</string>
-    <string name="component_radio_button_desc">A control that allows a single selection from a group of options.</string>
+    <string name="component_radio_button_desc">A control that allows a single selection from a list of options.</string>
     <string name="component_search_bar_desc">An input field where users can enter text to search content.</string>
     <string name="component_segmented_button_desc">A group of horizontally aligned buttons where only one can be selected.</string>
     <string name="component_sliders_desc">Controls that let users select a value by dragging a thumb along a track.</string>
@@ -129,4 +129,8 @@
     <string name="dividers_full_height_vertical">Full height vertical divider</string>
     <string name="dividers_inset_vertical">Inset vertical divider</string>
 
+    <!-- Radio Button -->
+    <string name="radio_overview_title">Radio button overview</string>
+    <string name="radio_description1">Radio buttons let users select exactly one option from a list. Use them when you want to expose all available choices and enforce a single selection.</string>
+    <string name="radio_description2">They must always include clear inline labels.</string>
 </resources>

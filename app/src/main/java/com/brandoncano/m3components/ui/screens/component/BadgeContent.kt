@@ -18,12 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
+import com.brandoncano.m3components.navigation.Component
+import com.brandoncano.m3components.ui.theme.M3ComponentsTheme
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.m3.M3LargeBadge
 import com.brandoncano.sharedcomponents.m3.M3SmallBadge
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 
-@AppScreenPreviews
 @Composable
 fun BadgeContent() {
     Column(
@@ -103,6 +104,18 @@ private fun BadgeExample() {
             label = { Text(text = stringResource(R.string.badges_large)) },
             selected = false,
             onClick = {},
+        )
+    }
+}
+
+@AppScreenPreviews
+@Composable
+private fun BadgePreview() {
+    M3ComponentsTheme {
+        ComponentScreen(
+            component = Component.BADGE,
+            onNavigateBack = {},
+            onExampleTapped = {},
         )
     }
 }
