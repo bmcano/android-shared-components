@@ -51,7 +51,10 @@ fun M3RadioButtonGroup(
                        onClick = { onOptionSelected(option) },
                        role = Role.RadioButton,
                    )
-                   .padding(horizontal = horizontalInsetPadding),
+                   .padding(
+                       horizontal = horizontalInsetPadding,
+                       vertical = 4.dp,
+                   ),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 RadioButton(

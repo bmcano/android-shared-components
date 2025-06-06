@@ -6,13 +6,11 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -103,6 +101,7 @@ private fun HomeScreenContent(
         horizontalAlignment = Alignment.Start,
     ) {
         Spacer(modifier = Modifier.height(24.dp))
+        // TODO - I may need to consider the LazyVerticalGrid layout
         FlowRow(
             modifier = Modifier
                 .fillMaxWidth()
@@ -114,7 +113,7 @@ private fun HomeScreenContent(
         ) {
             componentCardPOs.forEach { componentCardPO ->
                 M3OutlinedCard(
-                    modifier = Modifier.widthIn(max = 192.dp)
+                    modifier = Modifier.widthIn(min = 156.dp, max = 192.dp)
                 ) {
                     ComponentOverviewCardContent(
                         componentCardPO = componentCardPO,
