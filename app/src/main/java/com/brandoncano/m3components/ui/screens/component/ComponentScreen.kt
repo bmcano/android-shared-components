@@ -1,5 +1,6 @@
 package com.brandoncano.m3components.ui.screens.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -10,12 +11,14 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -28,8 +31,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
 import com.brandoncano.m3components.navigation.Component
+import com.brandoncano.m3components.to.ComponentCardPO
 import com.brandoncano.sharedcomponents.m3.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.m3.FullWidthDivider
+import com.brandoncano.sharedcomponents.m3.M3Divider
+import com.brandoncano.sharedcomponents.m3.M3SingleLineListItem
 import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 
@@ -37,8 +43,10 @@ import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 @Composable
 fun ComponentScreen(
     component: Component,
+    relatedItemPOs: List<ComponentCardPO> = emptyList<ComponentCardPO>(),
     onNavigateBack: () -> Unit,
     onExampleTapped: (String) -> Unit,
+    onComponentTapped: (Component) -> Unit = {},
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
@@ -120,6 +128,26 @@ fun ComponentScreen(
                     text = stringResource(R.string.component_screen_related_subtitle),
                     style = MaterialTheme.typography.bodyMedium.onSurfaceVariant(),
                 )
+                Spacer(modifier = Modifier.height(12.dp))
+                OutlinedCard {
+                    relatedItemPOs.forEachIndexed { index, it ->
+
+                        M3SingleLineListItem(
+                            headlineText = stringResource(id = it.titleRes),
+                            modifier = Modifier
+                                .clickable { onComponentTapped.invoke(it.component) }
+                                .padding(vertical = 4.dp),
+                            leadingContent = {
+                                Icon(
+                                    imageVector = it.icon,
+                                    contentDescription = null,
+                                )
+                            },
+                            trailingImage = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                        )
+                        if (relatedItemPOs.lastIndex != index) M3Divider(insetPadding = 16.dp)
+                    }
+                }
             }
             BottomScreenSpacer()
         }

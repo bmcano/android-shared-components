@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import com.brandoncano.m3components.ui.screens.component.ComponentScreen
 import com.brandoncano.m3components.util.MakeToast
+import com.brandoncano.m3components.util.RelatedComponentPOsDeriver
 
 fun NavGraphBuilder.componentScreen(
     navHostController: NavHostController,
@@ -25,11 +26,13 @@ fun NavGraphBuilder.componentScreen(
         // Retrieve the argument from the route
         val args = navBackStackEntry.toRoute<Screen.M3Component>()
         val component = args.type
-        // TODO - create util to get list of ComponentCardPOs of only the similar elements for the specified component
+        val relatedItemPOs = RelatedComponentPOsDeriver.execute(component)
         ComponentScreen(
             component = component,
+            relatedItemPOs = relatedItemPOs,
             onNavigateBack = { navHostController.popBackStack() },
             onExampleTapped = { MakeToast.execute(context, it) },
+            onComponentTapped = { navigateToComponent(navHostController, it) },
         )
     }
 }

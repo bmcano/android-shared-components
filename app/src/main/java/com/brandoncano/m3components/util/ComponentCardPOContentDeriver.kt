@@ -62,7 +62,8 @@ object ComponentCardPOContentDeriver {
                 component = Component.BUTTONS,
                 icon = Icons.Outlined.TouchApp,
                 titleRes = R.string.component_buttons_title,
-                descRes = R.string.component_buttons_desc
+                descRes = R.string.component_buttons_desc,
+                relatedItems = listOf(Component.EXTENDED_FAB, Component.FAB),
             )
             Component.CARDS -> ComponentCardPO(
                 component = Component.CARDS,
@@ -74,7 +75,8 @@ object ComponentCardPOContentDeriver {
                 component = Component.CHECKBOX,
                 icon = Icons.Outlined.CheckBox,
                 titleRes = R.string.component_checkbox_title,
-                descRes = R.string.component_checkbox_desc
+                descRes = R.string.component_checkbox_desc,
+                relatedItems = listOf(Component.RADIO_BUTTON, Component.SWITCH),
             )
             Component.CHIPS -> ComponentCardPO(
                 component = Component.CHIPS,
@@ -86,7 +88,8 @@ object ComponentCardPOContentDeriver {
                 component = Component.DATE_PICKER,
                 icon = Icons.Outlined.DateRange,
                 titleRes = R.string.component_date_picker_title,
-                descRes = R.string.component_date_picker_desc
+                descRes = R.string.component_date_picker_desc,
+                relatedItems = listOf(Component.TIME_PICKER),
             )
             Component.DIALOGS -> ComponentCardPO(
                 component = Component.DIALOGS,
@@ -104,19 +107,22 @@ object ComponentCardPOContentDeriver {
                 component = Component.EXTENDED_FAB,
                 icon = Icons.Outlined.AddCircle, // this but actually outlined?
                 titleRes = R.string.component_extended_fab_title,
-                descRes = R.string.component_extended_fab_desc
+                descRes = R.string.component_extended_fab_desc,
+                relatedItems = listOf(Component.BUTTONS, Component.FAB),
             )
             Component.FAB -> ComponentCardPO(
                 component = Component.FAB,
                 icon = Icons.Default.Add, // might be better option
                 titleRes = R.string.component_fab_title,
-                descRes = R.string.component_fab_desc
+                descRes = R.string.component_fab_desc,
+                relatedItems = listOf(Component.EXTENDED_FAB, Component.ICON_BUTTONS),
             )
             Component.ICON_BUTTONS -> ComponentCardPO(
                 component = Component.ICON_BUTTONS,
                 icon = Icons.Outlined.TouchApp,
                 titleRes = R.string.component_icon_buttons_title,
-                descRes = R.string.component_icon_buttons_desc
+                descRes = R.string.component_icon_buttons_desc,
+                relatedItems = listOf(Component.BUTTONS, Component.FAB),
             )
             Component.LISTS -> ComponentCardPO(
                 component = Component.LISTS,
@@ -134,19 +140,22 @@ object ComponentCardPOContentDeriver {
                 component = Component.NAVIGATION_BAR,
                 icon = Icons.Outlined.Navigation,
                 titleRes = R.string.component_navigation_bar_title,
-                descRes = R.string.component_navigation_bar_desc
+                descRes = R.string.component_navigation_bar_desc,
+                relatedItems = listOf(Component.NAVIGATION_DRAWER, Component.NAVIGATION_RAIL),
             )
             Component.NAVIGATION_DRAWER -> ComponentCardPO(
                 component = Component.NAVIGATION_DRAWER,
                 icon = Icons.Outlined.Menu,
                 titleRes = R.string.component_navigation_drawer_title,
-                descRes = R.string.component_navigation_drawer_desc
+                descRes = R.string.component_navigation_drawer_desc,
+                relatedItems = listOf(Component.NAVIGATION_BAR, Component.NAVIGATION_RAIL),
             )
             Component.NAVIGATION_RAIL -> ComponentCardPO(
                 component = Component.NAVIGATION_RAIL,
                 icon = Icons.AutoMirrored.Outlined.ViewSidebar,
                 titleRes = R.string.component_navigation_rail_title,
-                descRes = R.string.component_navigation_rail_desc
+                descRes = R.string.component_navigation_rail_desc,
+                relatedItems = listOf(Component.NAVIGATION_BAR, Component.NAVIGATION_DRAWER),
             )
             Component.PROGRESS_INDICATORS -> ComponentCardPO(
                 component = Component.PROGRESS_INDICATORS,
@@ -158,13 +167,15 @@ object ComponentCardPOContentDeriver {
                 component = Component.RADIO_BUTTON,
                 icon = Icons.Outlined.RadioButtonChecked,
                 titleRes = R.string.component_radio_button_title,
-                descRes = R.string.component_radio_button_desc
+                descRes = R.string.component_radio_button_desc,
+                relatedItems = listOf(Component.CHECKBOX, Component.SWITCH),
             )
             Component.SEARCH_BAR -> ComponentCardPO(
                 component = Component.SEARCH_BAR,
                 icon = Icons.Outlined.Search,
                 titleRes = R.string.component_search_bar_title,
-                descRes = R.string.component_search_bar_desc
+                descRes = R.string.component_search_bar_desc,
+                relatedItems = listOf(Component.BOTTOM_APP_BAR, Component.TOP_APP_BAR),
             )
             Component.SEGMENTED_BUTTON -> ComponentCardPO(
                 component = Component.SEGMENTED_BUTTON,
@@ -188,7 +199,8 @@ object ComponentCardPOContentDeriver {
                 component = Component.SWITCH,
                 icon = Icons.Outlined.ToggleOn,
                 titleRes = R.string.component_switch_title,
-                descRes = R.string.component_switch_desc
+                descRes = R.string.component_switch_desc,
+                relatedItems = listOf(Component.CHECKBOX, Component.RADIO_BUTTON),
             )
             Component.TABS -> ComponentCardPO(
                 component = Component.TABS,
@@ -206,13 +218,15 @@ object ComponentCardPOContentDeriver {
                 component = Component.TIME_PICKER,
                 icon = Icons.Outlined.AccessTime,
                 titleRes = R.string.component_time_picker_title,
-                descRes = R.string.component_time_picker_desc
+                descRes = R.string.component_time_picker_desc,
+                relatedItems = listOf(Component.DATE_PICKER),
             )
             Component.TOP_APP_BAR -> ComponentCardPO(
                 component = Component.TOP_APP_BAR,
                 icon = Icons.Outlined.Menu,
                 titleRes = R.string.component_top_app_bar_title,
-                descRes = R.string.component_top_app_bar_desc
+                descRes = R.string.component_top_app_bar_desc,
+                relatedItems = listOf(Component.BOTTOM_APP_BAR, Component.SEARCH_BAR),
             )
         }
     }
