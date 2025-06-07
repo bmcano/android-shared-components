@@ -82,7 +82,7 @@ fun ComponentScreen(
                 Component.BOTTOM_SHEET -> { }
                 Component.BUTTONS -> ButtonContent(onExampleTapped) // Complete - Toggle buttons can come later.
                 Component.CARDS -> { }
-                Component.CHECKBOX -> { }
+                Component.CHECKBOX -> CheckboxContent(onExampleTapped) // Complete
                 Component.CHIPS -> { }
                 Component.DATE_PICKER -> { }
                 Component.DIALOGS -> { }

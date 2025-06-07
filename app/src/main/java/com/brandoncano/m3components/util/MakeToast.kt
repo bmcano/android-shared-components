@@ -8,9 +8,12 @@ import android.widget.Toast
  */
 object MakeToast {
 
+    private var currentToast: Toast? = null
+
     fun execute(context: Context, text: String) {
-        Toast
+        currentToast?.cancel()
+        currentToast = Toast
             .makeText(context, text, Toast.LENGTH_SHORT)
-            .show()
+            .apply { show() }
     }
 }

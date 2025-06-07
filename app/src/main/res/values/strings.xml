@@ -118,6 +118,15 @@
     <string name="button_text_with_icon">Text with icon</string>
     <string name="button_text_disabled">Text disabled</string>
     <string name="button_text_guidelines">The text button style should be used for the lowest priority actions, especially when presenting multiple options. They should be placed on simple backgrounds and are often placed within components such as cards, dialogs, and snackbars.</string>
+    <!-- Checkbox -->
+    <string name="checkbox_overview_title">Checkbox overview</string>
+    <string name="checkbox_description1">Checkboxes let users select one or more items from a list. They are ideal for scenarios requiring multiple or nested selections.</string>
+    <string name="checkbox_description2">A parent checkbox enables users to quickly select or deselect all associated child options.</string>
+    <string name="checkbox_example1">Single checkbox</string>
+    <string name="checkbox_example2">Parent checkbox</string>
+    <string name="checkbox_example3">Child checkbox 1</string>
+    <string name="checkbox_example4">Child checkbox 2</string>
+    <string name="checkbox_example5">Child checkbox 3</string>
 
     <!-- Divider -->
     <string name="dividers_overview_title">Dividers overview</string>

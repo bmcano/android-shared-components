@@ -152,7 +152,7 @@ fun M3TriStateCheckboxGroup(
                         },
                     )
                     .padding(
-                        horizontal = horizontalInsetPadding + 32.dp,
+                        horizontal = horizontalInsetPadding + 40.dp,
                         vertical = verticalPadding,
                     ),
                 verticalAlignment = Alignment.CenterVertically,
