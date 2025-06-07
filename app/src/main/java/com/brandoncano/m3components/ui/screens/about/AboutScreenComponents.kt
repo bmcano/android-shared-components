@@ -28,7 +28,6 @@ import com.brandoncano.m3components.R
 import com.brandoncano.sharedcomponents.m3.M3Divider
 import com.brandoncano.sharedcomponents.m3.M3OutlinedCard
 import com.brandoncano.sharedcomponents.m3.M3SingleLineListItem
-import com.brandoncano.sharedcomponents.text.textStyleHeadline
 
 @Composable
 fun AppInformationCard(version: String, lastUpdated: String) {

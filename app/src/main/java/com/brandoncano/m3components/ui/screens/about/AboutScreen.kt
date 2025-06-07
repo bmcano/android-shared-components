@@ -1,5 +1,6 @@
 package com.brandoncano.m3components.ui.screens.about
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +13,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
+import androidx.compose.material.icons.outlined.Policy
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,6 +29,8 @@ import com.brandoncano.m3components.R
 import com.brandoncano.m3components.ui.theme.M3ComponentsTheme
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
 import com.brandoncano.sharedcomponents.composables.BottomScreenSpacer
+import com.brandoncano.sharedcomponents.m3.M3Divider
+import com.brandoncano.sharedcomponents.m3.M3SingleLineListItem
 import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,11 +84,24 @@ private fun AboutScreenContent(
             version = stringResource(R.string.version),
             lastUpdated = stringResource(R.string.last_updated)
         )
-        Spacer(modifier = Modifier.height(12.dp))
-        // Privacy policy card
-
+         Spacer(modifier = Modifier.height(12.dp))
+        // TODO - Privacy policy card
+        OutlinedCard {
+            M3SingleLineListItem(
+                headlineText = stringResource(id = R.string.about_view_privacy_policy),
+                modifier = Modifier
+                    .clickable { onViewPrivacyPolicyTapped.invoke() }
+                    .padding(vertical = 4.dp),
+                leadingContent = {
+                    Icon(
+                        imageVector = Icons.Outlined.Policy,
+                        contentDescription = null,
+                    )
+                },
+                trailingImage = Icons.AutoMirrored.Filled.ArrowForwardIos,
+            )
+        }
         // Overview
-
         // Support us section
         Spacer(modifier = Modifier.height(32.dp))
         OurAppsButtons(

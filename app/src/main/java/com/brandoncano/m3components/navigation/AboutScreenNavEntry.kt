@@ -10,6 +10,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.brandoncano.m3components.ui.screens.about.AboutScreen
+import com.brandoncano.m3components.util.MakeToast
 import com.brandoncano.sharedcomponents.utils.OpenLink
 
 fun NavGraphBuilder.aboutScreen(
@@ -26,13 +27,14 @@ fun NavGraphBuilder.aboutScreen(
         AboutScreen(
             onNavigateBack = { navHostController.popBackStack() },
             onViewPrivacyPolicyTapped = { navigateToPrivacyPolicy(context) },
-            onRateThisAppTapped = {  },
-            onViewOurAppsTapped = {  },
-            onDonateTapped = {  },
+            onRateThisAppTapped = { MakeToast.execute(context, "Coming soon") },
+            onViewOurAppsTapped = { MakeToast.execute(context, "Coming soon") },
+            onDonateTapped = { MakeToast.execute(context, "Coming soon") },
         )
     }
 }
 
 private fun navigateToPrivacyPolicy(context: Context) {
-    OpenLink.execute(context, "TODO: Add link")
+    MakeToast.execute(context, "Coming soon")
+//    OpenLink.execute(context, "Add link")
 }
