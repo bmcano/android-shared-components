@@ -26,25 +26,34 @@ import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#TriStateCheckbox(androidx.compose.ui.state.ToggleableState,kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.material3.CheckboxColors,androidx.compose.foundation.interaction.MutableInteractionSource)
 
 /**
- * A single checkbox with a label.
+ * A single checkbox with an inline label.
  *
- * @param option The text label displayed next to the checkbox.
+ * @param option The text label shown next to the checkbox.
+ * @param checked Current checked state.
+ * @param onCheckChanged Callback invoked with the new checked state.
+ * @param enabled Whether the checkbox is enabled.
  * @param horizontalInsetPadding Horizontal padding around the row (default 16.dp).
  * @param verticalPadding Vertical padding around the row (default 8.dp).
  */
 @Composable
 fun M3Checkbox(
     option: String,
+    checked: Boolean,
+    onCheckChanged: (Boolean) -> Unit,
+    enabled: Boolean = true,
     horizontalInsetPadding: Dp = 16.dp,
     verticalPadding: Dp = 8.dp,
 ) {
-    val (checkedState, onStateChange) = remember { mutableStateOf(false) }
+    val (checkedState, onStateChange) = remember { mutableStateOf(checked) }
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .toggleable(
                 value = checkedState,
-                onValueChange = { onStateChange(!checkedState) },
+                onValueChange = {
+                    onStateChange(!checkedState)
+                    onCheckChanged(!checkedState)
+                },
                 role = Role.Checkbox,
             )
             .padding(
@@ -56,6 +65,7 @@ fun M3Checkbox(
         Checkbox(
             checked = checkedState,
             onCheckedChange = null, // null recommended for screen readers
+            enabled = enabled,
         )
         Text(
             text = option,
@@ -66,43 +76,30 @@ fun M3Checkbox(
 }
 
 /**
- * Renders a vertical list of Checkbox items for each provided option.
+ * A tri-state parent checkbox that reflects and controls a list of child checkboxes.
  *
- * @param options A list of strings to display as individual checkboxes.
- * @param horizontalInsetPadding Horizontal padding applied to each checkbox row.
- * @param verticalPadding Vertical padding applied to each checkbox row.
- */
-@Composable
-fun M3CheckBoxGroup(
-    options: List<String>,
-    horizontalInsetPadding: Dp = 16.dp,
-    verticalPadding: Dp = 8.dp,
-) {
-    options.forEach {
-        M3Checkbox(
-            option = it,
-            horizontalInsetPadding = horizontalInsetPadding,
-            verticalPadding = verticalPadding,
-        )
-    }
-}
-
-/**
- * Renders a tri-state parent checkbox that controls multiple child checkboxes.
- *
- * @param parentOption The label for the parent tri-state checkbox.
- * @param options A list of child option labels displayed under the parent.
- * @param horizontalInsetPadding Horizontal padding for parent and child rows.
- * @param verticalPadding Vertical padding for parent and child rows.
+ * @param parentOption Label for the parent tri-state checkbox.
+ * @param options List of child labels.
+ * @param checkedStates List of child checked states; must match options.size.
+ * @param onParentCheckedChange Called when the parent is toggled, passing the new boolean value.
+ * @param onChildCheckedChange Called with (index, newValue) when a child checkbox is toggled.
+ * @param enabled Whether all checkboxes in the group are enabled.
+ * @param horizontalInsetPadding Horizontal padding for rows (default 16.dp).
+ * @param verticalPadding Vertical padding for rows (default 8.dp).
  */
 @Composable
 fun M3TriStateCheckboxGroup(
     parentOption: String,
     options: List<String>,
+    checkedStates: List<Boolean>,
+    onParentCheckedChange: (Boolean) -> Unit,
+    onChildCheckedChange: (index: Int, newValue: Boolean) -> Unit,
+    enabled: Boolean = true,
     horizontalInsetPadding: Dp = 16.dp,
     verticalPadding: Dp = 8.dp,
 ) {
-    val childStates = remember { options.map { mutableStateOf(false) }.toMutableStateList() }
+    if (options.size != checkedStates.size) return
+    val childStates = remember { options.mapIndexed { it, _ -> mutableStateOf(checkedStates[it]) }.toMutableStateList() }
     val allChecked = childStates.all { it.value }
     val noneChecked = childStates.all { !it.value }
     val parentState: ToggleableState = when {
@@ -121,6 +118,7 @@ fun M3TriStateCheckboxGroup(
                     onValueChange = {
                         val newValue = parentState != ToggleableState.On
                         childStates.forEach { it.value = newValue }
+                        onParentCheckedChange(newValue)
                     },
                 )
                 .padding(
@@ -132,6 +130,7 @@ fun M3TriStateCheckboxGroup(
             TriStateCheckbox(
                 state = parentState,
                 onClick = null,
+                enabled = enabled,
             )
             Text(
                 text = parentOption,
@@ -147,7 +146,10 @@ fun M3TriStateCheckboxGroup(
                     .toggleable(
                         value = childChecked.value,
                         role = Role.Checkbox,
-                        onValueChange = { childChecked.value = it },
+                        onValueChange = {
+                            childChecked.value = it
+                            onChildCheckedChange(index, it)
+                        },
                     )
                     .padding(
                         horizontal = horizontalInsetPadding + 32.dp,
@@ -158,6 +160,7 @@ fun M3TriStateCheckboxGroup(
                 Checkbox(
                     checked = childChecked.value,
                     onCheckedChange = null,
+                    enabled = enabled,
                 )
                 Text(
                     text = option,
@@ -175,13 +178,15 @@ private fun CheckboxPreview() {
     Column {
         M3Checkbox(
             option = "Dark mode",
-        )
-        M3CheckBoxGroup(
-            options = listOf("Option 1", "Option 2", "Option 3")
+            checked = true,
+            onCheckChanged = {},
         )
         M3TriStateCheckboxGroup(
             parentOption = "Receive emails",
-            options = listOf("Daily", "Weekly", "Monthly")
+            options = listOf("Daily", "Weekly", "Monthly"),
+            checkedStates = listOf(false, true, true),
+            onParentCheckedChange = {},
+            onChildCheckedChange = { _, _ -> },
         )
     }
 }
