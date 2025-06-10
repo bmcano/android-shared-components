@@ -17,7 +17,7 @@ fun BottomScreenSpacer(
 ) {
     Spacer(
         modifier = Modifier
-            .height(height)
-            .navigationBarsPadding(),
+            .navigationBarsPadding()
+            .height(height),
     )
 }

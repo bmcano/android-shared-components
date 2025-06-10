@@ -1,19 +1,16 @@
 package com.brandoncano.m3components.ui.screens.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Feedback
 import androidx.compose.material.icons.outlined.Info
@@ -24,11 +21,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.brandoncano.m3components.R
 import com.brandoncano.m3components.navigation.Component
@@ -37,7 +34,6 @@ import com.brandoncano.m3components.ui.theme.M3ComponentsTheme
 import com.brandoncano.m3components.util.ComponentCardPOsDeriver
 import com.brandoncano.sharedcomponents.composables.AppLongScreenPreview
 import com.brandoncano.sharedcomponents.composables.AppScreenPreviews
-import com.brandoncano.sharedcomponents.m3.BottomScreenSpacer
 import com.brandoncano.sharedcomponents.m3.M3OutlinedCard
 import com.brandoncano.sharedcomponents.m3.M3TopAppBar
 
@@ -56,6 +52,7 @@ fun HomeScreen(
                 titleText = stringResource(R.string.home_title),
                 subTitleText = stringResource(R.string.home_subtitle),
                 actions = {
+                    // TODO - Figure out actions and menu options
                     IconButton(onClick = {}) {
                         Icon(
                             imageVector = Icons.Outlined.Palette,
@@ -95,35 +92,28 @@ private fun HomeScreenContent(
     onComponentTapped: (Component) -> Unit,
 ) {
     val sidePadding = dimensionResource(R.dimen.screen_side_padding)
-    Column(
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(minSize = 160.dp),
         modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(paddingValues)
+            .consumeWindowInsets(paddingValues)
             .padding(horizontal = sidePadding),
-        horizontalAlignment = Alignment.Start,
+        contentPadding = PaddingValues(
+            top = paddingValues.calculateTopPadding(),
+            start = paddingValues.calculateStartPadding(LayoutDirection.Ltr),
+            end = paddingValues.calculateEndPadding(LayoutDirection.Ltr),
+            bottom = paddingValues.calculateBottomPadding() + 24.dp,
+        ),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
-        // TODO - I may need to consider the LazyVerticalGrid layout
-        FlowRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            itemVerticalAlignment = Alignment.Top,
-            maxItemsInEachRow = 4,
-        ) {
-            componentCardPOs.forEach { componentCardPO ->
-                M3OutlinedCard(
-                    modifier = Modifier.widthIn(min = 156.dp, max = 192.dp)
-                ) {
-                    ComponentOverviewCardContent(
-                        componentCardPO = componentCardPO,
-                        onComponentTapped = onComponentTapped,
-                    )
-                }
+        items(componentCardPOs) { componentCardPO ->
+            M3OutlinedCard {
+                ComponentOverviewCardContent(
+                    componentCardPO = componentCardPO,
+                    onComponentTapped = onComponentTapped,
+                )
             }
         }
-        BottomScreenSpacer()
     }
 }
 
