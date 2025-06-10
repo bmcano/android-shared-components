@@ -138,6 +138,19 @@
     <string name="dividers_vertical">Vertical divider</string>
     <string name="dividers_inset_vertical">With insets</string>
 
+    <!-- List Item -->
+    <string name="list_overview_title">List overview</string>
+    <string name="list_description1">Lists are vertically organized collections of text and images. They optimize readability and can include primary or supplemental actions represented by icons or text.</string>
+    <string name="list_description2">List items come in three variants: one-line, two-line, and three-line.</string>
+    <string name="list_description3">"Note: Controls display information and actions for list items—such as checkboxes and switches. They can be part of a list item's leading or trailing content."</string>
+    <string name="list_example1">One-line</string>
+    <string name="list_example2">Two-line</string>
+    <string name="list_example3">Three-line</string>
+    <string name="list_example4">Supporting text</string>
+    <string name="list_example5">Supporting text that spans multiple lines and is truncated with an ellipsis</string>
+    <string name="list_example6">Overline text</string>
+    <string name="list_example7">"100+"</string>
+
     <!-- Radio Button -->
     <string name="radio_overview_title">Radio button overview</string>
     <string name="radio_description1">Radio buttons let users select exactly one option from a list. Use them when you want to expose all available choices and enforce a single selection.</string>

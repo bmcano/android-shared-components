@@ -44,32 +44,36 @@ object ComponentCardPOContentDeriver {
                 component = Component.BADGE,
                 icon = Icons.Outlined.MarkEmailUnread,
                 titleRes = R.string.component_badge_title,
-                descRes = R.string.component_badge_desc
+                descRes = R.string.component_badge_desc,
+                relatedItems = listOf(Component.NAVIGATION_BAR, Component.NAVIGATION_RAIL),
             )
             Component.BOTTOM_APP_BAR -> ComponentCardPO(
                 component = Component.BOTTOM_APP_BAR,
                 icon = Icons.Default.Menu, // Unsure
                 titleRes = R.string.component_bottom_app_bar_title,
-                descRes = R.string.component_bottom_app_bar_desc
+                descRes = R.string.component_bottom_app_bar_desc,
+                relatedItems = listOf(),
             )
             Component.BOTTOM_SHEET -> ComponentCardPO(
                 component = Component.BOTTOM_SHEET,
                 icon = Icons.Outlined.ExpandLess,
                 titleRes = R.string.component_bottom_sheet_title,
-                descRes = R.string.component_bottom_sheet_desc
+                descRes = R.string.component_bottom_sheet_desc,
+                relatedItems = listOf(),
             )
             Component.BUTTONS -> ComponentCardPO(
                 component = Component.BUTTONS,
                 icon = Icons.Outlined.TouchApp,
                 titleRes = R.string.component_buttons_title,
                 descRes = R.string.component_buttons_desc,
-                relatedItems = listOf(Component.EXTENDED_FAB, Component.FAB),
+                relatedItems = listOf(Component.EXTENDED_FAB, Component.FAB, Component.ICON_BUTTONS),
             )
             Component.CARDS -> ComponentCardPO(
                 component = Component.CARDS,
                 icon = Icons.Outlined.Square,
                 titleRes = R.string.component_cards_title,
-                descRes = R.string.component_cards_desc
+                descRes = R.string.component_cards_desc,
+                relatedItems = listOf(Component.DIVIDERS, Component.LISTS),
             )
             Component.CHECKBOX -> ComponentCardPO(
                 component = Component.CHECKBOX,
@@ -101,34 +105,36 @@ object ComponentCardPOContentDeriver {
                 component = Component.DIVIDERS,
                 icon = Icons.Outlined.HorizontalRule,
                 titleRes = R.string.component_dividers_title,
-                descRes = R.string.component_dividers_desc
+                descRes = R.string.component_dividers_desc,
+                relatedItems = listOf(Component.CARDS, Component.LISTS),
             )
             Component.EXTENDED_FAB -> ComponentCardPO(
                 component = Component.EXTENDED_FAB,
                 icon = Icons.Outlined.AddCircle, // this but actually outlined?
                 titleRes = R.string.component_extended_fab_title,
                 descRes = R.string.component_extended_fab_desc,
-                relatedItems = listOf(Component.BUTTONS, Component.FAB),
+                relatedItems = listOf(Component.BUTTONS, Component.FAB, Component.ICON_BUTTONS),
             )
             Component.FAB -> ComponentCardPO(
                 component = Component.FAB,
                 icon = Icons.Default.Add, // might be better option
                 titleRes = R.string.component_fab_title,
                 descRes = R.string.component_fab_desc,
-                relatedItems = listOf(Component.EXTENDED_FAB, Component.ICON_BUTTONS),
+                relatedItems = listOf(Component.BUTTONS, Component.EXTENDED_FAB, Component.ICON_BUTTONS),
             )
             Component.ICON_BUTTONS -> ComponentCardPO(
                 component = Component.ICON_BUTTONS,
                 icon = Icons.Outlined.TouchApp,
                 titleRes = R.string.component_icon_buttons_title,
                 descRes = R.string.component_icon_buttons_desc,
-                relatedItems = listOf(Component.BUTTONS, Component.FAB),
+                relatedItems = listOf(Component.BUTTONS, Component.EXTENDED_FAB, Component.FAB),
             )
             Component.LISTS -> ComponentCardPO(
                 component = Component.LISTS,
                 icon = Icons.AutoMirrored.Outlined.List,
                 titleRes = R.string.component_lists_title,
-                descRes = R.string.component_lists_desc
+                descRes = R.string.component_lists_desc,
+                relatedItems = listOf(Component.CARDS, Component.DIVIDERS),
             )
             Component.MENUS -> ComponentCardPO(
                 component = Component.MENUS,

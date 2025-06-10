@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
@@ -19,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.brandoncano.sharedcomponents.composables.AppComponentPreviews
@@ -54,6 +56,15 @@ fun M3Switch(
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .toggleable(
+                value = checkedState,
+                enabled = enabled,
+                onValueChange = {
+                    onStateChange(!checkedState)
+                    onCheckedChange(!checkedState)
+                },
+                role = Role.Switch,
+            )
             .padding(
                 horizontal = horizontalInsetPadding,
                 vertical = verticalPadding,
@@ -67,10 +78,7 @@ fun M3Switch(
         )
         Switch(
             checked = checkedState,
-            onCheckedChange = {
-                onStateChange(it)
-                onCheckedChange(it)
-            },
+            onCheckedChange = null,
             modifier = Modifier.padding(start = 16.dp),
             thumbContent = {
                 if (checkedState && checkedIcon != null) {

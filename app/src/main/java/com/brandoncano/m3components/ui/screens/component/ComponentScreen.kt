@@ -98,7 +98,7 @@ fun ComponentScreen(
                 Component.EXTENDED_FAB -> { } // TODO
                 Component.FAB -> { } // TODO - Look into FAB menu
                 Component.ICON_BUTTONS -> { } // TODO - Might have toggle option
-                Component.LISTS -> { } // TODO
+                Component.LISTS -> ListItemContent() // Complete
                 Component.MENUS -> { }
                 Component.NAVIGATION_BAR -> { }
                 Component.NAVIGATION_DRAWER -> { }
