@@ -27,6 +27,18 @@ import com.brandoncano.sharedcomponents.text.onSurfaceVariant
 // https://m3.material.io/components/switch/overview
 // https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Switch(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Boolean,androidx.compose.material3.SwitchColors,androidx.compose.foundation.interaction.MutableInteractionSource)
 
+/**
+ * A labeled switch with optional icons for on/off states.
+ *
+ * @param labelText The text label displayed before the switch.
+ * @param checked Current checked state.
+ * @param onCheckedChange Callback invoked with the new state when toggled.
+ * @param enabled Whether the switch is interactive.
+ * @param checkedIcon Optional icon shown inside the thumb when checked.
+ * @param uncheckedIcon Optional icon shown inside the thumb when unchecked.
+ * @param horizontalInsetPadding Horizontal padding around the row (default 16.dp).
+ * @param verticalPadding Vertical padding around the row (default 8.dp).
+ */
 @Composable
 fun M3Switch(
     labelText: String,
