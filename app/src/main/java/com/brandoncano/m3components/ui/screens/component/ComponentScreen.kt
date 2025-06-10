@@ -95,10 +95,10 @@ fun ComponentScreen(
                 Component.DATE_PICKER -> { }
                 Component.DIALOGS -> { }
                 Component.DIVIDERS -> DividerContent() // Complete
-                Component.EXTENDED_FAB -> { }
-                Component.FAB -> { }
-                Component.ICON_BUTTONS -> { }
-                Component.LISTS -> { }
+                Component.EXTENDED_FAB -> { } // TODO
+                Component.FAB -> { } // TODO - Look into FAB menu
+                Component.ICON_BUTTONS -> { } // TODO - Might have toggle option
+                Component.LISTS -> { } // TODO
                 Component.MENUS -> { }
                 Component.NAVIGATION_BAR -> { }
                 Component.NAVIGATION_DRAWER -> { }
@@ -109,7 +109,7 @@ fun ComponentScreen(
                 Component.SEGMENTED_BUTTON -> { }
                 Component.SLIDERS -> { }
                 Component.SNACKBARS -> { }
-                Component.SWITCH -> { }
+                Component.SWITCH -> SwitchContent(onExampleTapped) // Complete
                 Component.TABS -> { }
                 Component.TEXT_FIELDS -> { }
                 Component.TIME_PICKER -> { }

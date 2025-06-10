@@ -142,4 +142,14 @@
     <string name="radio_overview_title">Radio button overview</string>
     <string name="radio_description1">Radio buttons let users select exactly one option from a list. Use them when you want to expose all available choices and enforce a single selection.</string>
     <string name="radio_description2">They must always include clear inline labels.</string>
+    <!-- Switch -->
+    <string name="switch_overview_title">Switch overview</string>
+    <string name="switch_description1">Switches let users adjust settings and other standalone options. They make a binary selection, like on and off or true and false, and the effects of a switch should be immediate.</string>
+    <string name="switch_description2">They must always include clear inline labels. The switch can have optional icons for both checked and unchecked states.</string>
+    <string name="switch_example1">Switch</string>
+    <string name="switch_example2">Disabled switch</string>
+    <string name="switch_example3">Switch with checked icon</string>
+    <string name="switch_example4">Unchecked switch with icon</string>
+
+
 </resources>
