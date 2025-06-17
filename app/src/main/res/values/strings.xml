@@ -128,6 +128,10 @@
     <string name="checkbox_example4">Child checkbox 2</string>
     <string name="checkbox_example5">Child checkbox 3</string>
 
+    <!-- Date Picker -->
+    <string name="date_overview_title">Date picker overview</string>
+    <string name="date_overview_body1">Date pickers let people select a date or a range of dates.</string>
+
     <!-- Divider -->
     <string name="dividers_overview_title">Dividers overview</string>
     <string name="dividers_overview_body1">Dividers are thin lines that separate or group content. There are two orientations (horizontal and vertical). Use them sparingly to create clear visual breaks without overcrowding.</string>

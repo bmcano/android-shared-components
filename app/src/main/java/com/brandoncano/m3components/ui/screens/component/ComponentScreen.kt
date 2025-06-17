@@ -92,7 +92,7 @@ fun ComponentScreen(
                 Component.CARDS -> { }
                 Component.CHECKBOX -> CheckboxContent(onExampleTapped) // Complete
                 Component.CHIPS -> { }
-                Component.DATE_PICKER -> { }
+                Component.DATE_PICKER -> DatePickerContent()
                 Component.DIALOGS -> { }
                 Component.DIVIDERS -> DividerContent() // Complete
                 Component.EXTENDED_FAB -> { } // TODO
